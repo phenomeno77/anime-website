@@ -1,27 +1,37 @@
+<script setup lang="ts">
+const items = [
+  { label: "Home", to: "/" },
+  { label: "Gallery", to: "/gallery" },
+  { label: "About me", to: "/about" },
+];
+</script>
+
 <template>
-  <header
-    class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50"
+  <Menubar
+    :model="items"
+    :pt="{
+      root: {
+        class: 'justify-between',
+      },
+    }"
   >
-    <nav class="container mx-auto px-4 h-16 flex items-center justify-between">
+    <template #start>
+      <NuxtLink to="/" class="font-bold text-xl"> My App </NuxtLink>
+    </template>
+
+    <template #item="{ item, props }">
       <NuxtLink
-        to="/"
-        class="text-xl font-bold text-sky-400 flex items-center gap-2"
+        v-if="item.to"
+        :to="item.to"
+        v-bind="props.action"
+        class="flex items-center px-3 py-2"
       >
-        <font-awesome-icon :icon="['fas', 'palette']" />
-        <span>AnimeArt</span>
+        {{ item.label }}
       </NuxtLink>
 
-      <div class="flex gap-6 text-slate-300 font-medium">
-        <NuxtLink to="/" class="hover:text-sky-400 transition-colors"
-          >Home</NuxtLink
-        >
-        <NuxtLink to="/gallery" class="hover:text-sky-400 transition-colors"
-          >Gallery</NuxtLink
-        >
-        <NuxtLink to="/about" class="hover:text-sky-400 transition-colors"
-          >About</NuxtLink
-        >
-      </div>
-    </nav>
-  </header>
+      <a v-else v-bind="props.action">
+        {{ item.label }}
+      </a>
+    </template>
+  </Menubar>
 </template>
