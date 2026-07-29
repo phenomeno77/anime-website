@@ -1,6 +1,8 @@
 <template>
   <div class="container mx-auto px-4 py-12">
-    <h1 class="text-4xl font-bold text-center mb-8">Artwork Gallery</h1>
+    <h1 class="text-4xl font-bold text-center mb-8 text-sky-400">
+      Artwork Gallery
+    </h1>
 
     <div v-if="pending" class="text-center py-12 text-slate-400">
       Loading gallery...
@@ -20,14 +22,26 @@
       <div
         v-for="(img, index) in images"
         :key="index"
-        class="group relative overflow-hidden rounded-xl border border-slate-700 bg-slate-800 shadow-md hover:shadow-sky-500/20 transition-all duration-300"
+        class="group relative overflow-hidden rounded-xl"
       >
-        <img
+        <Image
+          :src="img"
+          preview
+          :pt="{
+            root: {
+              class: 'block w-full',
+            },
+            image: {
+              class: 'block w-full h-72 object-cover ',
+            },
+          }"
+        />
+        <!-- <img
           :src="img"
           alt="Anime Digital Artwork"
           class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
           loading="lazy"
-        />
+        /> -->
       </div>
     </div>
   </div>

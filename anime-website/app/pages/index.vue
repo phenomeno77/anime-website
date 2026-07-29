@@ -8,6 +8,10 @@
   </ScrollReveal>
 
   <ScrollReveal>
+    <Gallery />
+  </ScrollReveal>
+
+  <ScrollReveal>
     <Commision />
   </ScrollReveal>
 </template>

@@ -4,7 +4,7 @@ const features = [
     title: "Custom PC Artwork",
     description:
       "Hand-painted anime glass panels designed specifically for your setup.",
-    icon: "paintbrush",
+    icon: "fas-regular fas-file",
   },
   {
     title: "Digital Illustrations",
@@ -39,8 +39,6 @@ const features = [
   <section>
     <div class="text-center mb-10">
       <h2 class="text-3xl font-bold text-sky-400">Why Choose My Artwork?</h2>
-
-      <Divider />
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -49,15 +47,13 @@ const features = [
         :key="feature.title"
         class="bg-slate-800/80 backdrop-blur border border-slate-700 hover:border-sky-500 transition-all duration-300 hover:-translate-y-2"
       >
-        <template #header>
+        <!-- <template #header>
           <div class="p-6">
             <div
               class="w-14 h-14 rounded-xl bg-sky-500/20 flex items-center justify-center"
-            >
-              <i :class="`pi pi-${feature.icon} text-3xl text-sky-400`" />
-            </div>
+            ></div>
           </div>
-        </template>
+        </template> -->
 
         <template #title>
           <span class="text-xl">
