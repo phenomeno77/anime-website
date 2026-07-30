@@ -7,14 +7,8 @@ const text = ref(
   "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
 );
 
-const aboutImages = await $fetch<string[]>("/api/images/about");
-
 const aboutImage = computed(() => {
-  return (
-    aboutImages.find((img) => img.endsWith("/about.jpg")) ??
-    aboutImages[0] ??
-    "/about/default.jpg"
-  );
+  return "/about/about.jpg";
 });
 
 const textList = [
