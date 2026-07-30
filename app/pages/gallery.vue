@@ -48,5 +48,14 @@
 </template>
 
 <script setup>
-const { data: images, pending } = await useFetch("/api/gallery");
+const images = ref([]);
+
+const fetchImages = async () => {
+  const { data, pending } = await useFetch("/api/gallery");
+  images.value = data.value;
+};
+
+onMounted(async () => {
+  await fetchImages();
+});
 </script>
