@@ -47,10 +47,13 @@ const startCommision = () => {
           />
         </div>
 
-        <div class="pt-4 flex justify-end">
+        <div
+          class="pt-4 justify-end flex max-[648px]:w-full max-[648px]:justify-center"
+        >
           <Button
             label="Start a Commission"
             size="large"
+            class="max-[648px]:w-full"
             @click="startCommision"
           />
         </div>
