@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   nitro: {
-    preset: "vercel-preset",
+    static: true,
   },
   modules: ["@primevue/nuxt-module", "@nuxt/image"],
   primevue: {
