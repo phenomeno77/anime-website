@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4 py-12">
+  <div class="container mx-auto px-4 py-16">
     <h1 class="text-4xl font-bold text-center mb-8 text-sky-400">
       Artwork Gallery
     </h1>
@@ -12,7 +12,7 @@
       v-else-if="!images || images.length === 0"
       class="text-center py-12 text-slate-400"
     >
-      No artwork found in gallery folder yet!
+      No artwork found in gallery yet!
     </div>
 
     <div

@@ -1,7 +1,11 @@
 <template>
-  <section class="text-center space-y-8">
-    <Tag value="Anime Artist & Creator" severity="info" rounded />
-
+  <section
+    class="text-center space-y-8 flex flex-col items-center justify-center"
+    style="height: calc(100dvh - var(--navigation-height))"
+  >
+    <div>
+      <Tag value="Anime Artist & Creator" severity="info" rounded />
+    </div>
     <h1 class="text-5xl md:text-6xl font-extrabold text-sky-400 drop-shadow-lg">
       Anime & Digital Art Commissions
     </h1>

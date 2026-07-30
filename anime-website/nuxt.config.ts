@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   nitro: {
     static: true,
   },
-  modules: ["@primevue/nuxt-module"],
+  modules: ["@primevue/nuxt-module", "@nuxt/image"],
   primevue: {
     autoImport: true,
 

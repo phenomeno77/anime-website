@@ -1,17 +1,23 @@
+<script setup lang="ts">
+definePageMeta({
+  background: "/background/main-background.jpg",
+});
+</script>
+
 <template>
   <ScrollReveal>
     <HeroSelection />
   </ScrollReveal>
 
   <ScrollReveal>
-    <FeaturesSelection />
+    <FeaturesSelection class="pb-16" />
   </ScrollReveal>
 
   <ScrollReveal>
-    <Gallery />
+    <Gallery class="py-16" />
   </ScrollReveal>
 
   <ScrollReveal>
-    <Commision />
+    <Commision class="py-16" />
   </ScrollReveal>
 </template>

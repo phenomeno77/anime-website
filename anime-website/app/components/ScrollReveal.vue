@@ -1,30 +1,46 @@
 <script setup lang="ts">
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
-const el = ref<HTMLElement | null>(null);
+const element = ref<HTMLElement | null>(null);
+const visible = ref(false);
 
 onMounted(() => {
-  if (!el.value) return;
+  if (!element.value) return;
 
-  gsap.from(el.value, {
-    opacity: 0,
-    y: 80,
-    duration: 1,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: el.value,
-      start: "top 85%",
-      toggleActions: "play none none reverse",
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry?.isIntersecting) {
+        visible.value = true;
+        observer.disconnect();
+      }
     },
-  });
+    {
+      threshold: 0.15,
+    },
+  );
+
+  observer.observe(element.value);
 });
 </script>
 
 <template>
-  <div ref="el">
+  <div ref="element" :class="{ 'animate-fade-in-up': visible }">
     <slot />
   </div>
 </template>
+
+<style scoped>
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1.5s ease-out forwards;
+}
+</style>
