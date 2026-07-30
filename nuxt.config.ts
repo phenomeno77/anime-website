@@ -8,10 +8,18 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  nitro: {
-    static: true,
+  ssr: true,
+  modules: ["@primevue/nuxt-module", "@nuxt/image", "nuxt-api-shield"],
+  // Limits IPs to max 3 submissions every 10 minutes
+  nuxtApiShield: {
+    limit: {
+      max: 1, // Allow 1 request...
+      duration: 300, // ...per 5 minutes (300 seconds)
+      ban: 300, // Ban duration: 5 minutes
+    },
+    errorMessage:
+      "You've already submitted a commission request. Please wait 5 minutes before trying again.",
   },
-  modules: ["@primevue/nuxt-module", "@nuxt/image"],
   primevue: {
     autoImport: true,
     options: {
@@ -19,5 +27,12 @@ export default defineNuxtConfig({
         preset: Aura,
       },
     },
+  },
+  runtimeConfig: {
+    mailHost: process.env.NUXT_MAIL_HOST,
+    mailPort: process.env.NUXT_MAIL_PORT,
+    mailUser: process.env.NUXT_MAIL_USER,
+    mailPass: process.env.NUXT_MAIL_PASS,
+    mailTo: process.env.NUXT_MAIL_TO,
   },
 });

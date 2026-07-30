@@ -1,17 +1,20 @@
 <script setup lang="ts">
 const route = useRoute();
 
+// Use custom property 'url' instead of 'to'
+// to prevent PrimeVue from attaching its internal route handler
 const items = [
-  { label: "Home", to: "/" },
-  { label: "Gallery", to: "/gallery" },
-  { label: "About me", to: "/about" },
-  { label: "Contact", to: "/contact" },
+  { label: "Home", url: "/" },
+  { label: "Gallery", url: "/gallery" },
+  { label: "About me", url: "/about" },
+  { label: "Contact", url: "/contact" },
 ];
 
 const isActive = (path: string) => {
   return route.path.replace(/\/$/, "") === path.replace(/\/$/, "");
 };
 </script>
+
 <template>
   <Menubar
     :model="items"
@@ -38,14 +41,14 @@ const isActive = (path: string) => {
       </NuxtLink>
     </template>
 
-    <template #item="{ item, props }">
+    <template #item="{ item }">
+      <!-- Standard NuxtLink with strict 'to' binding -->
       <NuxtLink
-        v-if="item.to"
-        :to="item.to"
-        v-bind="props.action"
+        v-if="item.url"
+        :to="item.url"
         :class="[
           'flex items-center px-3 py-2 transition-colors',
-          isActive(item.to)
+          isActive(item.url)
             ? 'text-sky-400! lg:text-sky-400!'
             : 'text-sky-400! lg:text-slate-200! hover:text-sky-400!',
         ]"

@@ -4,12 +4,8 @@
       Artwork Gallery
     </h1>
 
-    <div v-if="pending" class="text-center py-12 text-slate-400">
-      Loading gallery...
-    </div>
-
     <div
-      v-else-if="!images || images.length === 0"
+      v-if="!images || images.length === 0"
       class="text-center py-12 text-slate-400"
     >
       No artwork found in gallery yet!
@@ -32,30 +28,16 @@
               class: 'block w-full',
             },
             image: {
-              class: 'block w-full h-72 object-cover ',
+              class: 'block w-full h-72 object-cover',
             },
           }"
         />
-        <!-- <img
-          :src="img"
-          alt="Anime Digital Artwork"
-          class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        /> -->
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const images = ref([]);
-
-const fetchImages = async () => {
-  const { data, pending } = await useFetch("~/api/gallery");
-  images.value = data.value;
-};
-
-onMounted(async () => {
-  await fetchImages();
-});
+// Top-level call: works seamlessly across SSR and client navigation
+const { data: images } = await useFetch("/api/gallery");
 </script>
