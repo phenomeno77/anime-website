@@ -51,7 +51,7 @@
 const images = ref([]);
 
 const fetchImages = async () => {
-  const { data, pending } = await useFetch("/api/gallery");
+  const { data, pending } = await useFetch("~/api/gallery");
   images.value = data.value;
 };
 
