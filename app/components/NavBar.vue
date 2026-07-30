@@ -5,6 +5,7 @@ const items = [
   { label: "Home", to: "/" },
   { label: "Gallery", to: "/gallery" },
   { label: "About me", to: "/about" },
+  { label: "Contact", to: "/contact" },
 ];
 
 const isActive = (path: string) => {
