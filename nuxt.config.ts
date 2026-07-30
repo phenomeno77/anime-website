@@ -11,15 +11,6 @@ export default defineNuxtConfig({
   ssr: true,
   modules: ["@primevue/nuxt-module", "@nuxt/image", "nuxt-api-shield"],
   // Limits IPs to max 3 submissions every 10 minutes
-  nuxtApiShield: {
-    limit: {
-      max: 1, // Allow 1 request...
-      duration: 300, // ...per 5 minutes (300 seconds)
-      ban: 300, // Ban duration: 5 minutes
-    },
-    errorMessage:
-      "You've already submitted a commission request. Please wait 5 minutes before trying again.",
-  },
   primevue: {
     autoImport: true,
     options: {
