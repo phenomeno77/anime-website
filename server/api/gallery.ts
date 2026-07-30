@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 export default defineEventHandler(async () => {
+  console.log("Fetching gallery images...");
   // Use path resolution that works both in dev and built Node servers
   const galleryDir = path.resolve(process.cwd(), "public/gallery");
 
