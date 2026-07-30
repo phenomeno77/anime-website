@@ -9,12 +9,11 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   nitro: {
-    static: true,
+    preset: "node-server",
   },
   modules: ["@primevue/nuxt-module", "@nuxt/image"],
   primevue: {
     autoImport: true,
-
     options: {
       theme: {
         preset: Aura,
