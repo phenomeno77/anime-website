@@ -8,6 +8,9 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  nitro: {
+    static: false,
+  },
   modules: ["@primevue/nuxt-module", "@nuxt/image"],
   primevue: {
     autoImport: true,
