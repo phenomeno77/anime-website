@@ -5,7 +5,7 @@
     </h1>
 
     <div
-      v-if="!images || images.length === 0"
+      v-if="!galleryImages || galleryImages.length === 0"
       class="text-center py-12 text-slate-400"
     >
       No artwork found in gallery yet!
@@ -16,7 +16,7 @@
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
     >
       <div
-        v-for="(img, index) in images"
+        v-for="(img, index) in galleryImages"
         :key="index"
         class="group overflow-hidden rounded-xl"
       >
@@ -38,5 +38,7 @@
 </template>
 
 <script setup>
-const { data: images, pending } = await useFetch("/api/gallery-images");
+import { useGalleryImages } from "../composables/useGalleryImages";
+
+const galleryImages = useGalleryImages();
 </script>

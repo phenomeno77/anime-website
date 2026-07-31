@@ -1,12 +1,12 @@
 <script setup lang="ts">
-const { data: galleryImages, pending } = await useFetch<string[]>(
-  "/api/gallery-images",
-);
+import { useGalleryImages } from "../composables/useGalleryImages";
+
+const galleryImages = useGalleryImages();
 
 const images = computed(() =>
-  (galleryImages.value ?? []).map((img) => ({
-    itemImageSrc: img,
-    thumbnailImageSrc: img,
+  galleryImages.map((img) => ({
+    itemImageSrc: img as string,
+    thumbnailImageSrc: img as string,
     alt: "Anime Digital Artwork",
   })),
 );
@@ -32,13 +32,7 @@ const responsiveOptions = [
     <div class="text-center mb-10">
       <h2 class="text-3xl font-bold text-sky-400">Artwork Gallery</h2>
     </div>
-
-    <div v-if="pending" class="text-center text-slate-400">
-      Loading gallery...
-    </div>
-
     <Galleria
-      v-else
       :value="images"
       :responsiveOptions="responsiveOptions"
       :numVisible="8"
