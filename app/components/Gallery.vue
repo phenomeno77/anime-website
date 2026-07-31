@@ -22,6 +22,14 @@ const responsiveOptions = [
   },
   {
     breakpoint: "575px",
+    numVisible: 3,
+  },
+  {
+    breakpoint: "420px",
+    numVisible: 2,
+  },
+  {
+    breakpoint: "318px",
     numVisible: 1,
   },
 ];
