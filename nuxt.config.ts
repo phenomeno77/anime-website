@@ -10,8 +10,10 @@ export default defineNuxtConfig({
   },
   nitro: {
     storage: {
-      shield: { driver: "fs", base: "./shield" }
-    }
+      shield: {
+        driver: "memory",
+      },
+    },
   },
   modules: ["@primevue/nuxt-module", "@nuxt/image", "nuxt-api-shield"],
   // Limits IPs to max 3 submissions every 10 minutes
