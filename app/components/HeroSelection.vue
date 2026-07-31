@@ -1,7 +1,7 @@
 <template>
   <section
     class="text-center space-y-8 flex flex-col items-center justify-center"
-    style="height: calc(100dvh - var(--navigation-height))"
+    style="height: calc(100lvh - var(--navigation-height))"
   >
     <div>
       <Tag value="Anime Artist & Creator" severity="info" rounded />
