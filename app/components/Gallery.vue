@@ -2,6 +2,11 @@
 const { data: galleryImages, pending } =
   await useFetch<string[]>("/gallery/index.json");
 
+watchEffect(() => {
+  console.log("pending:", pending.value);
+  console.log("images:", galleryImages.value);
+});
+
 const images = computed(() =>
   (galleryImages.value ?? []).map((img) => ({
     itemImageSrc: img,
