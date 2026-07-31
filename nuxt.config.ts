@@ -7,8 +7,10 @@ export default defineNuxtConfig({
   css: ["@/assets/css/main.css"],
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: true,
+    },
   },
-  ssr: true,
   modules: ["@primevue/nuxt-module", "@nuxt/image", "nuxt-api-shield"],
   // Limits IPs to max 3 submissions every 10 minutes
   nuxtApiShield: {
@@ -18,7 +20,7 @@ export default defineNuxtConfig({
       duration: 60,
       ban: 60,
     },
-
+  
     // 2. Specify precise rules ONLY for the commission route
     routes: [
       {
