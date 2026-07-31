@@ -1,10 +1,16 @@
 <script setup lang="ts">
-const { data: galleryImages, pending } =
-  await useFetch<string[]>("/gallery/index.json");
+const {
+  data: galleryImages,
+  pending,
+  error,
+} = useFetch<string[]>("/gallery/index.json");
 
 watchEffect(() => {
-  console.log("pending:", pending.value);
-  console.log("images:", galleryImages.value);
+  console.log({
+    pending: pending.value,
+    data: galleryImages.value,
+    error: error.value,
+  });
 });
 
 const images = computed(() =>
