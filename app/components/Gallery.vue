@@ -1,20 +1,15 @@
 <script setup lang="ts">
-// const {
-//   data: galleryImages,
-//   pending,
-//   error,
-// } = useFetch<string[]>("/gallery/index.json", { server: false });
+const { data: galleryImages, pending } = await useFetch<string[]>(
+  "/api/gallery-images",
+);
 
-// const images = computed(() =>
-//   (galleryImages.value ?? []).map((img) => ({
-//     itemImageSrc: img,
-//     thumbnailImageSrc: img,
-//     alt: "Anime Digital Artwork",
-//   })),
-// );
-
-const pending = ref(true);
-const images = ref([]);
+const images = computed(() =>
+  (galleryImages.value ?? []).map((img) => ({
+    itemImageSrc: img,
+    thumbnailImageSrc: img,
+    alt: "Anime Digital Artwork",
+  })),
+);
 
 const responsiveOptions = [
   {

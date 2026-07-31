@@ -5,7 +5,6 @@ useSeoMeta({
   title: "Anime & Digital Art Commissions",
   description:
     "Custom hand-painted anime PC glass panels and digital artwork crafted to order.",
-  // Social Media Meta Tags
   ogTitle: "Anime & Digital Art Commissions",
   ogDescription:
     "Custom hand-painted anime PC glass panels and digital artwork crafted to order.",
@@ -17,10 +16,10 @@ useSeoMeta({
 <template>
   <BackgroundView />
 
-  <div class="flex flex-col">
+  <div class="min-h-screen flex flex-col">
     <NavBar />
 
-    <main>
+    <main class="flex-1 flex flex-col justify-center align-center">
       <NuxtPage />
     </main>
 

@@ -1,5 +1,5 @@
 <template>
-  <Commision class="my-12" />
+  <Commision class="my-auto" />
 </template>
 
 <script lang="ts" setup></script>

@@ -38,5 +38,5 @@
 </template>
 
 <script setup>
-const { data: images } = await useFetch("/gallery/index.json");
+const { data: images, pending } = await useFetch("/api/gallery-images");
 </script>

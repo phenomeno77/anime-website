@@ -1,7 +1,7 @@
 <template>
   <footer class="py-6 px-6 text-sm text-slate-500">
     <div
-      class="container mx-auto flex flex-col lg:flex-row justify-between items-center gap-6"
+      class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6"
     >
       <div class="max-w-4xl">
         <p>
