@@ -3,8 +3,7 @@ const route = useRoute();
 
 const image = computed(
   () =>
-    (route.meta.background as string | undefined) ??
-    "background/main-background.jpg",
+    (route.meta.background as string | undefined) ?? "background-home/main.jpg",
 );
 </script>
 

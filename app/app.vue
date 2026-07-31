@@ -8,7 +8,7 @@ useSeoMeta({
   ogTitle: "Anime & Digital Art Commissions",
   ogDescription:
     "Custom hand-painted anime PC glass panels and digital artwork crafted to order.",
-  ogImage: "/background/main-background.jpg",
+  ogImage: "/background-pages/main.jpg",
   twitterCard: "summary_large_image",
 });
 </script>

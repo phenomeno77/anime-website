@@ -69,19 +69,19 @@
   Background images
 */
 .parallax:nth-child(1) {
-  background-image: url("/background/main-background.jpg");
+  background-image: url("/background-home/hero.jpg");
 }
 
 .parallax:nth-child(2) {
-  background-image: url("/background/about-background.jpg");
+  background-image: url("/background-home/features.jpg");
 }
 
 .parallax:nth-child(3) {
-  background-image: url("/gallery/manga_anime-1200x675.jpg");
+  background-image: url("/background-home/gallery.jpg");
 }
 
 .parallax:nth-child(4) {
-  background-image: url("/background/main-background.jpg");
+  background-image: url("/background-home/hero.jpg");
 }
 
 .parallax:last-child {

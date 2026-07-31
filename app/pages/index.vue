@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  background: "/background/main-background.jpg",
+  background: "/background-home/main.jpg",
 });
 </script>
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  background: "/background/about-background.jpg",
+  background: "/background-pages/about-background.jpg",
 });
 
 const text = ref(
