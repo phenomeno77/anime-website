@@ -3,7 +3,7 @@ const {
   data: galleryImages,
   pending,
   error,
-} = useFetch<string[]>("/gallery/index.json");
+} = useFetch<string[]>("/gallery/index.json", {server:false});
 
 watchEffect(() => {
   console.log({
