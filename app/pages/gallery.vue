@@ -39,5 +39,5 @@
 
 <script setup>
 // Top-level call: works seamlessly across SSR and client navigation
-const { data: images } = await useFetch("/api/gallery");
+const { data: images } = await useFetch("/gallery/index.json");
 </script>

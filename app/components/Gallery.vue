@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { data: galleryImages, pending } =
-  await useFetch<string[]>("/api/gallery");
+  await useFetch<string[]>("/gallery/index.json");
 
 const images = computed(() =>
   (galleryImages.value ?? []).map((img) => ({
