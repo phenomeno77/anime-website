@@ -11,6 +11,11 @@ export default defineNuxtConfig({
       allowedHosts: true,
     },
   },
+  nitro: {
+    storage: {
+      shield: { driver: "fs", base: "./shield" }
+    }
+  },
   modules: ["@primevue/nuxt-module", "@nuxt/image", "nuxt-api-shield"],
   // Limits IPs to max 3 submissions every 10 minutes
   nuxtApiShield: {
@@ -20,7 +25,6 @@ export default defineNuxtConfig({
       duration: 60,
       ban: 60,
     },
-  
     // 2. Specify precise rules ONLY for the commission route
     routes: [
       {
