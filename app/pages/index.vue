@@ -5,19 +5,19 @@ definePageMeta({
 </script>
 
 <template>
-  <ScrollReveal>
-    <HeroSelection />
-  </ScrollReveal>
+  <div class="parallax">
+    <HeroSelection class="px-4 md:px-16" />
+  </div>
 
-  <ScrollReveal>
-    <FeaturesSelection class="pb-16" />
-  </ScrollReveal>
+  <div class="parallax">
+    <FeaturesSelection class="px-4 md:px-16" />
+  </div>
 
-  <ScrollReveal>
-    <Gallery class="py-16" />
-  </ScrollReveal>
+  <div class="parallax">
+    <Gallery class="px-4 md:px-16" />
+  </div>
 
-  <ScrollReveal>
-    <Commision class="py-16" />
-  </ScrollReveal>
+  <div class="parallax">
+    <Commision class="px-4 md:px-16" />
+  </div>
 </template>

@@ -57,80 +57,82 @@ const startCommission = async () => {
 </script>
 
 <template>
-  <Card class="bg-slate-900/90 border border-slate-800">
-    <template #title>
-      <div class="text-center text-3xl font-bold text-amber-400">
-        Ready to order your commission?
-      </div>
-    </template>
-
-    <template #content>
-      <!-- Prevent page reload on submit -->
-      <form @submit.prevent="startCommission" class="flex flex-col gap-6">
-        <!-- HONEYPOT FIELD (Hidden from humans, visible to bots) -->
-        <div class="hidden" aria-hidden="true">
-          <input
-            v-model="form.website"
-            type="text"
-            name="website"
-            tabindex="-1"
-            autocomplete="off"
-          />
+  <div class="flex w-full justify-center px-4 md:px-16">
+    <Card class="w-full flex">
+      <template #title>
+        <div class="text-center text-3xl font-bold text-amber-400">
+          Ready to order your commission?
         </div>
+      </template>
 
-        <div class="flex flex-col gap-2">
-          <label class="text-slate-500"> Name </label>
-          <InputText
-            v-model="form.name"
-            placeholder="Your name"
-            :disabled="isSubmitting"
-            required
-          />
-        </div>
+      <template #content>
+        <!-- Prevent page reload on submit -->
+        <form @submit.prevent="startCommission" class="flex flex-col gap-6">
+          <!-- HONEYPOT FIELD (Hidden from humans, visible to bots) -->
+          <div class="hidden" aria-hidden="true">
+            <input
+              v-model="form.website"
+              type="text"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
 
-        <div class="flex flex-col gap-2">
-          <label class="text-slate-500"> Email </label>
-          <InputText
-            v-model="form.email"
-            type="email"
-            placeholder="your@email.com"
-            :disabled="isSubmitting"
-            required
-          />
-        </div>
+          <div class="flex flex-col gap-2">
+            <label class="text-slate-500"> Name </label>
+            <InputText
+              v-model="form.name"
+              placeholder="Your name"
+              :disabled="isSubmitting"
+              required
+            />
+          </div>
 
-        <div class="flex flex-col gap-2">
-          <label class="text-slate-500"> Commission idea </label>
-          <Textarea
-            v-model="form.message"
-            rows="5"
-            placeholder="Describe your character, design, or idea..."
-            :disabled="isSubmitting"
-            required
-          />
-        </div>
+          <div class="flex flex-col gap-2">
+            <label class="text-slate-500"> Email </label>
+            <InputText
+              v-model="form.email"
+              type="email"
+              placeholder="your@email.com"
+              :disabled="isSubmitting"
+              required
+            />
+          </div>
 
-        <!-- Feedback message -->
-        <div
-          v-if="statusMessage"
-          class="text-sm font-medium text-center"
-          :class="isError ? 'text-red-400' : 'text-emerald-400'"
-        >
-          {{ statusMessage }}
-        </div>
+          <div class="flex flex-col gap-2">
+            <label class="text-slate-500"> Commission idea </label>
+            <Textarea
+              v-model="form.message"
+              rows="5"
+              placeholder="Describe your character, design, or idea..."
+              :disabled="isSubmitting"
+              required
+            />
+          </div>
 
-        <div
-          class="pt-4 justify-end flex max-[648px]:w-full max-[648px]:justify-center"
-        >
-          <Button
-            type="submit"
-            label="Start a Commission"
-            size="large"
-            class="max-[648px]:w-full"
-            :loading="isSubmitting"
-          />
-        </div>
-      </form>
-    </template>
-  </Card>
+          <!-- Feedback message -->
+          <div
+            v-if="statusMessage"
+            class="text-sm font-medium text-center"
+            :class="isError ? 'text-red-400' : 'text-emerald-400'"
+          >
+            {{ statusMessage }}
+          </div>
+
+          <div
+            class="pt-4 justify-end flex max-[648px]:w-full max-[648px]:justify-center"
+          >
+            <Button
+              type="submit"
+              label="Start a Commission"
+              size="large"
+              class="max-[648px]:w-full"
+              :loading="isSubmitting"
+            />
+          </div>
+        </form>
+      </template>
+    </Card>
+  </div>
 </template>

@@ -18,7 +18,7 @@
       <div
         v-for="(img, index) in images"
         :key="index"
-        class="group relative overflow-hidden rounded-xl"
+        class="group overflow-hidden rounded-xl"
       >
         <Image
           :src="img"

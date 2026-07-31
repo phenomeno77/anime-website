@@ -1,25 +1,20 @@
 <script setup lang="ts">
-const {
-  data: galleryImages,
-  pending,
-  error,
-} = useFetch<string[]>("/gallery/index.json", {server:false});
+// const {
+//   data: galleryImages,
+//   pending,
+//   error,
+// } = useFetch<string[]>("/gallery/index.json", { server: false });
 
-watchEffect(() => {
-  console.log({
-    pending: pending.value,
-    data: galleryImages.value,
-    error: error.value,
-  });
-});
+// const images = computed(() =>
+//   (galleryImages.value ?? []).map((img) => ({
+//     itemImageSrc: img,
+//     thumbnailImageSrc: img,
+//     alt: "Anime Digital Artwork",
+//   })),
+// );
 
-const images = computed(() =>
-  (galleryImages.value ?? []).map((img) => ({
-    itemImageSrc: img,
-    thumbnailImageSrc: img,
-    alt: "Anime Digital Artwork",
-  })),
-);
+const pending = ref(true);
+const images = ref([]);
 
 const responsiveOptions = [
   {

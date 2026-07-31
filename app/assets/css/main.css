@@ -1,17 +1,91 @@
 @import "tailwindcss";
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+.parallax {
+  position: relative;
+
+  width: 100%;
+  min-height: 100svh;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  scroll-snap-align: start;
+}
+
+
+/*
+  Desktop parallax effect
+*/
+@media (min-width: 768px) {
+  .parallax {
+    background-attachment: fixed;
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
+
+/*
+  Mobile fallback
+  background-attachment: fixed causes issues
+  on most mobile browsers
+*/
+@media (max-width: 767px) {
+  .parallax {
+    background-attachment: scroll;
+    min-height: 100svh;
+  }
+}
+
+
+/*
+  Dark overlay for readability
+*/
+.parallax::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  pointer-events: none;
+}
+
+
+/*
+  Keep content above overlay
+*/
+.parallax > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/*
+  Background images
+*/
+.parallax:nth-child(1) {
+  background-image: url("/background/main-background.jpg");
+}
+
+.parallax:nth-child(2) {
+  background-image: url("/background/about-background.jpg");
+}
+
+.parallax:nth-child(3) {
+  background-image: url("/gallery/manga_anime-1200x675.jpg");
+}
+
+.parallax:nth-child(4) {
+  background-image: url("/background/main-background.jpg");
+}
+
+.parallax:last-child {
+  min-height: auto;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
