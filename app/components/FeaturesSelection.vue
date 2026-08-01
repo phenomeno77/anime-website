@@ -36,7 +36,7 @@ const features = [
 </script>
 
 <template>
-  <section>
+  <section py-8 md:py-0>
     <div class="text-center mb-10">
       <h2 class="text-3xl font-bold text-sky-400">Why Choose My Artwork?</h2>
     </div>
