@@ -2,13 +2,13 @@
 useNavigationHeight();
 
 useSeoMeta({
-  title: "Anime & Digital Art Commissions",
+  title: "Digital Art",
   description:
     "Custom hand-painted anime PC glass panels and digital artwork crafted to order.",
   ogTitle: "Anime & Digital Art Commissions",
   ogDescription:
     "Custom hand-painted anime PC glass panels and digital artwork crafted to order.",
-  ogImage: "/background-pages/main.jpg",
+  ogImage: "/background-pages/1.webp",
   twitterCard: "summary_large_image",
 });
 

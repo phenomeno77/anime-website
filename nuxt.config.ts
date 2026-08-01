@@ -55,4 +55,16 @@ export default defineNuxtConfig({
     mailPass: process.env.NUXT_MAIL_PASS,
     mailTo: process.env.NUXT_MAIL_TO,
   },
+
+  app: {
+    head: {
+      link: [
+        {
+          rel: "icon",
+          type: "image/png",
+          href: "/favicon.png",
+        },
+      ],
+    },
+  },
 });
