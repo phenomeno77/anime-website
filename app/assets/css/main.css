@@ -16,6 +16,8 @@
   align-items: center;
 
   scroll-snap-align: start;
+      background-attachment: fixed;
+
 }
 
 
@@ -34,12 +36,12 @@
   background-attachment: fixed causes issues
   on most mobile browsers
 */
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .parallax {
     background-attachment: scroll;
     min-height: 100svh;
   }
-}
+} */
 
 
 /*
@@ -88,4 +90,8 @@
   min-height: auto;
   padding-top: 5rem;
   padding-bottom: 5rem;
+}
+
+.html, body {
+  background-color: #000;
 }

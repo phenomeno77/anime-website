@@ -1,5 +1,5 @@
 <template>
-  <Commision class="my-auto" />
+  <Commision class="py-16" />
 </template>
 
 <script lang="ts" setup></script>
