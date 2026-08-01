@@ -14,8 +14,6 @@ useSeoMeta({
 </script>
 
 <template>
-   <BackgroundView />
-
   <div class="min-h-screen flex flex-col">
     <NavBar />
 
