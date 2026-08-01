@@ -67,6 +67,12 @@ const responsiveOptions = [
         />
       </template>
     </Galleria>
+
+    <div class="flex justify-center gap-4 pt-6">
+      <NuxtLink to="/gallery" class="inline-flex">
+        <Button label="Visit Gallery" size="large" />
+      </NuxtLink>
+    </div>
   </div>
 </template>
 

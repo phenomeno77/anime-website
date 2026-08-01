@@ -1,7 +1,7 @@
 <template>
   <footer class="py-6 px-6 text-sm text-slate-500">
     <div
-      class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6"
+      class="mx-auto md:mx-0 flex flex-col md:flex-row w-full justify-between items-center gap-6"
     >
       <div class="max-w-4xl">
         <p>
@@ -16,6 +16,7 @@
           permission.
         </p>
       </div>
+
       <div class="flex flex-wrap justify-center gap-4 whitespace-nowrap">
         <NuxtLink to="/legal-notice" class="hover:text-slate-300 underline">
           Legal Notice
