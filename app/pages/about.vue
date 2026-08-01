@@ -4,7 +4,7 @@ const text = ref(
 );
 
 const aboutImage = computed(() => {
-  return "/about/about.jpg";
+  return "/about/about.webp";
 });
 
 const textList = [
