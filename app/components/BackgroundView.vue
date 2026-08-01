@@ -8,7 +8,7 @@ const image = computed(
 </script>
 
 <template>
-  <div class="fixed inset-0 -z-10 overflow-hidden">
+  <div class="fixed inset-0 -z-10 overflow-hidden hidden md:block">
     <div
       class="absolute inset-[-5%] bg-cover bg-center bg-fixed"
       :style="{ backgroundImage: `url(${image})` }"
