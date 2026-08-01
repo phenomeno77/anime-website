@@ -50,11 +50,16 @@
 @media (max-width: 767px) {
   .parallax {
     background-image: none !important;
-    background: #000;
+    background:#101014;
   }
 }
 
 html,
 body {
-  background: #000;
+  background: #101014;
+}
+
+:root {
+  --manga-accent: #C1123F; /* darker ink red */
+  --manga-gold: #D4A017;   /* old manga gold */
 }

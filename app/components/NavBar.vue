@@ -1,8 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
 
-// Use custom property 'url' instead of 'to'
-// to prevent PrimeVue from attaching its internal route handler
 const items = [
   { label: "Home", url: "/" },
   { label: "Gallery", url: "/gallery" },
@@ -20,14 +18,10 @@ const isActive = (path: string) => {
     :model="items"
     :pt="{
       root: {
-        class:
-          'justify-between bg-slate-950/50! rounded-none! border-none! shadow-none!',
-      },
-      itemContent: {
-        class: 'hover:bg-slate-500/50! transition-colors duration-300!',
+        class: 'justify-between rounded-none! border-none! shadow-none!',
       },
       rootlist: {
-        class: 'bg-slate-700/80! md:bg-transparent! border-none! shadow-none!',
+        class: 'border-none! shadow-none!',
       },
     }"
     id="navigation-bar"
@@ -35,22 +29,21 @@ const isActive = (path: string) => {
     <template #start>
       <NuxtLink
         to="/"
-        class="font-bold text-xl text-sky-400 hover:text-sky-300 transition-colors"
+        class="font-bold text-xl text-[var(--manga-gold)] hover:text-[var(--manga-accent)] transition-colors"
       >
         My App
       </NuxtLink>
     </template>
 
     <template #item="{ item }">
-      <!-- Standard NuxtLink with strict 'to' binding -->
       <NuxtLink
         v-if="item.url"
         :to="item.url"
         :class="[
           'flex items-center px-3 py-2 transition-colors',
           isActive(item.url)
-            ? 'text-sky-400! lg:text-sky-400!'
-            : 'text-sky-400! lg:text-slate-200! hover:text-sky-400!',
+            ? 'text-[var(--manga-accent)]!'
+            : 'text-slate-200! hover:text-[var(--manga-gold)]!',
         ]"
       >
         {{ item.label }}

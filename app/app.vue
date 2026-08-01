@@ -11,6 +11,12 @@ useSeoMeta({
   ogImage: "/background-pages/main.jpg",
   twitterCard: "summary_large_image",
 });
+
+useHead({
+  htmlAttrs: {
+    class: "dark",
+  },
+});
 </script>
 
 <template>

@@ -2,7 +2,9 @@
   <div
     class="container mx-auto px-4 py-12 max-w-3xl leading-relaxed text-slate-200"
   >
-    <h1 class="text-3xl font-bold mb-6 text-white">Privacy Policy</h1>
+    <h1 class="text-3xl font-bold mb-6 text-[var(--manga-gold)]">
+      Privacy Policy
+    </h1>
 
     <p class="text-sm text-slate-400 mb-8">
       This Privacy Policy explains how personal data is processed when you visit
@@ -11,10 +13,12 @@
     </p>
 
     <div
-      class="space-y-6 bg-slate-800 p-6 rounded-xl border border-slate-700 shadow-md"
+      class="space-y-6 bg-[#15151A] p-6 rounded-xl border border-[#27272A] shadow-lg"
     >
       <div>
-        <h2 class="text-lg font-semibold text-white mb-2">Data Controller</h2>
+        <h2 class="text-lg font-semibold text-[var(--manga-accent)] mb-2">
+          Data Controller
+        </h2>
 
         <p>
           The data controller responsible for processing personal data on this
@@ -22,11 +26,11 @@
         </p>
 
         <p class="mt-3">
-          <strong>Your Name</strong><br />
+          <strong class="text-slate-100">Your Name</strong><br />
           Email:
           <a
             href="mailto:email@example.com"
-            class="text-sky-400 hover:underline"
+            class="text-[var(--manga-gold)] hover:underline"
           >
             email@example.com
           </a>
@@ -34,7 +38,9 @@
       </div>
 
       <div>
-        <h2 class="text-lg font-semibold text-white mb-2">Cookies</h2>
+        <h2 class="text-lg font-semibold text-[var(--manga-accent)] mb-2">
+          Cookies
+        </h2>
 
         <p>
           This website does not use cookies for tracking, analytics,
@@ -43,7 +49,9 @@
       </div>
 
       <div>
-        <h2 class="text-lg font-semibold text-white mb-2">Analytics</h2>
+        <h2 class="text-lg font-semibold text-[var(--manga-accent)] mb-2">
+          Analytics
+        </h2>
 
         <p>
           This website does not use Google Analytics, Matomo, or any other
@@ -52,7 +60,9 @@
       </div>
 
       <div>
-        <h2 class="text-lg font-semibold text-white mb-2">Contact Form</h2>
+        <h2 class="text-lg font-semibold text-[var(--manga-accent)] mb-2">
+          Contact Form
+        </h2>
 
         <p>
           If you contact me using the contact form, the information you provide
@@ -67,7 +77,7 @@
       </div>
 
       <div>
-        <h2 class="text-lg font-semibold text-white mb-2">
+        <h2 class="text-lg font-semibold text-[var(--manga-accent)] mb-2">
           Rate Limiting & Security
         </h2>
 
@@ -85,31 +95,41 @@
       </div>
 
       <div>
-        <h2 class="text-lg font-semibold text-white mb-2">Font Awesome</h2>
+        <h2 class="text-lg font-semibold text-[var(--manga-accent)] mb-2">
+          Font Awesome
+        </h2>
 
         <p>This website uses Font Awesome icons.</p>
 
         <p class="mt-2">
-          <strong>If Font Awesome is self-hosted:</strong><br />
+          <strong class="text-slate-100">
+            If Font Awesome is self-hosted:
+          </strong>
+          <br />
           No personal data is transmitted to Font Awesome.
         </p>
 
         <p class="mt-2">
-          <strong>If Font Awesome is loaded from a CDN:</strong><br />
+          <strong class="text-slate-100">
+            If Font Awesome is loaded from a CDN:
+          </strong>
+          <br />
           Your IP address may be transmitted to the provider in order to load
           the icon files.
         </p>
       </div>
 
       <div>
-        <h2 class="text-lg font-semibold text-white mb-2">Server Log Files</h2>
+        <h2 class="text-lg font-semibold text-[var(--manga-accent)] mb-2">
+          Server Log Files
+        </h2>
 
         <p>
           The hosting provider may automatically collect technical information
           such as:
         </p>
 
-        <ul class="list-disc pl-6 mt-3 space-y-2">
+        <ul class="list-disc pl-6 mt-3 space-y-2 text-slate-300">
           <li>IP address</li>
           <li>Date and time of access</li>
           <li>Requested page</li>
@@ -125,7 +145,7 @@
       </div>
 
       <div>
-        <h2 class="text-lg font-semibold text-white mb-2">
+        <h2 class="text-lg font-semibold text-[var(--manga-accent)] mb-2">
           Third-Party Services
         </h2>
 
@@ -136,11 +156,13 @@
       </div>
 
       <div>
-        <h2 class="text-lg font-semibold text-white mb-2">Your Rights</h2>
+        <h2 class="text-lg font-semibold text-[var(--manga-accent)] mb-2">
+          Your Rights
+        </h2>
 
         <p>Under the GDPR, you have the right to:</p>
 
-        <ul class="list-disc pl-6 mt-3 space-y-2">
+        <ul class="list-disc pl-6 mt-3 space-y-2 text-slate-300">
           <li>Access your personal data.</li>
           <li>Request correction of inaccurate data.</li>
           <li>Request deletion of your personal data.</li>
@@ -154,7 +176,9 @@
       </div>
 
       <div>
-        <h2 class="text-lg font-semibold text-white mb-2">Contact</h2>
+        <h2 class="text-lg font-semibold text-[var(--manga-accent)] mb-2">
+          Contact
+        </h2>
 
         <p>
           If you have questions regarding this Privacy Policy or the processing
@@ -164,7 +188,7 @@
         <p class="mt-3">
           <a
             href="mailto:email@example.com"
-            class="text-sky-400 hover:underline"
+            class="text-[var(--manga-gold)] hover:underline"
           >
             email@example.com
           </a>

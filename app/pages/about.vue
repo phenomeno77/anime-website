@@ -29,9 +29,15 @@ const textList = [
 
 <template>
   <div class="container mx-auto px-4 py-16">
-    <h1 class="text-4xl font-bold text-center mb-8 text-sky-400">About me</h1>
+    <h1
+      class="text-4xl font-bold text-center mb-8 text-[var(--manga-gold)] drop-shadow-[0_0_15px_rgba(212,160,23,0.2)]"
+    >
+      About me
+    </h1>
 
-    <div class="w-full h-[300px] overflow-hidden rounded-lg">
+    <div
+      class="w-full h-[300px] overflow-hidden rounded-xl border border-[#27272A] shadow-xl"
+    >
       <img
         :src="aboutImage"
         class="w-full h-full object-cover object-center"
@@ -42,27 +48,29 @@ const textList = [
     <Card
       v-for="(i, index) in textList"
       :key="i.title"
-      class="bg-slate-800/80 backdrop-blur my-8 border border-slate-700 hover:border-sky-500 transition-all duration-300 hover:-translate-y-2"
+      class="!bg-[#15151A] backdrop-blur my-8 !border !border-[#27272A] hover:!border-[var(--manga-gold)] transition-all duration-300 hover:-translate-y-2 shadow-lg"
     >
-      <!-- <template #header>
-          <div class="p-6">
-            <div
-              class="w-14 h-14 rounded-xl bg-sky-500/20 flex items-center justify-center"
-            ></div>
-          </div>
-        </template> -->
-
       <template #title>
-        <span class="text-xl">
+        <span class="text-xl text-[var(--manga-accent)]">
           {{ i.title }}
         </span>
       </template>
 
       <template #content>
-        <p class="text-slate-400 leading-relaxed">
+        <p class="text-slate-300 leading-relaxed">
           {{ i.description }}
         </p>
       </template>
     </Card>
   </div>
 </template>
+
+<style scoped>
+img {
+  transition: transform 0.6s ease;
+}
+
+div:hover > img {
+  transform: scale(1.03);
+}
+</style>
