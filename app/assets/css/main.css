@@ -1,6 +1,4 @@
 @import "tailwindcss";
-
-
 .parallax {
   position: relative;
 
@@ -20,6 +18,10 @@
 
 }
 
+.parallax > * {
+  position: relative;
+  z-index: 1;
+}
 
 /*
   Desktop parallax effect
@@ -27,22 +29,10 @@
 @media (min-width: 768px) {
   .parallax {
     background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
   }
 }
-
-
-/*
-  Mobile fallback
-  background-attachment: fixed causes issues
-  on most mobile browsers
-*/
-@media (max-width: 767px) {
-  .parallax {
-    background-attachment: scroll;
-    min-height: 100svh;
-  }
-} 
-
 
 /*
   Dark overlay for readability
@@ -57,41 +47,14 @@
   pointer-events: none;
 }
 
-
-/*
-  Keep content above overlay
-*/
-.parallax > * {
-  position: relative;
-  z-index: 1;
+@media (max-width: 767px) {
+  .parallax {
+    background-image: none !important;
+    background: #000;
+  }
 }
 
-
-/*
-  Background images
-*/
-.parallax:nth-child(1) {
-  background-image: url("/background-home/hero.jpg");
-}
-
-.parallax:nth-child(2) {
-  background-image: url("/background-home/features.jpg");
-}
-
-.parallax:nth-child(3) {
-  background-image: url("/background-home/gallery.jpg");
-}
-
-.parallax:nth-child(4) {
-  background-image: url("/background-home/hero.jpg");
-}
-
-.parallax:last-child {
-  min-height: auto;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-.html, body {
-  background-color: #000;
+html,
+body {
+  background: #000;
 }
