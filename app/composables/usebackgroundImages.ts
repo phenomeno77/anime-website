@@ -2,7 +2,7 @@
 
 export const useBackgroundImages = () => {
   return Object.entries(
-    import.meta.glob("~/assets/background-home/*.{jpg,jpeg,png,webp}", {
+    import.meta.glob("background-home/*.{jpg,jpeg,png,webp}", {
       eager: true,
       import: "default",
     }),

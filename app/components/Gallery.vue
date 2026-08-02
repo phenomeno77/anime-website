@@ -1,38 +1,40 @@
 <script setup lang="ts">
-import { useGalleryImages } from "../composables/useGalleryImages";
+import { useHomepageGalleryImages } from "../composables/useHomepageGalleryImages";
 
-const galleryImages = useGalleryImages();
+const homepageImages = useHomepageGalleryImages();
 
 const images = computed(() =>
-  galleryImages.map((img) => ({
-    itemImageSrc: img as string,
-    thumbnailImageSrc: img as string,
-    alt: "Anime Digital Artwork",
+  homepageImages.slice(0, 9).map((img) => ({
+    itemImageSrc: img.src,
+    thumbnailImageSrc: img.src,
+    alt: img.alt,
   })),
 );
 
+const activeIndex = ref(0);
+const displayCustom = ref(false);
+
+const imageClick = (index: number) => {
+  activeIndex.value = index;
+  displayCustom.value = true;
+};
+
 const responsiveOptions = [
   {
-    breakpoint: "1300px",
-    numVisible: 6,
+    breakpoint: "1024px",
+    numVisible: 4,
   },
   {
     breakpoint: "768px",
     numVisible: 3,
   },
   {
-    breakpoint: "575px",
-    numVisible: 3,
-  },
-  {
-    breakpoint: "420px",
-    numVisible: 2,
-  },
-  {
-    breakpoint: "318px",
+    breakpoint: "560px",
     numVisible: 1,
   },
 ];
+
+const galleryReveal = useReveal();
 </script>
 
 <template>
@@ -41,37 +43,60 @@ const responsiveOptions = [
       <h2
         class="text-3xl font-bold text-[var(--manga-accent)] drop-shadow-[0_0_15px_rgba(193,18,63,0.25)]"
       >
-        Artwork Gallery
+        My Work
       </h2>
     </div>
 
-    <Galleria
-      :value="images"
-      :responsiveOptions="responsiveOptions"
-      :numVisible="8"
-      containerClass="rounded-xl overflow-hidden"
-      :pt="{
-        root: {
-          class: 'border-0! shadow-none',
-        },
-      }"
+    <div
+      :ref="galleryReveal.target"
+      :class="[galleryReveal.isVisible.value ? 'animate-gallery-show' : '']"
     >
-      <template #item="slotProps">
-        <img
-          :src="slotProps.item.itemImageSrc"
-          :alt="slotProps.item.alt"
-          class="w-full h-[350px] sm:h-[450px] md:h-[600px] object-contain py-4"
-        />
-      </template>
+      <!-- Fullscreen viewer -->
+      <Galleria
+        v-model:activeIndex="activeIndex"
+        v-model:visible="displayCustom"
+        :value="images"
+        :responsiveOptions="responsiveOptions"
+        :numVisible="7"
+        :circular="true"
+        :fullScreen="true"
+        :showItemNavigators="true"
+        :showThumbnails="false"
+        :pt="{
+          root: {
+            class: 'border-0!',
+          },
+        }"
+      >
+        <template #item="slotProps">
+          <img
+            :src="slotProps.item.itemImageSrc"
+            :alt="slotProps.item.alt"
+            class="w-full max-h-[90vh] object-contain"
+          />
+        </template>
+      </Galleria>
 
-      <template #thumbnail="slotProps">
-        <img
-          :src="slotProps.item.thumbnailImageSrc"
-          :alt="slotProps.item.alt"
-          class="w-24 h-20 object-cover rounded-lg border border-transparent hover:border-[var(--manga-gold)] transition-all duration-300"
-        />
-      </template>
-    </Galleria>
+      <!-- Homepage image grid -->
+      <div
+        v-if="images.length"
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+      >
+        <div
+          v-for="(image, index) in images"
+          :key="index"
+          class="group cursor-pointer overflow-hidden rounded-xl"
+          @click="imageClick(index)"
+        >
+          <img
+            :src="image.thumbnailImageSrc"
+            :alt="image.alt"
+            loading="lazy"
+            class="aspect-square w-full object-cover rounded-xl border border-transparent transition-all duration-300 group-hover:scale-105 group-hover:border-[var(--manga-gold)]"
+          />
+        </div>
+      </div>
+    </div>
 
     <div class="flex justify-center gap-4 pt-6">
       <NuxtLink to="/gallery" class="inline-flex">
@@ -86,20 +111,32 @@ const responsiveOptions = [
 </template>
 
 <style scoped>
-:deep(.p-galleria-thumbnails-content) {
-  background: transparent;
+.animate-gallery-show {
+  animation: galleryShow 0.8s ease-out both;
 }
 
-:deep(.p-galleria-thumbnail-item) {
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
+@keyframes galleryShow {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-:deep(.p-galleria-thumbnail-item:hover) {
-  transform: translateY(-3px);
+/* Mobile: no reveal animation */
+@media (max-width: 767px) {
+  .animate-gallery-show {
+    animation: none;
+  }
 }
 
-:deep(.p-galleria-thumbnail-item.p-galleria-thumbnail-item-current) {
-  border: 1px solid var(--manga-gold);
+@media (prefers-reduced-motion: reduce) {
+  .animate-gallery-show {
+    animation: none;
+  }
 }
 </style>

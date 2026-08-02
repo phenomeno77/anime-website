@@ -1,0 +1,19 @@
+export const useReveal = () => {
+  const target = ref<HTMLElement | null>(null);
+  const isVisible = ref(false);
+
+  useIntersectionObserver(
+    target,
+    ([entry]) => {
+      isVisible.value = !!entry?.isIntersecting;
+    },
+    {
+      threshold: 0.2,
+    },
+  );
+
+  return {
+    target,
+    isVisible,
+  };
+};

@@ -45,24 +45,14 @@ onMounted(async () => {
       backgroundImage: backgrounds[1] ? `url(${backgrounds[1]})` : 'none',
     }"
   >
-    <FeaturesSelection class="px-4 md:px-16" />
+    <FeaturesSelection class="px-4 md:px-8" />
   </div>
 
-  <div
-    class="parallax"
-    :style="{
-      backgroundImage: backgrounds[2] ? `url(${backgrounds[2]})` : 'none',
-    }"
-  >
-    <Gallery class="px-4 md:px-16" />
+  <div class="parallax">
+    <Gallery class="px-4 md:px-8" />
   </div>
 
-  <div
-    class="parallax"
-    :style="{
-      backgroundImage: backgrounds[3] ? `url(${backgrounds[3]})` : 'none',
-    }"
-  >
-    <Commision class="px-4 md:px-16" />
-  </div>
+  <Divider class="m-0!" />
+
+  <Commision class="px-4 md:px-16 py-16" />
 </template>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-useNavigationHeight();
-
 useSeoMeta({
   title: "Digital Art",
   description:
@@ -21,7 +19,7 @@ useHead({
 
 <template>
   <div class="min-h-screen flex flex-col">
-    <NavBar />
+    <NavBar class="sticky! top-0! z-50! bg-black/60! backdrop-blur-md!" />
 
     <main class="flex-1 flex flex-col justify-center align-center">
       <NuxtPage />

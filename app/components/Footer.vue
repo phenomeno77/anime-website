@@ -1,7 +1,5 @@
 <template>
-  <footer
-    class="py-6 px-6 text-sm text-slate-400 border-t border-[#27272A] bg-[#101014]"
-  >
+  <footer class="py-6 px-6 text-sm text-slate-400 border-t border-[#27272A]">
     <div
       class="mx-auto md:mx-0 flex flex-col md:flex-row w-full justify-between items-center gap-6"
     >

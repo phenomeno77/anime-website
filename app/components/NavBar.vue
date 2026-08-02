@@ -4,7 +4,7 @@ const route = useRoute();
 const items = [
   { label: "Home", url: "/" },
   { label: "Gallery", url: "/gallery" },
-  { label: "About me", url: "/about" },
+  { label: "About", url: "/about" },
   { label: "Contact", url: "/contact" },
 ];
 
