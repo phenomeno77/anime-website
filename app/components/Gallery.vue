@@ -5,9 +5,9 @@ const homepageImages = useHomepageGalleryImages();
 
 const images = computed(() =>
   homepageImages.slice(0, 9).map((img) => ({
-    itemImageSrc: img.src,
-    thumbnailImageSrc: img.src,
-    alt: img.alt,
+    itemImageSrc: img,
+    thumbnailImageSrc: img,
+    alt: "Anime Digital Artwork",
   })),
 );
 
@@ -18,21 +18,6 @@ const imageClick = (index: number) => {
   activeIndex.value = index;
   displayCustom.value = true;
 };
-
-const responsiveOptions = [
-  {
-    breakpoint: "1024px",
-    numVisible: 4,
-  },
-  {
-    breakpoint: "768px",
-    numVisible: 3,
-  },
-  {
-    breakpoint: "560px",
-    numVisible: 1,
-  },
-];
 
 const galleryReveal = useReveal();
 </script>
@@ -56,8 +41,6 @@ const galleryReveal = useReveal();
         v-model:activeIndex="activeIndex"
         v-model:visible="displayCustom"
         :value="images"
-        :responsiveOptions="responsiveOptions"
-        :numVisible="7"
         :circular="true"
         :fullScreen="true"
         :showItemNavigators="true"
@@ -80,7 +63,7 @@ const galleryReveal = useReveal();
       <!-- Homepage image grid -->
       <div
         v-if="images.length"
-        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4"
       >
         <div
           v-for="(image, index) in images"

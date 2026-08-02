@@ -1,7 +1,21 @@
-<script setup>
+<script setup lang="ts">
 import { useGalleryImages } from "../composables/useGalleryImages";
 
-const galleryImages = useGalleryImages();
+const allGalleryImages = useGalleryImages();
+
+const PAGE_SIZE = 12;
+
+const visibleCount = ref(PAGE_SIZE);
+
+const galleryImages = computed(() =>
+  allGalleryImages.slice(0, visibleCount.value),
+);
+
+const hasMore = computed(() => visibleCount.value < allGalleryImages.length);
+
+const loadMore = () => {
+  visibleCount.value += PAGE_SIZE;
+};
 </script>
 
 <template>
@@ -13,7 +27,7 @@ const galleryImages = useGalleryImages();
     </h1>
 
     <div
-      v-if="!galleryImages || galleryImages.length === 0"
+      v-if="galleryImages.length === 0"
       class="text-center py-12 text-slate-400"
     >
       No artwork found in gallery yet!
@@ -24,13 +38,14 @@ const galleryImages = useGalleryImages();
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
     >
       <div
-        v-for="(img, index) in galleryImages"
-        :key="index"
+        v-for="img in galleryImages"
+        :key="img"
         class="group overflow-hidden rounded-xl bg-[#15151A] border border-[#27272A] hover:border-[var(--manga-gold)] transition-all duration-300 shadow-lg hover:-translate-y-2"
       >
         <Image
           :src="img"
           preview
+          loading="lazy"
           :pt="{
             root: {
               class: 'block w-full',
@@ -43,6 +58,24 @@ const galleryImages = useGalleryImages();
         />
       </div>
     </div>
+
+    <!-- Load more button -->
+    <div v-if="hasMore" class="flex justify-center mt-10">
+      <Button
+        label="Load More"
+        size="large"
+        class="!bg-[var(--manga-accent)] !border-[var(--manga-accent)] hover:!bg-[#a30f35]"
+        @click="loadMore"
+      />
+    </div>
+
+    <!-- Optional end message -->
+    <p
+      v-else-if="allGalleryImages.length > PAGE_SIZE"
+      class="text-center mt-10 text-slate-500"
+    >
+      You have seen all artwork.
+    </p>
   </div>
 </template>
 
