@@ -34,7 +34,11 @@ const galleryReveal = useReveal();
 
     <div
       :ref="galleryReveal.target"
-      :class="[galleryReveal.isVisible.value ? 'animate-gallery-show' : '']"
+      :class="[
+        galleryReveal.isVisible.value
+          ? 'animate-gallery-show'
+          : 'gallery-hidden',
+      ]"
     >
       <!-- Fullscreen viewer -->
       <Galleria
@@ -94,8 +98,13 @@ const galleryReveal = useReveal();
 </template>
 
 <style scoped>
+.gallery-hidden {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+}
+
 .animate-gallery-show {
-  animation: galleryShow 0.8s ease-out both;
+  animation: galleryShow 0.8s ease-out forwards;
 }
 
 @keyframes galleryShow {
@@ -110,14 +119,25 @@ const galleryReveal = useReveal();
   }
 }
 
-/* Mobile: no reveal animation */
+/* Mobile: no animation and always visible */
 @media (max-width: 767px) {
+  .gallery-hidden {
+    opacity: 1;
+    transform: none;
+  }
+
   .animate-gallery-show {
     animation: none;
   }
 }
 
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
+  .gallery-hidden {
+    opacity: 1;
+    transform: none;
+  }
+
   .animate-gallery-show {
     animation: none;
   }

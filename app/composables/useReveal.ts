@@ -5,7 +5,7 @@ export const useReveal = () => {
   useIntersectionObserver(
     target,
     ([entry]) => {
-      isVisible.value = !!entry?.isIntersecting;
+      isVisible.value = entry?.isIntersecting ?? false;
     },
     {
       threshold: 0.2,
