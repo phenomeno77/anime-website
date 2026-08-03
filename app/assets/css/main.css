@@ -40,15 +40,13 @@
   content: "";
   position: absolute;
   inset: 0;
-
-  background: rgba(0, 0, 0, 0.35);
-
   pointer-events: none;
 }
 
 html,
 body {
   background: #101014;
+  scroll-behavior: smooth;
 }
 
 :root {

@@ -8,7 +8,7 @@ export const useReveal = () => {
       isVisible.value = entry?.isIntersecting ?? false;
     },
     {
-      threshold: 0.2,
+      threshold: 0.1,
     },
   );
 

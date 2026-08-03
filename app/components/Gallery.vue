@@ -121,14 +121,14 @@ const galleryReveal = useReveal();
 
 /* Mobile: no animation and always visible */
 @media (max-width: 767px) {
-  .gallery-hidden {
+  /* .gallery-hidden {
     opacity: 1;
     transform: none;
   }
 
   .animate-gallery-show {
     animation: none;
-  }
+  } */
 }
 
 /* Accessibility */

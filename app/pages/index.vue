@@ -53,6 +53,7 @@ onMounted(async () => {
   </div>
 
   <Divider class="m-0!" />
-
-  <Commision class="px-4 md:px-16 py-16" />
+  <div class="parallax">
+    <Commision class="px-4 md:px-16 py-16" />
+  </div>
 </template>

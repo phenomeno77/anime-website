@@ -28,7 +28,7 @@ const features = [
   },
 ];
 
-const isLeftCard = (index: number) => index % 2 === 0;
+const isLeftCard = (index: number) => index < 3;
 
 const reveals = features.map(() => useReveal());
 
@@ -80,32 +80,23 @@ const getReveal = (index: number) => reveals[index]!;
 </template>
 
 <style scoped>
-/* Desktop only animations */
+/* Initial hidden state */
+.reveal-hidden {
+  opacity: 0;
+}
+
+/* Desktop: slide animations */
 @media (min-width: 768px) {
+  .reveal-hidden {
+    transform: translateX(0);
+  }
+
   .animate-slide-left {
     animation: slideLeft 0.8s ease-out forwards;
   }
 
   .animate-slide-right {
     animation: slideRight 0.8s ease-out forwards;
-  }
-
-  .reveal-hidden {
-    opacity: 0;
-    transform: translateX(0);
-  }
-}
-
-/* Mobile: no animation */
-@media (max-width: 767px) {
-  .reveal-hidden {
-    opacity: 1;
-    transform: none;
-  }
-
-  .animate-slide-left,
-  .animate-slide-right {
-    animation: none;
   }
 }
 
@@ -130,6 +121,40 @@ const getReveal = (index: number) => reveals[index]!;
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+/* Mobile: fade only */
+@media (max-width: 767px) {
+  .animate-slide-left,
+  .animate-slide-right {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .reveal-hidden {
+    opacity: 0;
+    transform: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-hidden,
+  .animate-slide-left,
+  .animate-slide-right {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }
 </style>

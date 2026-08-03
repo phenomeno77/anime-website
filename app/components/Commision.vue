@@ -56,10 +56,20 @@ const startCommission = async () => {
     isSubmitting.value = false;
   }
 };
+
+const reveal = useReveal();
 </script>
 <template>
   <div class="flex w-full justify-center px-4 md:px-16 my-auto">
-    <Card class="w-full !bg-[#15151A] !border !border-[#27272A] shadow-2xl">
+    <Card
+      :ref="reveal.target"
+      :class="[
+        reveal.isVisible.value
+          ? 'animate-commission-show'
+          : 'commission-hidden',
+        'w-full !bg-[#15151A] !border !border-[#27272A] shadow-2xl',
+      ]"
+    >
       <template #title>
         <div
           class="text-center text-3xl font-bold text-[var(--manga-gold)] drop-shadow-[0_0_15px_rgba(212,160,23,0.2)]"
@@ -146,3 +156,44 @@ const startCommission = async () => {
     </Card>
   </div>
 </template>
+
+<style scoped>
+.commission-hidden {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+.animate-commission-show {
+  animation: commissionShow 0.9s ease-out forwards;
+}
+
+@keyframes commissionShow {
+  from {
+    transform: translateY(32px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 767px) {
+  /* .commission-hidden {
+    transform: none;
+  }
+
+  .animate-commission-show {
+    animation: none;
+  } */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .commission-hidden {
+    transform: none;
+  }
+
+  .animate-commission-show {
+    animation: none;
+  }
+}
+</style>

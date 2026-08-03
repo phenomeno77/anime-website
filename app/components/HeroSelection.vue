@@ -99,14 +99,14 @@
 
 /* Mobile: no animations */
 @media (max-width: 767px) {
-  .animate-hero-tag,
+  /* .animate-hero-tag,
   .animate-hero-title,
   .animate-hero-description,
   .animate-hero-buttons {
     animation: none;
     opacity: 1;
     transform: none;
-  }
+  } */
 }
 
 /* Accessibility */
