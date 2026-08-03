@@ -59,7 +59,7 @@ const startCommission = async () => {
 </script>
 <template>
   <div class="flex w-full justify-center px-4 md:px-16 my-auto">
-    <Card class="w-full !bg-[#15151A] !border !border-[#27272A] shadow-2xl">
+    <Card class="w-full !border shadow-2xl">
       <template #title>
         <div
           class="text-center text-3xl font-bold text-[var(--manga-gold)] drop-shadow-[0_0_15px_rgba(212,160,23,0.2)]"
