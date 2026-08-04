@@ -26,7 +26,7 @@ const galleryReveal = useReveal();
   <div class="container mx-auto px-4 py-12">
     <div class="text-center mb-10">
       <h2
-        class="text-3xl font-bold text-[var(--manga-gold)] drop-shadow-[0_0_15px_rgba(193,18,63,0.25)]"
+        class="text-3xl font-bold text-[var(--manga-accent)] drop-shadow-[0_0_15px_rgba(193,18,63,0.25)]"
       >
         My Work
       </h2>
@@ -67,7 +67,7 @@ const galleryReveal = useReveal();
       <!-- Homepage image grid -->
       <div
         v-if="images.length"
-        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4"
+        class="grid grid-cols-2 sm:grid-cols-3 max-w-4xl mx-auto gap-3"
       >
         <div
           v-for="(image, index) in images"
@@ -79,7 +79,7 @@ const galleryReveal = useReveal();
             :src="image.thumbnailImageSrc"
             :alt="image.alt"
             loading="lazy"
-            class="aspect-square w-full object-cover rounded-xl border border-transparent transition-all duration-300 group-hover:scale-105 group-hover:border-[var(--manga-gold)]"
+            class="aspect-[3/4] w-full object-cover rounded-xl border border-transparent transition-all duration-300 group-hover:scale-105 group-hover:border-[var(--manga-gold)]"
           />
         </div>
       </div>
