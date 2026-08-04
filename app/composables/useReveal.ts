@@ -5,10 +5,22 @@ export const useReveal = () => {
   useIntersectionObserver(
     target,
     ([entry]) => {
-      isVisible.value = entry?.isIntersecting ?? false;
+      if (!entry) return;
+
+      const ratio = entry.intersectionRatio;
+
+      // Reveal after 20% visible
+      if (!isVisible.value && ratio > 0.2) {
+        isVisible.value = true;
+      }
+
+      // Hide only after almost completely gone
+      if (isVisible.value && ratio < 0.05) {
+        isVisible.value = false;
+      }
     },
     {
-      threshold: 0.1,
+      threshold: [0, 0.05, 0.2],
     },
   );
 

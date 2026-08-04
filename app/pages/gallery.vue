@@ -9,22 +9,29 @@ const visibleCount = ref(PAGE_SIZE);
 
 const animationStartIndex = ref(0);
 
+const isLoading = ref(true);
+
 const galleryImages = computed(() =>
   allGalleryImages.slice(0, visibleCount.value),
 );
 
 const hasMore = computed(() => visibleCount.value < allGalleryImages.length);
 
-const loadMore = async () => {
+const loadMore = () => {
   animationStartIndex.value = visibleCount.value;
 
   visibleCount.value += PAGE_SIZE;
 };
 
-const isLoading = ref(true);
+const sizeClasses = {
+  small: "col-span-1 row-span-1",
 
-onMounted(async () => {
-  console.log("Gallery page mounted");
+  medium: "col-span-2 row-span-1",
+
+  big: "col-span-2 row-span-2",
+};
+
+onMounted(() => {
   setTimeout(() => {
     isLoading.value = false;
     document.body.style.overflow = "";
@@ -33,6 +40,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <!-- Loading overlay -->
   <div
     v-if="isLoading"
     class="fixed inset-0 z-50 bg-[#101014] flex items-center justify-center"
@@ -42,9 +50,11 @@ onMounted(async () => {
     </div>
   </div>
 
-  <div
+  <main
     class="container mx-auto px-4 py-16"
-    :class="{ 'pointer-events-none': isLoading }"
+    :class="{
+      'pointer-events-none': isLoading,
+    }"
   >
     <h1
       class="text-4xl font-bold text-center mb-8 text-[var(--manga-gold)] drop-shadow-[0_0_15px_rgba(212,160,23,0.2)] animate-fade"
@@ -59,14 +69,26 @@ onMounted(async () => {
       No artwork found in gallery yet!
     </div>
 
+    <!-- BENTO GRID -->
+
     <div
-      v-show="galleryImages.length"
-      class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2"
+      v-else
+      class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 auto-rows-[100px] lg:auto-rows-[150px] gap-3 grid-flow-dense"
     >
-      <div
+      <article
         v-for="(img, index) in galleryImages"
-        :key="img"
-        class="group overflow-hidden rounded-xl bg-[#15151A] transition-colors duration-300 animate-card aspect-[3/4]"
+        :key="img.src"
+        :class="[
+          sizeClasses[img.size],
+
+          `
+          group
+          overflow-hidden
+          rounded-xl
+          bg-[#15151A]
+          animate-card
+          `,
+        ]"
         :style="{
           animationDelay:
             index >= animationStartIndex
@@ -75,7 +97,7 @@ onMounted(async () => {
         }"
       >
         <Image
-          :src="img"
+          :src="img.src"
           preview
           loading="lazy"
           class="block w-full h-full"
@@ -83,16 +105,27 @@ onMounted(async () => {
             root: {
               class: 'block w-full h-full overflow-hidden',
             },
+
             image: {
-              class:
-                'block w-full h-full object-cover transition-transform duration-500 ease-out will-change-transform group-hover:scale-105',
+              class: `
+              block
+              w-full
+              h-full
+              object-cover
+              transition-transform
+              duration-500
+              ease-out
+              will-change-transform
+              group-hover:scale-105
+              `,
             },
           }"
         />
-      </div>
+      </article>
     </div>
 
-    <!-- Load more button -->
+    <!-- LOAD MORE -->
+
     <div
       v-if="hasMore"
       class="flex justify-center mt-10 animate-fade"
@@ -106,14 +139,13 @@ onMounted(async () => {
       />
     </div>
 
-    <!-- Optional end message -->
     <p
       v-else-if="allGalleryImages.length > PAGE_SIZE"
       class="text-center mt-10 text-slate-500"
     >
       You have seen all artwork.
     </p>
-  </div>
+  </main>
 </template>
 
 <style scoped>
@@ -121,10 +153,7 @@ onMounted(async () => {
   color: var(--manga-gold);
 }
 
-.animate-fade {
-  animation: fadeUp 0.8s ease-out both;
-}
-
+.animate-fade,
 .animate-card {
   animation: fadeUp 0.8s ease-out both;
 }
@@ -132,17 +161,18 @@ onMounted(async () => {
 @keyframes fadeUp {
   from {
     opacity: 0;
+
     transform: translateY(40px);
   }
 
   to {
     opacity: 1;
+
     transform: translateY(0);
   }
 }
 
 @media (max-width: 767px) {
-  /* Same animation on mobile */
   .animate-fade,
   .animate-card {
     animation-duration: 0.8s;
