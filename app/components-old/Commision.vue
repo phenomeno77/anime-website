@@ -67,7 +67,7 @@ const reveal = useReveal();
         reveal.isVisible.value
           ? 'animate-commission-show'
           : 'commission-hidden',
-        'w-full !bg-[#15151A] !border !border-[#27272A] shadow-2xl',
+        'w-full !bg-[#15151A] max-w-5xl !border !border-[#27272A] shadow-2xl',
       ]"
     >
       <template #title>
