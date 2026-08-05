@@ -18,7 +18,34 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col">
+  <div
+    class="relative min-h-screen overflow-x-hidden bg-[#FCFCFD] text-zinc-900"
+  >
+    <!-- Background decoration -->
+
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div
+        class="absolute left-[-200px] top-[-150px] h-[500px] w-[500px] rounded-full bg-violet-300/20 blur-3xl"
+      />
+
+      <div
+        class="absolute right-[-200px] top-[300px] h-[500px] w-[500px] rounded-full bg-pink-300/20 blur-3xl"
+      />
+
+      <div
+        class="absolute bottom-[-150px] left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-300/15 blur-3xl"
+      />
+    </div>
+
+    <AppNavBar />
+
+    <main>
+      <NuxtPage />
+    </main>
+
+    <AppFooter />
+  </div>
+  <!-- <div class="min-h-screen flex flex-col">
     <NavBar class="sticky! top-0! z-50! bg-black/60! backdrop-blur-md!" />
 
     <main class="flex-1 flex flex-col justify-center align-center">
@@ -26,5 +53,5 @@ useHead({
     </main>
 
     <Footer />
-  </div>
+  </div> -->
 </template>

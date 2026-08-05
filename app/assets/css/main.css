@@ -1,55 +1,26 @@
 @import "tailwindcss";
-.parallax {
-  position: relative;
 
-  width: 100%;
-  min-height: 100svh;
-
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  scroll-snap-align: start;
-
+/* Page Transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity .35s ease;
 }
 
-.parallax > * {
-  position: relative;
-  z-index: 1;
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
 }
 
-/*
-  Desktop parallax effect
-*/
-@media (min-width: 768px) {
-  .parallax {
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-  }
+/* Container Custom for each Section */
+.container-custom {
+    @apply mx-auto max-w-7xl px-6 lg:px-8;
 }
 
-/*
-  Dark overlay for readability
-*/
-.parallax::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+/* Smooth Scrolling and Font Styles */
+html {
+    scroll-behavior: smooth;
 }
 
-html,
 body {
-  background: #101014;
-  scroll-behavior: smooth;
-}
-
-:root {
-  --manga-accent: #C1123F; /* darker ink red */
-  --manga-gold: #D4A017;   /* old manga gold */
+    font-family: 'Outfit', sans-serif;
 }

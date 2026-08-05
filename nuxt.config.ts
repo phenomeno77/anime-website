@@ -21,6 +21,9 @@ export default defineNuxtConfig({
     "nuxt-api-shield",
     "@vueuse/nuxt",
   ],
+  imports: {
+    autoImport: true,
+  },
   // Limits IPs to max 3 submissions every 10 minutes
   nuxtApiShield: {
     // 1. Set global defaults loose (or skip globally)
@@ -47,9 +50,9 @@ export default defineNuxtConfig({
     options: {
       theme: {
         preset: Aura,
-        options: {
-          darkModeSelector: ".dark",
-        },
+        // options: {
+        //   darkModeSelector: ".dark",
+        // },
       },
     },
   },
@@ -62,6 +65,10 @@ export default defineNuxtConfig({
   },
 
   app: {
+    pageTransition: {
+      name: "page",
+      mode: "out-in",
+    },
     head: {
       link: [
         {
