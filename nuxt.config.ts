@@ -15,15 +15,13 @@ export default defineNuxtConfig({
       },
     },
   },
+  components: true,
   modules: [
     "@primevue/nuxt-module",
     "@nuxt/image",
     "nuxt-api-shield",
     "@vueuse/nuxt",
   ],
-  imports: {
-    autoImport: true,
-  },
   // Limits IPs to max 3 submissions every 10 minutes
   nuxtApiShield: {
     // 1. Set global defaults loose (or skip globally)
@@ -74,12 +72,12 @@ export default defineNuxtConfig({
         {
           rel: "icon",
           type: "image/svg+xml",
-          href: "/monkey.png",
+          href: "/logo.png",
           sizes: "360x360",
         },
         {
           rel: "apple-touch-icon",
-          href: "/monkey.png",
+          href: "/logo.png",
         },
       ],
     },

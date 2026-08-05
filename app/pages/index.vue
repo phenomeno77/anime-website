@@ -1,23 +1,23 @@
 <template>
   <div>
-    <HeroSection />
+    <HomeHeroSection />
 
-    <FeatureSection />
+    <!-- <HomeFeatureSection />
 
-    <GallerySection />
+    <HomeGallerySection />
 
-    <CommissionSection />
+    <HomeCommissionSection />
 
-    <PricingSection />
+    <HomePricingSection />
 
-    <WebtoonSection />
+    <HomeWebtoonSection />
 
-    <AboutSection />
+    <HomeAboutSection />
 
-    <TestimonialsSection />
+    <HomeTestimonialsSection />
 
-    <FAQSection />
+    <HomeFAQSection />
 
-    <CTASection />
+    <HomeCTASection /> -->
   </div>
 </template>

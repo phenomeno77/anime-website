@@ -12,9 +12,14 @@
 }
 
 /* Container Custom for each Section */
-.container-custom {
+
+@layer utilities {
+
+  .container-custom {
     @apply mx-auto max-w-7xl px-6 lg:px-8;
+  }
 }
+
 
 /* Smooth Scrolling and Font Styles */
 html {
