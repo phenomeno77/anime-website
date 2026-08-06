@@ -1,4 +1,31 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import heroImage from "~/assets/hero/hero-section.webp";
+import heroImageHover from "~/assets/hero/hero-section-hover.webp";
+
+const currentHeroImage = ref(heroImage);
+
+const isMobile = ref(false);
+const flipped = ref(false);
+
+function checkMobile() {
+  isMobile.value = window.innerWidth < 768;
+}
+
+function toggleFlip() {
+  if (isMobile.value) {
+    flipped.value = !flipped.value;
+  }
+}
+
+onMounted(() => {
+  checkMobile();
+  window.addEventListener("resize", checkMobile);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", checkMobile);
+});
+</script>
 
 <template>
   <section class="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-32">
@@ -107,66 +134,98 @@
         </div>
 
         <!-- RIGHT SIDE -->
-
-        <div class="relative flex justify-center">
-          <!-- decorative glow -->
-
+        <div class="relative flex items-center justify-center">
+          <!-- Main glow -->
           <div
             class="absolute h-80 w-80 rounded-full bg-violet-300/30 blur-3xl lg:h-[450px] lg:w-[450px]"
           />
 
-          <!-- artwork frame -->
-
-          <!-- artwork frame -->
-
+          <!-- Secondary glow -->
           <div
-            class="group relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-[3rem] border border-white/70 bg-gradient-to-br from-violet-100 via-white to-pink-100 shadow-xl"
+            class="absolute bottom-10 right-10 h-48 w-48 rounded-full bg-pink-300/20 blur-3xl"
+          />
+
+          <!-- Artwork -->
+          <!-- Flipping card simple-->
+          <!-- <div
+            class="group relative w-full max-w-lg aspect-[4/5] [perspective:1000px]"
           >
-            <!-- inner border -->
-
             <div
-              class="absolute inset-4 rounded-[2.5rem] border border-white/80"
-            />
-
-            <!-- decorative glow -->
-
-            <div
-              class="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-300/30 blur-3xl"
-            />
-
-            <!-- placeholder content -->
-
-            <div
-              class="relative flex h-full flex-col items-center justify-center gap-5 text-center"
+              class="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
             >
-              <!-- icon -->
+              <img
+                :src="heroImage"
+                alt="Featured artwork"
+                class="absolute inset-0 h-full w-full rounded-[2rem] object-cover drop-shadow-2xl [backface-visibility:hidden]"
+              />
 
-              <div
-                class="flex h-20 w-20 items-center justify-center rounded-3xl bg-white text-4xl shadow-lg"
-              >
-                ✨
-              </div>
+              <img
+                :src="heroImageHover"
+                alt="Featured artwork hover"
+                class="absolute inset-0 h-full w-full rounded-[2rem] object-cover drop-shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]"
+              />
+            </div>
+          </div> -->
 
-              <div>
-                <p
-                  class="text-sm font-semibold uppercase tracking-[0.25em] text-violet-500"
-                >
-                  Featured Artwork
-                </p>
+          <!-- More realistic flipping card with shine effect -->
+          <div
+            class="group relative w-full max-w-lg aspect-[4/5]"
+            @click="toggleFlip"
+          >
+            <!-- Desktop version -->
+            <div
+              class="hidden h-full w-full transition duration-700 md:block md:group-hover:[transform:perspective(1000px)_rotateY(8deg)_rotateX(4deg)]"
+            >
+              <!-- Back image -->
+              <img
+                :src="heroImage"
+                alt="Featured artwork"
+                class="absolute inset-0 h-full w-full rounded-[2rem] object-cover shadow-xl transition duration-700 md:group-hover:scale-105 md:group-hover:rotate-2"
+              />
 
-                <p class="mt-2 text-sm text-zinc-500">Illustration preview</p>
-              </div>
+              <!-- Hover image -->
+              <img
+                :src="heroImageHover"
+                alt="Featured artwork hover"
+                class="absolute inset-0 h-full w-full rounded-[2rem] object-cover opacity-0 shadow-xl transition duration-700 md:group-hover:opacity-100 md:group-hover:scale-105 md:group-hover:-rotate-2"
+              />
             </div>
 
-            <!-- corner decorations -->
-
+            <!-- Mobile version -->
             <div
-              class="absolute left-8 top-8 h-3 w-3 rounded-full bg-violet-400"
-            />
+              class="relative block h-full w-full [perspective:1000px] md:hidden"
+            >
+              <div
+                class="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d]"
+                :class="flipped ? '[transform:rotateY(180deg)]' : ''"
+              >
+                <!-- Front -->
+                <img
+                  :src="heroImage"
+                  alt="Featured artwork"
+                  class="absolute inset-0 h-full w-full rounded-[2rem] object-cover shadow-xl [backface-visibility:hidden]"
+                />
 
+                <!-- Back -->
+                <img
+                  :src="heroImageHover"
+                  alt="Featured artwork hover"
+                  class="absolute inset-0 h-full w-full rounded-[2rem] object-cover shadow-xl [backface-visibility:hidden] [transform:rotateY(180deg)]"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Placeholder -->
+          <div
+            v-if="!currentHeroImage"
+            class="relative z-10 flex aspect-[4/5] w-full max-w-md items-center justify-center rounded-[3rem] border border-white/70 bg-gradient-to-br from-violet-100 via-white to-pink-100 shadow-xl"
+          >
             <div
-              class="absolute bottom-8 right-8 h-3 w-3 rounded-full bg-pink-400"
-            />
+              class="flex h-20 w-20 items-center justify-center rounded-3xl bg-white text-4xl shadow-lg"
+            >
+              ✨
+            </div>
           </div>
         </div>
       </div>
