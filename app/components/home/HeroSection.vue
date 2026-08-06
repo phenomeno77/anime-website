@@ -28,9 +28,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-32">
+  <section class="relative min-h-screen overflow-hidden pt-32 pb-20 lg:pb-32">
     <div class="container-custom">
-      <div class="grid items-center gap-8 lg:gap-16 md:grid-cols-2">
+      <div
+        class="grid min-h-[700px] items-center gap-8 lg:gap-16 md:grid-cols-2"
+      >
         <!-- LEFT SIDE -->
 
         <!-- LEFT CONTENT -->
@@ -134,7 +136,7 @@ onUnmounted(() => {
         </div>
 
         <!-- RIGHT SIDE -->
-        <div class="relative flex items-center justify-center">
+        <div class="relative flex h-full items-center justify-center">
           <!-- Main glow -->
           <div
             class="absolute h-80 w-80 rounded-full bg-violet-300/30 blur-3xl lg:h-[450px] lg:w-[450px]"
@@ -146,30 +148,9 @@ onUnmounted(() => {
           />
 
           <!-- Artwork -->
-          <!-- Flipping card simple-->
-          <!-- <div
-            class="group relative w-full max-w-lg aspect-[4/5] [perspective:1000px]"
-          >
-            <div
-              class="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
-            >
-              <img
-                :src="heroImage"
-                alt="Featured artwork"
-                class="absolute inset-0 h-full w-full rounded-[2rem] object-cover drop-shadow-2xl [backface-visibility:hidden]"
-              />
-
-              <img
-                :src="heroImageHover"
-                alt="Featured artwork hover"
-                class="absolute inset-0 h-full w-full rounded-[2rem] object-cover drop-shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]"
-              />
-            </div>
-          </div> -->
-
           <!-- More realistic flipping card with shine effect -->
           <div
-            class="group relative w-full max-w-lg aspect-[4/5]"
+            class="group relative aspect-[4/5] w-full max-w-xl"
             @click="toggleFlip"
           >
             <!-- Desktop version -->
