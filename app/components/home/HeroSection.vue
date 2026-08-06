@@ -68,7 +68,7 @@ onUnmounted(() => {
             <UiPrimaryButton label="Start Commission" />
 
             <button
-              class="cursor-pointer rounded-xl border border-zinc-200 bg-white px-7 py-3.5 text-sm font-semibold text-zinc-700 transition duration-300 hover:-translate-y-1 hover:bg-zinc-50 active:translate-y-0"
+              class="rounded-xl border border-zinc-200 bg-white px-7 py-3.5 text-sm font-semibold text-zinc-700 transition duration-300 hover:-translate-y-1 hover:bg-zinc-50 active:translate-y-0"
             >
               View Portfolio
             </button>
@@ -134,7 +134,7 @@ onUnmounted(() => {
           <!-- glows ... -->
 
           <div
-            class="group relative aspect-[4/5] w-full max-w-xl cursor-pointer"
+            class="group relative aspect-[4/5] w-full max-w-xl"
             role="button"
             tabindex="0"
             aria-label="Flip artwork"
