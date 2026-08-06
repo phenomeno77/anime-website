@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const mobileMenuOpen = ref(false);
 
+const artistName = "InQu";
+
 const links = [
   {
     label: "Home",
@@ -44,7 +46,7 @@ const links = [
         <span
           class="hidden text-lg font-bold tracking-tight text-zinc-900 sm:block"
         >
-          Artist Name
+          {{ artistName }}
         </span>
       </NuxtLink>
 

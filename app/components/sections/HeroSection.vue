@@ -1,10 +1,11 @@
 <script setup lang="ts">
 const flipped = ref(false);
-
 const isMobile = ref(false);
 
+let mql: MediaQueryList | null = null;
+
 function updateIsMobile() {
-  isMobile.value = window.matchMedia("(max-width: 767px)").matches;
+  if (mql) isMobile.value = mql.matches;
 }
 
 function toggleFlip() {
@@ -14,12 +15,13 @@ function toggleFlip() {
 }
 
 onMounted(() => {
+  mql = window.matchMedia("(max-width: 767px)");
   updateIsMobile();
-  window.addEventListener("resize", updateIsMobile);
+  mql.addEventListener("change", updateIsMobile);
 });
 
 onUnmounted(() => {
-  window.removeEventListener("resize", updateIsMobile);
+  mql?.removeEventListener("change", updateIsMobile);
 });
 </script>
 
@@ -63,14 +65,14 @@ onUnmounted(() => {
 
           <!-- Buttons -->
           <div
-            class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start"
+            class="mt-10 flex flex-col items-center gap-1 sm:gap-4 sm:flex-row sm:justify-center lg:justify-start"
           >
             <UiPrimaryButton label="Start Commission" />
 
             <button
               class="rounded-xl border border-zinc-200 bg-white px-7 py-3.5 text-sm font-semibold text-zinc-700 transition duration-300 hover:-translate-y-1 hover:bg-zinc-50 active:translate-y-0"
             >
-              View Portfolio
+              <NuxtLink to="/portfolio">View Portfolio</NuxtLink>
             </button>
           </div>
 

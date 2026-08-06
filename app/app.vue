@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: "Digital Art",
+  title: "InQu | Digital Art",
   description:
     "Custom hand-painted anime PC glass panels and digital artwork crafted to order.",
   ogTitle: "Anime & Digital Art Commissions",
