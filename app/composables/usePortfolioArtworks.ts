@@ -14,8 +14,6 @@ export const usePortfolioArtworks = (): Artwork[] => {
     { eager: true, import: "default" },
   );
 
-  console.log("glob matched:", Object.keys(images)); // ← temporary
-
   return Object.entries(images)
     .map(([path, src]) => {
       const filename = path.split("/").pop() ?? "";

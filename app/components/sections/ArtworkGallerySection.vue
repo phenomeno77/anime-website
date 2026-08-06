@@ -22,8 +22,6 @@ const props = withDefaults(
   },
 );
 
-console.log(props.artworks);
-
 const sizeClasses: Record<Artwork["size"], string> = {
   large: "col-span-2 row-span-2",
   tall: "row-span-2",
