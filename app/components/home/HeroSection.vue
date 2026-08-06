@@ -1,14 +1,10 @@
 <script setup lang="ts">
-import heroImage from "~/assets/hero/hero-section.webp";
-import heroImageHover from "~/assets/hero/hero-section-hover.webp";
-
-const currentHeroImage = ref(heroImage);
-
-const isMobile = ref(false);
 const flipped = ref(false);
 
-function checkMobile() {
-  isMobile.value = window.innerWidth < 768;
+const isMobile = ref(false);
+
+function updateIsMobile() {
+  isMobile.value = window.matchMedia("(max-width: 767px)").matches;
 }
 
 function toggleFlip() {
@@ -18,12 +14,12 @@ function toggleFlip() {
 }
 
 onMounted(() => {
-  checkMobile();
-  window.addEventListener("resize", checkMobile);
+  updateIsMobile();
+  window.addEventListener("resize", updateIsMobile);
 });
 
 onUnmounted(() => {
-  window.removeEventListener("resize", checkMobile);
+  window.removeEventListener("resize", updateIsMobile);
 });
 </script>
 
@@ -31,10 +27,8 @@ onUnmounted(() => {
   <section class="relative min-h-screen overflow-hidden pt-32 pb-20 lg:pb-32">
     <div class="container-custom">
       <div
-        class="grid min-h-[700px] items-center gap-8 lg:gap-16 md:grid-cols-2"
+        class="grid min-h-[700px] items-center gap-8 md:grid-cols-2 lg:gap-16"
       >
-        <!-- LEFT SIDE -->
-
         <!-- LEFT CONTENT -->
         <div class="text-center lg:text-left">
           <!-- Eyebrow -->
@@ -82,52 +76,52 @@ onUnmounted(() => {
 
           <!-- Trust indicators -->
           <div
-            class="mt-12 flex flex-wrap justify-center gap-8 text-center lg:justify-start lg:text-left"
+            class="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-6 text-center lg:justify-start lg:text-left"
           >
             <div>
-              <strong class="block text-lg font-bold text-zinc-900">
-                ◉ 100+
-              </strong>
-
-              <span class="text-sm text-zinc-500"> Custom artworks </span>
+              <strong class="block text-lg font-bold text-zinc-900"
+                >◉ 100+</strong
+              >
+              <span class="text-sm text-zinc-500">Custom artworks</span>
             </div>
-
             <div>
-              <strong class="block text-lg font-bold text-zinc-900">
-                ◉ Original
-              </strong>
-
-              <span class="text-sm text-zinc-500"> Webtoon stories </span>
+              <strong class="block text-lg font-bold text-zinc-900"
+                >◉ Original</strong
+              >
+              <span class="text-sm text-zinc-500">Webtoon stories</span>
             </div>
-
             <div>
-              <strong class="block text-lg font-bold text-zinc-900">
-                ◉ High Quality
-              </strong>
-
-              <span class="text-sm text-zinc-500"> Digital art </span>
+              <strong class="block text-lg font-bold text-zinc-900"
+                >◉ High Quality</strong
+              >
+              <span class="text-sm text-zinc-500">Digital art</span>
             </div>
           </div>
 
+          <!-- Social links -->
           <div
             class="mt-10 flex items-center justify-center gap-5 lg:justify-start"
           >
             <a
               href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               class="text-zinc-500 transition hover:text-violet-500"
             >
               Instagram
             </a>
-
             <a
               href="https://www.webtoon.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               class="text-zinc-500 transition hover:text-violet-500"
             >
               Webtoon
             </a>
-
             <a
               href="https://www.tiktok.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               class="text-zinc-500 transition hover:text-violet-500"
             >
               TikTok
@@ -135,77 +129,87 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <!-- RIGHT SIDE -->
+        <!-- RIGHT SIDE - Artwork -->
         <div class="relative flex h-full items-center justify-center">
-          <!-- Main glow -->
-          <div
-            class="absolute h-80 w-80 rounded-full bg-violet-300/30 blur-3xl lg:h-[450px] lg:w-[450px]"
-          />
+          <!-- glows ... -->
 
-          <!-- Secondary glow -->
           <div
-            class="absolute bottom-10 right-10 h-48 w-48 rounded-full bg-pink-300/20 blur-3xl"
-          />
-
-          <!-- Artwork -->
-          <!-- More realistic flipping card with shine effect -->
-          <div
-            class="group relative aspect-[4/5] w-full max-w-xl"
+            class="group relative aspect-[4/5] w-full max-w-xl cursor-pointer"
+            role="button"
+            tabindex="0"
+            aria-label="Flip artwork"
             @click="toggleFlip"
+            @keydown.enter.space.prevent="toggleFlip"
           >
-            <!-- Desktop version -->
+            <!-- Desktop -->
             <div
               class="hidden h-full w-full transition duration-700 md:block md:group-hover:[transform:perspective(1000px)_rotateY(8deg)_rotateX(4deg)]"
             >
-              <!-- Back image -->
-              <img
-                :src="heroImage"
+              <NuxtImg
+                src="/hero/hero-section.webp"
                 alt="Featured artwork"
                 class="absolute inset-0 h-full w-full rounded-[2rem] object-cover shadow-xl transition duration-700 md:group-hover:scale-105 md:group-hover:rotate-2"
+                width="800"
+                height="1000"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 576px"
+                format="webp"
+                quality="85"
+                loading="eager"
+                fetchpriority="high"
+                preload
               />
 
-              <!-- Hover image -->
-              <img
-                :src="heroImageHover"
+              <NuxtImg
+                src="/hero/hero-section-hover.webp"
                 alt="Featured artwork hover"
                 class="absolute inset-0 h-full w-full rounded-[2rem] object-cover opacity-0 shadow-xl transition duration-700 md:group-hover:opacity-100 md:group-hover:scale-105 md:group-hover:-rotate-2"
+                width="800"
+                height="1000"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 576px"
+                format="webp"
+                quality="85"
+                loading="lazy"
               />
             </div>
-
-            <!-- Mobile version -->
+            <!-- Mobile (tap to flip) -->
             <div
-              class="relative block h-full w-full [perspective:1000px] md:hidden"
+              class="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-xl md:hidden"
+              style="perspective: 1000px"
             >
               <div
-                class="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d]"
+                class="relative h-full w-full transition-transform duration-700"
                 :class="flipped ? '[transform:rotateY(180deg)]' : ''"
+                style="transform-style: preserve-3d"
               >
                 <!-- Front -->
-                <img
-                  :src="heroImage"
+                <NuxtImg
+                  src="/hero/hero-section.webp"
                   alt="Featured artwork"
-                  class="absolute inset-0 h-full w-full rounded-[2rem] object-cover shadow-xl [backface-visibility:hidden]"
+                  class="absolute inset-0 h-full w-full rounded-[2rem] object-cover"
+                  width="800"
+                  height="1000"
+                  format="webp"
+                  quality="85"
+                  loading="eager"
+                  style="backface-visibility: hidden"
                 />
 
                 <!-- Back -->
-                <img
-                  :src="heroImageHover"
+                <NuxtImg
+                  src="/hero/hero-section-hover.webp"
                   alt="Featured artwork hover"
-                  class="absolute inset-0 h-full w-full rounded-[2rem] object-cover shadow-xl [backface-visibility:hidden] [transform:rotateY(180deg)]"
+                  class="absolute inset-0 h-full w-full rounded-[2rem] object-cover"
+                  width="800"
+                  height="1000"
+                  format="webp"
+                  quality="85"
+                  loading="lazy"
+                  style="
+                    backface-visibility: hidden;
+                    transform: rotateY(180deg);
+                  "
                 />
               </div>
-            </div>
-          </div>
-
-          <!-- Placeholder -->
-          <div
-            v-if="!currentHeroImage"
-            class="relative z-10 flex aspect-[4/5] w-full max-w-md items-center justify-center rounded-[3rem] border border-white/70 bg-gradient-to-br from-violet-100 via-white to-pink-100 shadow-xl"
-          >
-            <div
-              class="flex h-20 w-20 items-center justify-center rounded-3xl bg-white text-4xl shadow-lg"
-            >
-              ✨
             </div>
           </div>
         </div>
