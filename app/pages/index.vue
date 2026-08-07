@@ -1,19 +1,36 @@
 <script setup lang="ts">
-const artworks = useHomepageArtworks();
+const artworks = useHomepageArtworks()
 
+const scrollToGallery = () => {
+  document
+    .getElementById("artwork-gallery")
+    ?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
+}
 </script>
 
 <template>
   <div>
     
-    <SectionsHeroSection />
-<!-- 
-        <div class="parallax" :style="{
-      backgroundImage:  `url(/hero/hero-section-parallax.webp)`}">
+    <!-- <SectionsHeroSection /> -->
 
-          <SectionsHeroSection />
+<div
+  class="parallax relative"
+  :style="{
+    backgroundImage: `url(/hero/hero-section-parallax.webp)`
+  }"
+>
+  <SectionsHeroSection />
 
-    </div> -->
+  <button
+    class="cursor-pointer absolute bottom-20 left-1/2 z-50 -translate-x-1/2 rounded-full bg-white/80 p-4 shadow-xl backdrop-blur transition hover:scale-110"
+    @click="scrollToGallery"
+  >
+    ↓
+  </button>
+</div>
 
     
 

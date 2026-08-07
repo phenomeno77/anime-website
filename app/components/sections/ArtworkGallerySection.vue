@@ -41,6 +41,9 @@ function openLightbox(artwork: any) {
   activeIndex.value = props.artworks.findIndex((a) => a.id === artwork.id);
   lightboxOpen.value = true;
 }
+
+const reveal = useReveal();
+
 </script>
 
 <template>
@@ -50,13 +53,21 @@ function openLightbox(artwork: any) {
         :eyebrow="eyebrow"
         :title="title"
         :description="description"
+        class="animate-hero-hero-up"
       />
 
       <div
         class="mt-16 grid grid-flow-dense grid-cols-2 gap-1 auto-rows-[160px] sm:grid-cols-3 sm:auto-rows-[200px] sm:gap-3 lg:grid-cols-4 lg:auto-rows-[240px] lg:gap-4"
-      >
+        :ref="reveal.target"
+      :class="[
+        reveal.isVisible.value
+          ? 'show-element'
+          : 'hide-element',
+      ]"
+        >
         <UiArtworkCard
           v-for="artwork in artworks"
+          class="animate-hero-scale"
           :key="artwork.id"
           :artwork="artwork"
           :span-class="sizeClasses[artwork.size]"

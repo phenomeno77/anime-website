@@ -1,3 +1,7 @@
+<script setup lang="ts">
+
+</script>
+
 <template>
   <section
     class="text-center space-y-8 flex flex-col items-center justify-center"
@@ -45,7 +49,7 @@
 </template>
 
 <style scoped>
-.animate-hero-tag {
+.animate-hero-drop {
   animation: heroDrop 0.7s ease-out both;
 }
 
@@ -99,7 +103,7 @@
 
 /* Mobile: no animations */
 @media (max-width: 767px) {
-  /* .animate-hero-tag,
+  /* .animate-hero-drop,
   .animate-hero-title,
   .animate-hero-description,
   .animate-hero-buttons {
@@ -111,7 +115,7 @@
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .animate-hero-tag,
+  .animate-hero-drop,
   .animate-hero-title,
   .animate-hero-description,
   .animate-hero-buttons {

@@ -30,7 +30,117 @@ body {
     font-family: 'Outfit', sans-serif;
 }
 
+/* animations */
+.animate-hero-drop {
+  animation: heroDrop 0.7s ease-out both;
+}
 
+.animate-hero-hero-up {
+  animation: heroUp 0.8s ease-out 0.15s both;
+}
+
+.animate-hero-description-up {
+  animation: heroUp 0.8s ease-out 0.3s both;
+}
+
+.animate-hero-scale {
+  animation: heroScale 0.8s ease-out 0.45s both;
+}
+
+@keyframes heroDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-drop,
+  .animate-hero-hero-up,
+  .animate-hero-description-up,
+  .animate-hero-scale {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hide-element {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+}
+
+.show-element {
+  animation: show 0.8s ease-out forwards;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Mobile: no animation and always visible */
+@media (max-width: 767px) {
+  /* .hide-element {
+    opacity: 1;
+    transform: none;
+  }
+
+  .show-element {
+    animation: none;
+  } */
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hide-element {
+    opacity: 1;
+    transform: none;
+  }
+
+  .show-element {
+    animation: none;
+  }
+}
+
+/* parallax */
 .parallax {
   position: relative;
 
@@ -42,12 +152,12 @@ body {
 
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
 
   scroll-snap-align: start;
 }
 
-.parallax > * {
+.parallax > *:not(button) {
   position: relative;
   z-index: 1;
 }
