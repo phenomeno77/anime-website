@@ -137,10 +137,9 @@ const stats = [
             </template>
           </div>
 
-          <!-- Social links -->
           <!-- Eyebrow + Social links -->
           <div
-            class="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start"
+            class="mt-10 flex flex-col items-center gap-4 min-[470px]:flex-row min-[470px]:justify-center lg:justify-start"
           >
             <!-- Eyebrow -->
             <div
@@ -163,39 +162,42 @@ const stats = [
 
             <!-- Divider between eyebrow and icons -->
             <div
-              class="hidden h-6 w-px bg-zinc-200 sm:block"
+              class="hidden h-6 w-px bg-zinc-200 min-[470px]:block"
               aria-hidden="true"
             />
 
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              class="h-8 w-8 transition duration-300 hover:-translate-y-1"
-            >
-              <UiIconsIconInstagram class="h-full w-full" />
-            </a>
+            <!-- Social icons row -->
+            <div class="flex items-center gap-4">
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                class="h-8 w-8 transition duration-300 hover:-translate-y-1"
+              >
+                <UiIconsIconInstagram class="h-full w-full" />
+              </a>
 
-            <a
-              href="https://www.tiktok.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="TikTok"
-              class="h-8 w-8 transition duration-300 hover:-translate-y-1"
-            >
-              <UiIconsIconTiktok class="h-full w-full" />
-            </a>
+              <a
+                href="https://www.tiktok.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                class="h-8 w-8 transition duration-300 hover:-translate-y-1"
+              >
+                <UiIconsIconTiktok class="h-full w-full" />
+              </a>
 
-            <a
-              href="https://www.webtoon.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WEBTOON"
-              class="h-8 w-8 transition duration-300 hover:-translate-y-1"
-            >
-              <UiIconsIconWebtoon class="h-full w-full" />
-            </a>
+              <a
+                href="https://www.webtoon.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WEBTOON"
+                class="h-8 w-8 transition duration-300 hover:-translate-y-1"
+              >
+                <UiIconsIconWebtoon class="h-full w-full" />
+              </a>
+            </div>
           </div>
         </div>
 
