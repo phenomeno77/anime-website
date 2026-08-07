@@ -49,7 +49,7 @@ const stats = [
   <section class="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-32">
     <!-- Background layer — scoped to Hero -->
     <div
-      class="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      class="dot-grid pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       aria-hidden="true"
     >
       <div
@@ -62,6 +62,12 @@ const stats = [
         class="absolute bottom-[-150px] left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-300/20 blur-3xl"
       />
     </div>
+
+    <!-- Fade-to-page mask so the bottom blob dissolves instead of getting clipped -->
+    <div
+      class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-b from-transparent to-[#FCFCFD] lg:h-56"
+      aria-hidden="true"
+    />
 
     <div class="container-custom max-w-7xl">
       <div
@@ -306,3 +312,24 @@ const stats = [
     </div>
   </section>
 </template>
+
+<style scoped>
+.dot-grid {
+  background-image: radial-gradient(
+    circle,
+    var(--color-violet-300, #c4b5fd) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 24px 24px;
+  mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    black 60%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    black 60%,
+    transparent 100%
+  );
+}
+</style>

@@ -26,10 +26,7 @@ withDefaults(
     }"
   >
     <!-- Dot grid — always rendered above the section's own background -->
-    <div
-      class="dot-grid pointer-events-none absolute inset-0"
-      aria-hidden="true"
-    />
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true" />
 
     <div class="relative">
       <slot />
@@ -51,25 +48,5 @@ withDefaults(
       transparent 40%
     ),
     linear-gradient(to bottom, #faf5ff, white);
-}
-
-.dot-grid {
-  background-image: radial-gradient(
-    circle,
-    var(--color-violet-300, #c4b5fd) 1.5px,
-    transparent 1.5px
-  );
-  background-size: 24px 24px;
-  opacity: 0.5;
-  mask-image: radial-gradient(
-    ellipse 100% 100% at 50% 50%,
-    black 60%,
-    transparent 100%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse 100% 100% at 50% 50%,
-    black 60%,
-    transparent 100%
-  );
 }
 </style>

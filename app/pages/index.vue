@@ -8,12 +8,7 @@ const artworks = useHomepageArtworks();
     <SectionsHeroSection id="hero-section" />
 
     <!-- Section Artwork  -->
-    <UiSectionBackground variant="rose">
-      <SectionsArtworkGallerySection
-        id="artwork-gallery"
-        :artworks="artworks"
-      />
-    </UiSectionBackground>
+    <SectionsArtworkGallerySection id="artwork-gallery" :artworks="artworks" />
     <!-- Section Commission steps -->
     <!-- Backgrounds available | "default"
   | "lavender"
