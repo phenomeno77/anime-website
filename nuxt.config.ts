@@ -20,7 +20,6 @@ export default defineNuxtConfig({
     "@primevue/nuxt-module",
     "@nuxt/image",
     "nuxt-api-shield",
-    "@vueuse/nuxt",
   ],
   // Limits IPs to max 3 submissions every 10 minutes
   nuxtApiShield: {

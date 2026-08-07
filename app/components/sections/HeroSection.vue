@@ -26,8 +26,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="relative min-h-screen overflow-hidden pt-32 pb-20 lg:pb-32">
-    <div class="container-custom">
+<section class="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-32" >    
+  <div class="container-custom max-w-7xl">
       <div
         class="grid min-h-[700px] items-center gap-8 md:grid-cols-2 lg:gap-16"
       >

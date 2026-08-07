@@ -110,7 +110,7 @@ function openLightbox(artwork: any) {
           >
             {{ item.medium }}
           </span>
-          <h3 v-if="item.title" class="mt-3 text-xl font-bold text-zinc-900">
+          <h3 v-if="item.title" class="mt-3 text-xl font-bold">
             {{ item.title }}
           </h3>
         </div>

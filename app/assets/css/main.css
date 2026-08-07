@@ -29,3 +29,46 @@ html {
 body {
     font-family: 'Outfit', sans-serif;
 }
+
+
+.parallax {
+  position: relative;
+
+  width: 100%;
+  min-height: 100svh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+
+  scroll-snap-align: start;
+}
+
+.parallax > * {
+  position: relative;
+  z-index: 1;
+}
+
+/*
+  Desktop parallax effect
+*/
+@media (min-width: 768px) {
+  .parallax {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/*
+  Dark overlay for readability
+*/
+.parallax::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
