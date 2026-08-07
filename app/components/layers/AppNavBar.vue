@@ -30,7 +30,7 @@ const links = [
 <template>
   <header class="fixed left-0 top-0 z-50 w-full px-4 pt-5 lg:px-8">
     <nav
-      class="mx-auto flex max-w-7xl items-center justify-between rounded-2xl border border-white/60 bg-white/90 px-5 py-3 shadow-lg shadow-zinc-200/20"
+      class="mx-auto flex max-w-7xl items-center justify-between rounded-2xl border border-white/60 bg-white/90 px-5 py-1 shadow-lg shadow-zinc-200/20"
     >
       <!-- Logo -->
 
@@ -66,7 +66,7 @@ const links = [
       <!-- CTA -->
 
       <div class="hidden lg:block">
-        <UiPrimaryButton label="Commission" href="/contact"/>
+        <UiPrimaryButton label="Commission" href="/contact" />
       </div>
 
       <!-- Mobile button -->
@@ -96,7 +96,7 @@ const links = [
           {{ link.label }}
         </NuxtLink>
 
-        <UiPrimaryButton label="Start Commission" href="/contact"/>
+        <UiPrimaryButton label="Start Commission" href="/contact" />
       </div>
     </div>
   </header>

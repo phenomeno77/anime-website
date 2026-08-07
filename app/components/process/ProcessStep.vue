@@ -1,10 +1,10 @@
 <script setup lang="ts">
 defineProps<{
-  number: string
-  title: string
-  description: string
-  isLast?: boolean
-}>()
+  number: string;
+  title: string;
+  description: string;
+  isLast?: boolean;
+}>();
 </script>
 
 <template>

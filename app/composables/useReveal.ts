@@ -1,44 +1,33 @@
-import { ref } from "vue"
-import { useIntersectionObserver } from "@vueuse/core"
+import { ref } from "vue";
+import { useIntersectionObserver } from "@vueuse/core";
 
 export const useReveal = () => {
+  const target = ref<HTMLElement | null>(null);
 
-  const target = ref<HTMLElement | null>(null)
-
-  const isVisible = ref(false)
-
+  const isVisible = ref(false);
 
   if (import.meta.client) {
-
     useIntersectionObserver(
       target,
 
       ([entry]) => {
-
-        if (!entry) return
-
+        if (!entry) return;
 
         if (entry.isIntersecting) {
-          isVisible.value = true
-        } 
-        else {
-          isVisible.value = false
+          isVisible.value = true;
+        } else {
+          isVisible.value = false;
         }
-
       },
 
       {
-        threshold: 0.2,
-      }
-
-    )
-
+        threshold: 0.1,
+      },
+    );
   }
-
 
   return {
     target,
     isVisible,
-  }
-
-}
+  };
+};

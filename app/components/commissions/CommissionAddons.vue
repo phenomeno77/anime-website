@@ -7,41 +7,21 @@ const addons = [
   "Rush delivery: +$50 - $100",
   "NSFW requests: additional fees depending on complexity",
   "Custom orders are available upon request",
-]
+];
 </script>
 
 <template>
-   <section class="py-24">
-
+  <section class="py-24">
     <div class="container-custom">
-
-
-      <h2 class="text-3xl font-semibold">
-        Additional Options
-      </h2>
-
+      <h2 class="text-3xl font-semibold">Additional Options</h2>
 
       <ul class="mt-8 space-y-4">
-
-        <li
-          v-for="item in addons"
-          :key="item"
-          class="text-neutral-700"
-        >
+        <li v-for="item in addons" :key="item" class="text-neutral-700">
           ✦ {{ item }}
         </li>
-
       </ul>
-
-
     </div>
-
-
   </section>
 </template>
 
-
-
-<style>
-
-</style>
+<style></style>

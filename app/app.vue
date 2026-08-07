@@ -9,26 +9,45 @@ useSeoMeta({
   ogImage: "/background-pages/1.webp",
   twitterCard: "summary_large_image",
 });
-
-// useHead({
-//   htmlAttrs: {
-//     class: "dark",
-//   },
-// });
 </script>
 
 <template>
   <div
     class="relative min-h-screen overflow-x-hidden bg-[#FCFCFD] text-zinc-900"
   >
+    <!-- Background decoration -->
+    <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      <!-- Dot grid texture — global, every page/section -->
+      <div class="dot-grid absolute inset-0 opacity-70" aria-hidden="true" />
+    </div>
+
     <div class="relative z-10">
       <LayersAppNavBar />
-
       <main>
         <NuxtPage />
       </main>
-
       <LayersAppFooter />
     </div>
   </div>
 </template>
+
+<style scoped>
+.dot-grid {
+  background-image: radial-gradient(
+    circle,
+    var(--color-violet-300, #c4b5fd) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 24px 24px;
+  mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    black 60%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    black 60%,
+    transparent 100%
+  );
+}
+</style>

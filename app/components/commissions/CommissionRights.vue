@@ -14,7 +14,6 @@ const rights = [
     ],
   },
 
-
   {
     title: "Commercial Use",
     allowed: [
@@ -25,89 +24,43 @@ const rights = [
       "Promotional material",
     ],
 
-    notAllowed: [
-      "Copyright transfer",
-      "Redistribution",
-      "Reselling artwork",
-    ],
+    notAllowed: ["Copyright transfer", "Redistribution", "Reselling artwork"],
 
-    note:
-      "Commercial commissions require an additional licensing fee of +100% - 200% depending on usage.",
+    note: "Commercial commissions require an additional licensing fee of +100% - 200% depending on usage.",
   },
-]
+];
 </script>
 
 <template>
   <section class="py-24">
-
     <div class="container-custom grid gap-8 lg:grid-cols-2">
-
-
       <article
         v-for="right in rights"
         :key="right.title"
         class="rounded-3xl bg-white/40 p-8"
       >
-
         <h3 class="text-2xl font-semibold">
           {{ right.title }}
         </h3>
 
-
-        <h4 class="mt-6 font-medium">
-          Allowed
-        </h4>
-
+        <h4 class="mt-6 font-medium">Allowed</h4>
 
         <ul class="mt-3 space-y-2">
-
-          <li
-            v-for="item in right.allowed"
-            :key="item"
-          >
-            ✓ {{ item }}
-          </li>
-
+          <li v-for="item in right.allowed" :key="item">✓ {{ item }}</li>
         </ul>
 
-
-
-        <h4 class="mt-6 font-medium">
-          Not Allowed
-        </h4>
-
+        <h4 class="mt-6 font-medium">Not Allowed</h4>
 
         <ul class="mt-3 space-y-2">
-
-          <li
-            v-for="item in right.notAllowed"
-            :key="item"
-          >
-            ✕ {{ item }}
-          </li>
-
+          <li v-for="item in right.notAllowed" :key="item">✕ {{ item }}</li>
         </ul>
 
-
-        <p
-          v-if="right.note"
-          class="mt-6 text-sm text-neutral-600"
-        >
+        <p v-if="right.note" class="mt-6 text-sm text-neutral-600">
           {{ right.note }}
         </p>
-
-
       </article>
-
-
     </div>
-
-
   </section>
-
 </template>
 
-
-<style>
-
-</style>
+<style></style>

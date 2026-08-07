@@ -24,7 +24,6 @@ const commissionTypes = [
     ],
   },
 
-
   {
     title: "Character Reference Sheet",
 
@@ -44,70 +43,35 @@ const commissionTypes = [
       },
     ],
   },
-]
+];
 </script>
 
 <template>
- <section class="py-24">
-
+  <section class="py-24">
     <div class="container-custom">
+      <h2 class="text-3xl font-semibold">Available Commissions</h2>
 
-
-      <h2 class="text-3xl font-semibold">
-        Available Commissions
-      </h2>
-
-
-
-      <div
-        class="
-          mt-12
-          grid
-          gap-8
-          lg:grid-cols-2
-        "
-      >
-
+      <div class="mt-12 grid gap-8 lg:grid-cols-2">
         <article
           v-for="type in commissionTypes"
           :key="type.title"
-          class="
-            rounded-3xl
-            border
-            border-white/40
-            bg-white/40
-            p-8
-            backdrop-blur
-          "
+          class="rounded-3xl border border-white/40 bg-white/40 p-8 backdrop-blur"
         >
-
           <h3 class="text-2xl font-semibold">
             {{ type.title }}
           </h3>
-
 
           <p class="mt-4 text-neutral-600">
             {{ type.description }}
           </p>
 
-
-
           <div class="mt-8 space-y-4">
-
             <div
               v-for="option in type.options"
               :key="option.name"
-              class="
-                flex
-                justify-between
-                rounded-2xl
-                bg-white/50
-                p-5
-              "
+              class="flex justify-between rounded-2xl bg-white/50 p-5"
             >
-
               <div>
-
                 <p class="font-medium">
                   {{ option.name }}
                 </p>
@@ -115,30 +79,17 @@ const commissionTypes = [
                 <p class="text-sm text-neutral-500">
                   {{ option.time }}
                 </p>
-
               </div>
-
 
               <p class="font-medium">
                 {{ option.price }}
               </p>
-
             </div>
-
           </div>
-
-
         </article>
-
-
       </div>
-
-
     </div>
+  </section>
+</template>
 
-
-  </section></template>
-
-<style>
-
-</style>
+<style></style>

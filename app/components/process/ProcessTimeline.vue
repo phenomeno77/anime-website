@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import ProcessStep from "./ProcessStep.vue"
+import ProcessStep from "./ProcessStep.vue";
 
 defineProps<{
   steps: {
-    number: string
-    title: string
-    description: string
-  }[]
-}>()
+    number: string;
+    title: string;
+    description: string;
+  }[];
+}>();
 </script>
 
 <template>
