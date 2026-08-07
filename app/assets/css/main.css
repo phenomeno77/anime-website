@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
-/* Page Transitions */
+
+/* =====================================================
+   Page Transitions
+===================================================== */
+
 .page-enter-active,
 .page-leave-active {
-  transition: opacity .35s ease;
+  transition: opacity 0.35s ease;
 }
 
 .page-enter-from,
@@ -11,174 +15,374 @@
   opacity: 0;
 }
 
-/* Container Custom for each Section */
+
+/* =====================================================
+   Layout Utilities
+===================================================== */
 
 @layer utilities {
 
   .container-custom {
     @apply mx-auto max-w-7xl px-6 lg:px-8;
   }
+
 }
 
 
-/* Smooth Scrolling and Font Styles */
+/* =====================================================
+   Global
+===================================================== */
+
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
+
 
 body {
-    font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
-/* animations */
-.animate-hero-drop {
-  animation: heroDrop 0.7s ease-out both;
+
+/* =====================================================
+   Reveal System
+   Controls ONLY visibility/state
+===================================================== */
+
+.hide-element {
+  opacity: 0;
+  visibility: hidden;
 }
 
-.animate-hero-hero-up {
-  animation: heroUp 0.8s ease-out 0.15s both;
+
+.show-element {
+  opacity: 1;
+  visibility: visible;
 }
 
-.animate-hero-description-up {
-  animation: heroUp 0.8s ease-out 0.3s both;
+
+/* =====================================================
+   Animation Library
+   Animations trigger only when parent is visible
+===================================================== */
+
+
+/*
+  Initial animation state
+
+  Important:
+  Do NOT put animation here.
+  Otherwise it starts on page load.
+*/
+
+.animate-drop,
+.animate-up,
+.animate-scale,
+.animate-fade {
+  opacity: 0;
 }
 
-.animate-hero-scale {
-  animation: heroScale 0.8s ease-out 0.45s both;
+
+
+/*
+  Drop from top
+
+  Usage:
+  <div class="animate-drop">
+*/
+
+.show-element .animate-drop {
+  animation: drop 0.7s ease-out both;
 }
 
-@keyframes heroDrop {
+
+
+/*
+  Move upward
+
+  Usage:
+  <div class="animate-up">
+*/
+
+.show-element .animate-up {
+  animation: up 0.8s ease-out both;
+}
+
+
+
+/*
+  Scale entrance
+
+  Usage:
+  <div class="animate-scale">
+*/
+
+.show-element .animate-scale {
+  animation: scale 0.8s ease-out both;
+}
+
+
+
+/*
+  Soft fade
+
+  Usage:
+  <div class="animate-fade">
+*/
+
+.show-element .animate-fade {
+  animation: fade 0.8s ease-out both;
+}
+
+
+
+/* =====================================================
+   Animation Delay Helpers
+===================================================== */
+
+
+.delay-100 {
+  animation-delay: 0.1s !important;
+}
+
+
+.delay-200 {
+  animation-delay: 0.2s !important;
+}
+
+
+.delay-300 {
+  animation-delay: 0.3s !important;
+}
+
+
+.delay-400 {
+  animation-delay: 0.4s !important;
+}
+
+
+
+/* =====================================================
+   Reset animations when leaving viewport
+===================================================== */
+
+
+.hide-element .animate-drop,
+.hide-element .animate-up,
+.hide-element .animate-scale,
+.hide-element .animate-fade {
+
+  animation: none;
+
+  opacity: 0;
+
+}
+
+
+
+/* =====================================================
+   Keyframes
+===================================================== */
+
+
+@keyframes drop {
+
   from {
     opacity: 0;
     transform: translateY(-30px);
   }
 
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
+
 }
 
-@keyframes heroUp {
+
+
+@keyframes up {
+
   from {
     opacity: 0;
     transform: translateY(40px);
   }
 
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
+
 }
 
-@keyframes heroScale {
+
+
+@keyframes scale {
+
   from {
     opacity: 0;
     transform: scale(0.9);
   }
 
+
   to {
     opacity: 1;
     transform: scale(1);
   }
+
 }
 
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .animate-hero-drop,
-  .animate-hero-hero-up,
-  .animate-hero-description-up,
-  .animate-hero-scale {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
 
-.hide-element {
-  opacity: 0;
-  transform: translateY(40px) scale(0.98);
-}
 
-.show-element {
-  animation: show 0.8s ease-out forwards;
-}
+@keyframes fade {
 
-@keyframes show {
   from {
     opacity: 0;
-    transform: translateY(40px) scale(0.98);
   }
+
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Mobile: no animation and always visible */
-@media (max-width: 767px) {
-  /* .hide-element {
-    opacity: 1;
-    transform: none;
   }
 
-  .show-element {
-    animation: none;
-  } */
 }
 
-/* Accessibility */
+
+
+/* =====================================================
+   Accessibility
+===================================================== */
+
+
 @media (prefers-reduced-motion: reduce) {
-  .hide-element {
-    opacity: 1;
-    transform: none;
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+
   }
 
-  .show-element {
-    animation: none;
-  }
+
 }
 
-/* parallax */
+
+
+/* =====================================================
+   Mobile
+===================================================== */
+
+
+@media (max-width: 767px) {
+
+
+  /*
+  Optional:
+  Disable animations on mobile
+
+  Uncomment if needed
+
+  .show-element .animate-drop,
+  .show-element .animate-up,
+  .show-element .animate-scale,
+  .show-element .animate-fade {
+
+    animation: none;
+
+    opacity: 1;
+
+  }
+
+  */
+
+
+}
+
+
+
+/* =====================================================
+   Parallax
+===================================================== */
+
+
 .parallax {
+
   position: relative;
 
-  width: 100%;
-  min-height: 100svh;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  width:100%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  min-height:100svh;
 
-  scroll-snap-align: start;
+  background-position:center;
+
+  background-size:cover;
+
+  background-repeat:no-repeat;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  scroll-snap-align:start;
+
 }
+
 
 .parallax > *:not(button) {
-  position: relative;
-  z-index: 1;
+
+  position:relative;
+
+  z-index:1;
+
 }
 
+
 /*
-  Desktop parallax effect
+ Desktop only
+
+ Important:
+ background-attachment fixed
+ has bad mobile support
 */
-@media (min-width: 768px) {
+
+@media (min-width:768px) {
+
   .parallax {
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
+
+    background-attachment:fixed;
+
+    background-size:cover;
+
+    background-position:center;
+
   }
+
 }
 
+
+
 /*
-  Dark overlay for readability
+ Overlay
 */
+
 .parallax::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  pointer-events:none;
+
 }

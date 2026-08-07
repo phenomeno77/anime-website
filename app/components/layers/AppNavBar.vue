@@ -66,7 +66,7 @@ const links = [
       <!-- CTA -->
 
       <div class="hidden lg:block">
-        <UiPrimaryButton label="Commission" />
+        <UiPrimaryButton label="Commission" href="/contact"/>
       </div>
 
       <!-- Mobile button -->
@@ -96,7 +96,7 @@ const links = [
           {{ link.label }}
         </NuxtLink>
 
-        <UiPrimaryButton label="Start Commission" />
+        <UiPrimaryButton label="Start Commission" href="/contact"/>
       </div>
     </div>
   </header>

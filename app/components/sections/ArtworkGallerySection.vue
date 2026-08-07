@@ -48,26 +48,25 @@ const reveal = useReveal();
 
 <template>
   <section class="relative py-20 lg:py-32">
-    <div class="container-custom">
-      <UiSectionTitle
-        :eyebrow="eyebrow"
-        :title="title"
-        :description="description"
-        class="animate-hero-hero-up"
-      />
-
-      <div
-        class="mt-16 grid grid-flow-dense grid-cols-2 gap-1 auto-rows-[160px] sm:grid-cols-3 sm:auto-rows-[200px] sm:gap-3 lg:grid-cols-4 lg:auto-rows-[240px] lg:gap-4"
-        :ref="reveal.target"
+    <div class="container-custom" :ref="reveal.target"
       :class="[
         reveal.isVisible.value
           ? 'show-element'
           : 'hide-element',
-      ]"
+      ]">
+
+      <UiSectionTitle
+        :eyebrow="eyebrow"
+        :title="title"
+        :description="description"
+        class="animate-drop"
+      />
+      <div
+        class="mt-16 grid grid-flow-dense grid-cols-2 gap-1 auto-rows-[160px] sm:grid-cols-3 sm:auto-rows-[200px] sm:gap-3 lg:grid-cols-4 lg:auto-rows-[240px] lg:gap-4"
         >
         <UiArtworkCard
           v-for="artwork in artworks"
-          class="animate-hero-scale"
+          class="animate-scale"
           :key="artwork.id"
           :artwork="artwork"
           :span-class="sizeClasses[artwork.size]"

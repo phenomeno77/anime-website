@@ -34,14 +34,14 @@ onUnmounted(() => {
       <div
         class="grid min-h-[700px] items-center gap-8 md:grid-cols-2 lg:gap-16"
         :ref="reveal.target"
-      :class="[
-        reveal.isVisible.value
-          ? 'show-element'
-          : 'hide-element',
-      ]"
+        :class="[
+          reveal.isVisible.value
+            ? 'show-element'
+            : 'hide-element',
+        ]"
       >
         <!-- LEFT CONTENT -->
-        <div class="animate-hero-drop text-center lg:text-left">
+        <div class="animate-drop text-center lg:text-left">
           <!-- Eyebrow -->
           <div
             class="mb-8 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-sm font-medium text-violet-600"
@@ -52,7 +52,7 @@ onUnmounted(() => {
 
           <!-- Heading -->
           <h1
-            class="mx-auto max-w-md text-4xl font-bold leading-tight tracking-tight text-violet-300 sm:text-5xl lg:mx-0 lg:max-w-xl lg:text-7xl animate-hero-hero-up"
+            class="mx-auto max-w-md text-4xl font-bold leading-tight tracking-tight text-violet-400 sm:text-5xl lg:mx-0 lg:max-w-xl lg:text-7xl animate-hero-up"
           >
             Your Characters
             <span
@@ -65,7 +65,7 @@ onUnmounted(() => {
 
           <!-- Description -->
           <p
-            class="animate-hero-description-up mx-auto mt-8 max-w-md text-base leading-7 text-zinc-500 sm:text-lg sm:leading-8 lg:mx-0"
+            class="animate-up mx-auto mt-8 max-w-md text-base leading-7 text-zinc-500 sm:text-lg sm:leading-8 lg:mx-0"
           >
             Bringing your ideas to life through custom anime portraits, original
             characters and webtoon illustrations made with passion and attention
@@ -74,9 +74,9 @@ onUnmounted(() => {
 
           <!-- Buttons -->
           <div 
-            class="animate-hero-scale mt-10 flex flex-col items-center gap-1 sm:gap-4 sm:flex-row sm:justify-center lg:justify-start"
+            class="animate-scale mt-10 flex flex-col items-center gap-1 sm:gap-4 sm:flex-row sm:justify-center lg:justify-start"
           >
-            <UiPrimaryButton label="Start Commission" />
+            <UiPrimaryButton label="Start Commission" href="/contact"/>
 
             <button
               class="rounded-xl border border-zinc-200 bg-white px-7 py-3.5 text-sm font-semibold text-zinc-700 transition duration-300 hover:-translate-y-1 hover:bg-zinc-50 active:translate-y-0"
@@ -87,22 +87,22 @@ onUnmounted(() => {
 
           <!-- Trust indicators -->
           <div
-            class="animate-hero-scale mt-12 flex flex-wrap justify-center gap-x-8 gap-y-6 text-center lg:justify-start lg:text-left"
+            class="animate-scale mt-12 flex flex-wrap justify-center gap-x-8 gap-y-6 text-center lg:justify-start lg:text-left"
           >
             <div>
-              <strong class="block text-lg font-bold "
+              <strong class="block text-lg font-bold text-zinc-900"
                 >◉ 100+</strong
               >
               <span class="text-sm text-zinc-500">Custom artworks</span>
             </div>
             <div>
-              <strong class="block text-lg font-bold "
+              <strong class="block text-lg font-bold text-zinc-900"
                 >◉ Original</strong
               >
               <span class="text-sm text-zinc-500">Webtoon stories</span>
             </div>
             <div>
-              <strong class="block text-lg font-bold "
+              <strong class="block text-lg font-bold text-zinc-900"
                 >◉ High Quality</strong
               >
               <span class="text-sm text-zinc-500">Digital art</span>
@@ -111,7 +111,7 @@ onUnmounted(() => {
 
           <!-- Social links -->
           <div
-            class="animate-hero-description-up mt-10 flex items-center justify-center gap-5 lg:justify-start"
+            class="animate-up mt-10 flex items-center justify-center gap-5 lg:justify-start"
           >
             <a
               href="https://www.instagram.com/"
@@ -141,7 +141,7 @@ onUnmounted(() => {
         </div>
 
         <!-- RIGHT SIDE - Artwork -->
-        <div class="animate-hero-scale relative flex h-full items-center justify-center">
+        <div class="animate-scale relative flex h-full items-center justify-center">
           <!-- glows ... -->
 
           <div
@@ -226,5 +226,6 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
+
   </section>
 </template>
