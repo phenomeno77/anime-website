@@ -1,5 +1,5 @@
 <template>
-  <section class="py-32">
+  <section class="py-20 lg:py-32">
 
     <div class="container-custom text-center">
 

@@ -3,6 +3,8 @@ const artworks = usePortfolioArtworks();
 </script>
 
 <template>
+    <section class="relative py-20 lg:py-32">
+
   <SectionsArtworkGallerySection
     :artworks="artworks"
     eyebrow="Full Archive"
@@ -10,4 +12,5 @@ const artworks = usePortfolioArtworks();
     description="Every commissioned piece, original character and webtoon panel and more in one place."
     :show-cta="false"
   />
+  </section>
 </template>
