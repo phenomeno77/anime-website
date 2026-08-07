@@ -90,22 +90,22 @@ onUnmounted(() => {
             class="animate-hero-scale mt-12 flex flex-wrap justify-center gap-x-8 gap-y-6 text-center lg:justify-start lg:text-left"
           >
             <div>
-              <strong class="block text-lg font-bold text-zinc-100"
+              <strong class="block text-lg font-bold "
                 >◉ 100+</strong
               >
-              <span class="text-sm text-zinc-300">Custom artworks</span>
+              <span class="text-sm text-zinc-500">Custom artworks</span>
             </div>
             <div>
-              <strong class="block text-lg font-bold text-zinc-100"
+              <strong class="block text-lg font-bold "
                 >◉ Original</strong
               >
-              <span class="text-sm text-zinc-300">Webtoon stories</span>
+              <span class="text-sm text-zinc-500">Webtoon stories</span>
             </div>
             <div>
-              <strong class="block text-lg font-bold text-zinc-100"
+              <strong class="block text-lg font-bold "
                 >◉ High Quality</strong
               >
-              <span class="text-sm text-zinc-300">Digital art</span>
+              <span class="text-sm text-zinc-500">Digital art</span>
             </div>
           </div>
 

@@ -23,13 +23,12 @@ const scrollToGallery = () => {
   }"
 >
   <SectionsHeroSection />
-
-  <button
-    class="cursor-pointer absolute bottom-20 left-1/2 z-50 -translate-x-1/2 rounded-full bg-white/80 p-4 shadow-xl backdrop-blur transition hover:scale-110"
-    @click="scrollToGallery"
-  >
-    ↓
-  </button>
+<button
+  class="hidden cursor-pointer absolute bottom-8 left-1/2 z-50 -translate-x-1/2 rounded-full bg-white/80 p-4 shadow-xl backdrop-blur transition hover:scale-110 lg:block"
+  @click="scrollToGallery"
+>
+  ↓
+</button>
 </div>
 
     
