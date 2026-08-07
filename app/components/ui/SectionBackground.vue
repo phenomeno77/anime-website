@@ -16,24 +16,19 @@ withDefaults(
     class="relative overflow-hidden"
     :class="{
       'bg-transparent': variant === 'default',
-
       'bg-gradient-to-b from-violet-50/80 via-white to-white':
         variant === 'lavender',
-
       'bg-gradient-to-b from-pink-50/80 via-white to-white': variant === 'rose',
-
       'bg-gradient-to-b from-sky-50/80 via-white to-white': variant === 'sky',
-
       'bg-gradient-to-b from-amber-50/60 via-white to-white':
         variant === 'cream',
-
       'bg-aurora': variant === 'aurora',
     }"
   >
-    <!-- subtle light -->
+    <!-- Dot grid — always rendered above the section's own background -->
     <div
-      v-if="variant === 'aurora'"
-      class="pointer-events-none absolute inset-0"
+      class="dot-grid pointer-events-none absolute inset-0"
+      aria-hidden="true"
     />
 
     <div class="relative">
@@ -56,5 +51,25 @@ withDefaults(
       transparent 40%
     ),
     linear-gradient(to bottom, #faf5ff, white);
+}
+
+.dot-grid {
+  background-image: radial-gradient(
+    circle,
+    var(--color-violet-300, #c4b5fd) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 24px 24px;
+  opacity: 0.5;
+  mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    black 60%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    black 60%,
+    transparent 100%
+  );
 }
 </style>
