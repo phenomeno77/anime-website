@@ -79,7 +79,7 @@ const stats = [
         <div class="animate-up text-center lg:text-left">
           <!-- Heading -->
           <h1
-            class="mx-auto max-w-md text-4xl font-bold leading-tight tracking-tight text-violet-400 sm:text-5xl lg:mx-0 lg:max-w-xl lg:text-7xl"
+            class="mx-auto max-w-md text-4xl font-bold leading-tight tracking-tight text-zinc-700 sm:text-5xl lg:mx-0 lg:max-w-xl lg:text-7xl"
           >
             Your Characters
             <span
@@ -115,7 +115,7 @@ const stats = [
 
           <!-- Trust indicators -->
           <div
-            class="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-6 lg:justify-start"
+            class="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-6 sm:justify-center md:justify-start"
           >
             <template v-for="(stat, index) in stats" :key="stat.value">
               <div class="flex items-center gap-3">
@@ -135,11 +135,6 @@ const stats = [
                   <span class="text-sm text-zinc-500">{{ stat.label }}</span>
                 </div>
               </div>
-              <div
-                v-if="index < stats.length - 1"
-                class="mx-2 hidden h-10 w-px bg-zinc-200 sm:block"
-                aria-hidden="true"
-              />
             </template>
           </div>
 
@@ -166,7 +161,6 @@ const stats = [
               </div>
             </div>
 
-            <!-- Divider between eyebrow and icons -->
             <div
               class="hidden h-6 w-px bg-zinc-200 min-[470px]:block"
               aria-hidden="true"
@@ -174,35 +168,7 @@ const stats = [
 
             <!-- Social icons row -->
             <div class="flex items-center gap-4">
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                class="h-8 w-8 transition duration-300 hover:-translate-y-1"
-              >
-                <UiIconsIconInstagram class="h-full w-full" />
-              </a>
-
-              <a
-                href="https://www.tiktok.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="TikTok"
-                class="h-8 w-8 transition duration-300 hover:-translate-y-1"
-              >
-                <UiIconsIconTiktok class="h-full w-full" />
-              </a>
-
-              <a
-                href="https://www.webtoon.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WEBTOON"
-                class="h-8 w-8 transition duration-300 hover:-translate-y-1"
-              >
-                <UiIconsIconWebtoon class="h-full w-full" />
-              </a>
+              <SocialMedia />
             </div>
           </div>
         </div>

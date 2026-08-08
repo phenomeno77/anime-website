@@ -11,7 +11,7 @@ const addons = [
 </script>
 
 <template>
-  <section class="py-24">
+  <section class="py-12">
     <div class="container-custom">
       <h2 class="text-3xl font-semibold">Additional Options</h2>
 

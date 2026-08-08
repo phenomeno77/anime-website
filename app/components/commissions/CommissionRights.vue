@@ -32,7 +32,7 @@ const rights = [
 </script>
 
 <template>
-  <section class="py-24">
+  <section class="py-12">
     <div class="container-custom grid gap-8 lg:grid-cols-2">
       <article
         v-for="right in rights"
