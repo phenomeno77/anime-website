@@ -29,9 +29,9 @@ useSeoMeta({
         <NuxtPage />
       </main>
 
-      <UiSectionBackground variant="aurora">
+      <UiAmbientBackground>
         <LayersAppFooter />
-      </UiSectionBackground>
+      </UiAmbientBackground>
     </div>
   </div>
 </template>

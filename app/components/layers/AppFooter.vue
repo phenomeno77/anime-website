@@ -5,9 +5,9 @@ const siteLinks = [
   { label: "Home", to: "/" },
   { label: "Portfolio", to: "/portfolio" },
   { label: "Commissions", to: "/commissions" },
-  { label: "Webtoon", to: "/webtoon" },
+  { label: "Webtoon", to: "/#webtoon" },
   { label: "About", to: "/about" },
-  { label: "Start Commission", to: "/contact" },
+  { label: "Start Commission", to: "/start-commission" },
 ];
 
 const legalLinks = [
@@ -26,23 +26,21 @@ const legalLinks = [
 
     <div class="container-custom py-12">
       <div
-        class="flex flex-col gap-10 text-center lg:flex-row lg:justify-between lg:text-left"
+        class="flex flex-col items-center gap-10 text-center lg:flex-row lg:items-start lg:justify-between lg:text-left"
       >
         <!-- Brand + copyright -->
-        <div class="max-w-xs lg:max-w-sm">
+        <div class="flex max-w-xs flex-col lg:max-w-sm">
           <span
             class="bg-gradient-to-r from-violet-500 to-pink-500 bg-clip-text text-lg font-bold text-transparent"
           >
             InQu
           </span>
-
           <p class="mt-3 text-sm leading-relaxed text-zinc-500">
             All artwork, illustrations, and images displayed on this website are
             protected by copyright and may not be copied, reproduced,
             distributed, modified, published, stored, or used in any form
             without prior written permission.
           </p>
-
           <p class="mt-4 text-sm text-zinc-400">
             © {{ year }} AnimeArt Marianelo. All rights reserved.
           </p>
@@ -88,7 +86,7 @@ const legalLinks = [
         <div>
           <span
             class="text-xs font-semibold uppercase tracking-wide text-zinc-400"
-            >Follow</span
+            >Social Media</span
           >
           <div
             class="mt-4 flex items-center justify-center gap-4 lg:justify-start"

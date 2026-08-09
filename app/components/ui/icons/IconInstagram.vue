@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { siInstagram } from "simple-icons/icons";
+import { siInstagram } from "simple-icons";
 </script>
 
 <template>

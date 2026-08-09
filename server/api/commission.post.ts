@@ -1,8 +1,6 @@
-// server/api/commission.post.ts
 import nodemailer from "nodemailer";
 import dns from "node:dns/promises";
 
-// Common fake test domains to block
 const FORBIDDEN_DOMAINS = [
   "example.com",
   "example.org",
@@ -10,8 +8,6 @@ const FORBIDDEN_DOMAINS = [
   "test.com",
   "localhost",
 ];
-
-// Common disposable email providers
 const DISPOSABLE_DOMAINS = [
   "10minutemail.com",
   "guerrillamail.com",
@@ -23,7 +19,6 @@ const DISPOSABLE_DOMAINS = [
 async function isValidEmail(
   email: string,
 ): Promise<{ valid: boolean; reason?: string }> {
-  // 1. Strict Regex Syntax Validation
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!emailRegex.test(email)) {
     return { valid: false, reason: "Invalid email format." };
@@ -36,7 +31,6 @@ async function isValidEmail(
     return { valid: false, reason: "Invalid email domain." };
   }
 
-  // 2. Block Known Test / Fake Domains
   if (FORBIDDEN_DOMAINS.includes(domain)) {
     return {
       valid: false,
@@ -44,7 +38,6 @@ async function isValidEmail(
     };
   }
 
-  // 3. Block Disposable / Temporary Email Services
   if (DISPOSABLE_DOMAINS.includes(domain)) {
     return {
       valid: false,
@@ -52,7 +45,6 @@ async function isValidEmail(
     };
   }
 
-  // 4. DNS MX Record Lookup (Checks if domain actually receives email)
   try {
     const mxRecords = await dns.resolveMx(domain);
     if (!mxRecords || mxRecords.length === 0) {
@@ -61,8 +53,7 @@ async function isValidEmail(
         reason: "The email domain does not have valid mail servers.",
       };
     }
-  } catch (error) {
-    // DNS resolution failed (domain doesn't exist)
+  } catch {
     return {
       valid: false,
       reason: `Domain "${domain}" does not exist or cannot receive emails.`,
@@ -72,19 +63,44 @@ async function isValidEmail(
   return { valid: true };
 }
 
+// Human-readable labels for the email body
+const COMMISSION_TYPE_LABELS: Record<string, string> = {
+  "bust-up": "Bust-Up",
+  "half-body": "Half-Body",
+  "full-body": "Full-Body",
+  "character-sheet": "Character Sheet",
+  other: "Other",
+};
+
+const LICENSE_TYPE_LABELS: Record<string, string> = {
+  personal: "Personal Use",
+  commercial: "Commercial Use (extra fee)",
+};
+
+const PRIORITY_LABELS: Record<string, string> = {
+  yes: "Yes — Priority Slot (extra fee)",
+  no: "No",
+};
+
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  const { name, email, message, website, formStartTime } = body;
+  const {
+    name,
+    email,
+    message,
+    website,
+    formStartTime,
+    commissionType,
+    licenseType,
+    priority,
+  } = body;
 
   // 1. HONEYPOT CHECK
-  // If 'website' has a value, it's a bot (real users can't see or fill this field)
   if (website) {
-    // Return a fake 200 response so the bot assumes success and gives up
     return { success: true, message: "Commission request sent!" };
   }
 
   // 2. TIME-BASED BOT CHECK
-  // Reject submissions filled out faster than 3 seconds
   if (formStartTime && Date.now() - formStartTime < 3000) {
     throw createError({
       statusCode: 422,
@@ -92,48 +108,62 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  // 3. Validate required fields
-  if (!name || !email || !message) {
+  // 3. Validate required fields — commissionType is now required too
+  if (
+    !name ||
+    !email ||
+    !message ||
+    !commissionType ||
+    !licenseType ||
+    !priority
+  ) {
     throw createError({
       statusCode: 400,
-      statusMessage: "Please fill out all fields.",
+      statusMessage: "Please fill out all required fields.",
     });
   }
 
-  // 4. Perform Email Validation
+  // 4. Email validation
   const emailCheck = await isValidEmail(email);
   if (!emailCheck.valid) {
-    throw createError({
-      statusCode: 422, // Unprocessable Entity
-      statusMessage: emailCheck.reason,
-    });
+    throw createError({ statusCode: 422, statusMessage: emailCheck.reason });
   }
 
-  // 5. Configure Transporter using environment runtimeConfig
+  // 5. Transporter
   const config = useRuntimeConfig();
-
   const transporter = nodemailer.createTransport({
     host: config.mailHost,
     port: Number(config.mailPort),
-    secure: Number(config.mailPort) === 465, // true for port 465, false for 587
-    auth: {
-      user: config.mailUser,
-      pass: config.mailPass,
-    },
+    secure: Number(config.mailPort) === 465,
+    auth: { user: config.mailUser, pass: config.mailPass },
   });
 
-  // 6. Send Email
+  const commissionTypeLabel =
+    COMMISSION_TYPE_LABELS[commissionType] ?? commissionType ?? "Not specified";
+  const licenseTypeLabel = LICENSE_TYPE_LABELS[licenseType] ?? "Not specified";
+  const priorityLabel = PRIORITY_LABELS[priority] ?? "Not specified";
+
   try {
     await transporter.sendMail({
-      from: `"${name}" <${config.mailUser}>`, // Your authenticated email address
-      replyTo: email, // Direct replies go straight to the customer
-      to: config.mailTo || config.mailUser, // Receives the commission notification
+      from: `"${name}" <${config.mailUser}>`,
+      replyTo: email,
+      to: config.mailTo || config.mailUser,
       subject: `🎨 New Commission Request from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+      text: `Name: ${name}
+Email: ${email}
+Commission Type: ${commissionTypeLabel}
+License Type: ${licenseTypeLabel}
+Priority Slot: ${priorityLabel}
+
+Message:
+${message}`,
       html: `
         <h2>New Commission Request</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+        <p><strong>Commission Type:</strong> ${commissionTypeLabel}</p>
+        <p><strong>License Type:</strong> ${licenseTypeLabel}</p>
+        <p><strong>Priority Slot:</strong> ${priorityLabel}</p>
         <h3>Commission Description:</h3>
         <p style="white-space: pre-wrap; background: #f4f4f4; padding: 12px; border-radius: 6px;">${message}</p>
       `,

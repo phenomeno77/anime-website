@@ -103,7 +103,10 @@ const stats = [
           <div
             class="animate-scale mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
           >
-            <UiPrimaryButton label="Start Commission" href="/contact" />
+            <UiPrimaryButton
+              label="Start Commission"
+              href="/start-commission"
+            />
 
             <NuxtLink
               to="/portfolio"

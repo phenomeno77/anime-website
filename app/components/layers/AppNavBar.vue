@@ -18,10 +18,10 @@ const links = [
   },
   {
     label: "Webtoon",
-    to: "/webtoon",
+    to: "/#webtoon",
   },
   {
-    label: "About",
+    label: "About Me",
     to: "/about",
   },
 ];
@@ -66,7 +66,7 @@ const links = [
       <!-- CTA -->
 
       <div class="hidden lg:block">
-        <UiPrimaryButton label="Commission" href="/contact" />
+        <UiPrimaryButton label="Commission" href="/start-commission" />
       </div>
 
       <!-- Mobile button -->
@@ -96,7 +96,7 @@ const links = [
           {{ link.label }}
         </NuxtLink>
 
-        <UiPrimaryButton label="Start Commission" href="/contact" />
+        <UiPrimaryButton label="Start Commission" href="/start-commission" />
       </div>
     </div>
   </header>

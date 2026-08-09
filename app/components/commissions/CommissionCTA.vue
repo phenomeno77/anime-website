@@ -11,7 +11,7 @@
       <UiPrimaryButton
         class="mt-10"
         label="Request a Commission"
-        href="/contact"
+        href="/start-commission"
       />
     </div>
   </section>

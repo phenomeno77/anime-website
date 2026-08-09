@@ -2,27 +2,20 @@
 const faq = [
   {
     question: "Are the listed prices final?",
-
     answer:
       "Prices may change depending on complexity, additional details, and project requirements.",
   },
-
   {
     question: "How many revisions are included?",
-
     answer:
       "A maximum of 3 major revisions are included unless changes are caused by the artist. Additional revisions may require extra fees.",
   },
-
   {
     question: "Can I request a custom commission?",
-
     answer: "Yes. Custom orders are available depending on the project.",
   },
-
   {
     question: "How long does delivery take?",
-
     answer:
       "Turnaround depends on the commission type and starts after sketch approval.",
   },
@@ -33,20 +26,48 @@ const faq = [
   <section class="py-12">
     <div class="container-custom">
       <h2 class="text-3xl font-semibold">Frequently Asked Questions</h2>
+      <p class="mt-3 text-neutral-500">
+        Answers to the most common questions before you commission.
+      </p>
 
-      <div class="mt-10 space-y-8">
-        <article v-for="item in faq" :key="item.question">
-          <h3 class="font-semibold">
-            {{ item.question }}
-          </h3>
-
-          <p class="mt-2 text-neutral-600">
-            {{ item.answer }}
-          </p>
-        </article>
-      </div>
+      <Accordion class="faq-accordion mt-4">
+        <AccordionPanel
+          v-for="(item, index) in faq"
+          :key="item.question"
+          :value="index"
+        >
+          <AccordionHeader>{{ item.question }}</AccordionHeader>
+          <AccordionContent>
+            <p>{{ item.answer }}</p>
+          </AccordionContent>
+        </AccordionPanel>
+      </Accordion>
     </div>
   </section>
 </template>
 
-<style></style>
+<style scoped>
+.faq-accordion :deep(.p-accordionpanel) {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.faq-accordion :deep(.p-accordionheader) {
+  font-weight: 600;
+  color: #18181b; /* zinc-900 */
+  padding: 1.25rem 1.5rem;
+}
+
+.faq-accordion :deep(.p-accordioncontent-content) {
+  padding: 0 1.5rem 1.25rem;
+  color: #52525b; /* neutral-600 */
+}
+
+.faq-accordion :deep(.p-accordionheader:hover) {
+  color: #7c3aed; /* violet-600 */
+}
+</style>

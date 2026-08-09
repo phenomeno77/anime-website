@@ -9,27 +9,20 @@ const artworks = useHomepageArtworks();
 
     <!-- Section Artwork  -->
     <SectionsArtworkGallerySection id="artwork-gallery" :artworks="artworks" />
+
     <!-- Section Commission steps -->
-    <!-- Backgrounds available | "default"
-  | "lavender"
-  | "rose"
-  | "sky"
-  | "cream"
-  | "aurora"-->
     <UiSectionBackground variant="aurora">
       <SectionsCommissionSection />
     </UiSectionBackground>
 
-    <!-- <HomePricingSection />
+    <!-- Section Webtoon -->
+    <UiSectionBackground variant="lavender">
+      <SectionsWebtoonSection />
+    </UiSectionBackground>
 
-    <HomeWebtoonSection />
-
-    <HomeAboutSection />
-
-    <HomeTestimonialsSection />
-
-    <HomeFAQSection />
-
-    <HomeCTASection />  -->
+    <!-- Section About me -->
+    <UiSectionBackground variant="rose">
+      <SectionsAboutTeaserSection />
+    </UiSectionBackground>
   </div>
 </template>

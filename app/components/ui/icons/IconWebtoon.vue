@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { siWebtoon } from "simple-icons/icons";
+import { siWebtoon } from "simple-icons";
 </script>
 
 <template>

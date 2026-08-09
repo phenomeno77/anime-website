@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { siTiktok } from "simple-icons";
+import { siDiscord } from "simple-icons";
 </script>
 
 <template>
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path :d="siTiktok.path" :fill="`#${siTiktok.hex}`" />
+    <path :d="siDiscord.path" :fill="`#${siDiscord.hex}`" />
   </svg>
 </template>
