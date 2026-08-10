@@ -19,7 +19,7 @@ defineProps<{
 
       <div
         v-if="!isLast"
-        class="mt-3 h-full w-px bg-gradient-to-b from-pink-200 via-zinc-200 to-transparent"
+        class="mt-3 h-full w-px bg-gradient-to-b from-pink-400 via-zinc-400 to-transparent"
       />
     </div>
 
