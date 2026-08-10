@@ -16,6 +16,12 @@ useSeoMeta({
   twitterImage:
     "https://manga-umber-rho.vercel.app/artwork-gallery/artworks-home/003.webp",
 });
+
+// useHead({
+//   htmlAttrs: {
+//     class: "light",
+//   },
+// });
 </script>
 
 <template>
