@@ -10,6 +10,9 @@ const props = withDefaults(
     showCta?: boolean;
     ctaLabel?: string;
     ctaTo?: string;
+    enableLoadMore?: boolean;
+    initialCount?: number;
+    loadMoreStep?: number;
   }>(),
   {
     eyebrow: "Selected Work",
@@ -19,6 +22,9 @@ const props = withDefaults(
     showCta: true,
     ctaLabel: "View Full Portfolio",
     ctaTo: "/portfolio",
+    enableLoadMore: false,
+    initialCount: 7,
+    loadMoreStep: 7,
   },
 );
 
@@ -29,6 +35,32 @@ const sizeClasses: Record<Artwork["size"], string> = {
   normal: "",
 };
 
+const visibleCount = ref(
+  props.enableLoadMore ? props.initialCount : props.artworks.length,
+);
+const visibleArtworks = computed(() =>
+  props.artworks.slice(0, visibleCount.value),
+);
+const hasMore = computed(
+  () => props.enableLoadMore && visibleCount.value < props.artworks.length,
+);
+
+const isLoadingMore = ref(false);
+
+async function loadMore() {
+  if (isLoadingMore.value) return;
+
+  isLoadingMore.value = true;
+
+  // Small artificial delay so the loading state is actually perceptible —
+  // this isn't a real fetch, just revealing already-loaded data, but an
+  // instant reveal reads as broken/flickery rather than intentional.
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  visibleCount.value += props.loadMoreStep;
+  isLoadingMore.value = false;
+}
+
 const responsiveOptions = [
   { breakpoint: "768px", numVisible: 4 },
   { breakpoint: "560px", numVisible: 3 },
@@ -37,8 +69,10 @@ const responsiveOptions = [
 const lightboxOpen = ref(false);
 const activeIndex = ref(0);
 
-function openLightbox(artwork: any) {
-  activeIndex.value = props.artworks.findIndex((a) => a.id === artwork.id);
+function openLightbox(artwork: Artwork) {
+  activeIndex.value = visibleArtworks.value.findIndex(
+    (a) => a.id === artwork.id,
+  );
   lightboxOpen.value = true;
 }
 
@@ -58,36 +92,42 @@ const reveal = useReveal();
         :description="description"
         class="animate-drop"
       />
+
       <div
         class="mt-16 grid grid-flow-dense grid-cols-2 gap-1 auto-rows-[160px] sm:grid-cols-3 sm:auto-rows-[200px] sm:gap-3 lg:grid-cols-4 lg:auto-rows-[240px] lg:gap-4"
       >
         <UiArtworkCard
-          v-for="artwork in artworks"
-          class="animate-scale"
+          v-for="artwork in visibleArtworks"
           :key="artwork.id"
+          class="animate-scale"
           :artwork="artwork"
           :span-class="sizeClasses[artwork.size]"
           @select="openLightbox"
         />
       </div>
 
-      <div v-if="showCta" class="mt-14 flex justify-center">
+      <!-- Load more — Portfolio only -->
+      <div v-if="hasMore" class="mt-10 flex justify-center">
+        <UiPrimaryButton
+          label="Load More"
+          :loading="isLoadingMore"
+          :loading-label="'Loading...'"
+          :disabled="isLoadingMore"
+          @click="loadMore"
+        />
+      </div>
+
+      <div v-if="showCta" class="mt-10 flex justify-center">
         <UiPrimaryButton :label="ctaLabel" :href="ctaTo" />
-        <!-- <NuxtLink
-          :to="ctaTo"
-          class="rounded-xl border border-zinc-200 bg-white px-7 py-3.5 text-sm font-semibold text-zinc-700 transition duration-300 hover:-translate-y-1 hover:bg-zinc-50 active:translate-y-0"
-        >
-          {{ ctaLabel }}
-        </NuxtLink> -->
       </div>
     </div>
 
     <Galleria
       v-model:visible="lightboxOpen"
       v-model:activeIndex="activeIndex"
-      :value="artworks"
+      :value="visibleArtworks"
       :responsive-options="responsiveOptions"
-      :num-visible="5"
+      :num-visible="6"
       circular
       :full-screen="true"
       :show-item-navigators="false"

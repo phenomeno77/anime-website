@@ -61,23 +61,22 @@ const wontDraw = [
       >
         <!-- Steps -->
         <div class="relative">
+          <!-- Continuous connecting line, behind all badges -->
+          <div
+            class="absolute left-[22px] top-[22px] bottom-[22px] w-px bg-gradient-to-b from-pink-300 via-zinc-300 to-transparent"
+            aria-hidden="true"
+          />
+
           <div
             v-for="(step, index) in processSteps"
             :key="step.number"
             class="relative flex gap-6 pb-10 last:pb-0"
           >
-            <!-- Badge + connecting line -->
-            <div class="flex flex-col items-center">
-              <div
-                class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border-2 border-violet-500 bg-white text-sm font-bold text-violet-600"
-              >
-                {{ step.number }}
-              </div>
-              <div
-                v-if="index < processSteps.length - 1"
-                class="mt-2 w-px flex-1 bg-gradient-to-b from-violet-200 to-transparent"
-                aria-hidden="true"
-              />
+            <!-- Badge -->
+            <div
+              class="relative z-10 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border-2 border-violet-500 bg-white text-sm font-bold text-violet-600"
+            >
+              {{ step.number }}
             </div>
 
             <!-- Content -->

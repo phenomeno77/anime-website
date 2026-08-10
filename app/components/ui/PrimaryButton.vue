@@ -5,6 +5,7 @@ const props = withDefaults(
     label: string;
     isExternal?: boolean;
     loading?: boolean;
+    loadingLabel?: string;
     disabled?: boolean;
     type?: "button" | "submit" | "reset";
   }>(),
@@ -13,6 +14,7 @@ const props = withDefaults(
     loading: false,
     disabled: false,
     type: "button",
+    loadingLabel: "Sending...",
   },
 );
 
@@ -82,6 +84,6 @@ const buttonClasses = `
         d="M4 12a8 8 0 0 1 8-8V0C5.4 0 0 5.4 0 12h4Z"
       />
     </svg>
-    {{ loading ? "Sending..." : label }}
+    {{ loading ? loadingLabel : label }}
   </button>
 </template>

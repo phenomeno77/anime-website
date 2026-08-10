@@ -328,13 +328,15 @@ const startCommission = async () => {
             {{ statusMessage }}
           </div>
 
-          <UiPrimaryButton
-            label="Start a Commission"
-            type="submit"
-            :loading="isSubmitting"
-            :disabled="isSubmitting"
-            class="w-full justify-center"
-          />
+          <div class="flex justify-center sm:justify-end">
+            <UiPrimaryButton
+              label="Start a Commission"
+              type="submit"
+              :loading="isSubmitting"
+              :disabled="isSubmitting"
+              class="w-full justify-center sm:w-auto"
+            />
+          </div>
         </form>
       </div>
     </div>
