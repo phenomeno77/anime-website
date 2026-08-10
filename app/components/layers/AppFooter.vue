@@ -26,7 +26,7 @@ const legalLinks = [
 
     <div class="container-custom py-12">
       <div
-        class="flex flex-col items-center gap-10 text-center lg:flex-row lg:items-start lg:justify-between lg:text-left"
+        class="flex flex-col items-start gap-10 text-left lg:flex-row items-start lg:justify-between"
       >
         <!-- Brand + copyright -->
         <div class="flex max-w-xs flex-col lg:max-w-sm">
@@ -52,7 +52,7 @@ const legalLinks = [
             class="text-xs font-semibold uppercase tracking-wide text-zinc-400"
             >Explore</span
           >
-          <div class="mt-4 flex flex-col items-center gap-3 lg:items-start">
+          <div class="mt-4 flex flex-col gap-3 items-start">
             <NuxtLink
               v-for="link in siteLinks"
               :key="link.to"
@@ -70,7 +70,7 @@ const legalLinks = [
             class="text-xs font-semibold uppercase tracking-wide text-zinc-400"
             >Legal</span
           >
-          <div class="mt-4 flex flex-col items-center gap-3 lg:items-start">
+          <div class="mt-4 flex flex-col gap-3 items-start">
             <NuxtLink
               v-for="link in legalLinks"
               :key="link.to"
