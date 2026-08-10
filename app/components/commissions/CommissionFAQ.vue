@@ -49,25 +49,16 @@ const faq = [
 <style scoped>
 .faq-accordion :deep(.p-accordionpanel) {
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(8px);
   overflow: hidden;
   margin-bottom: 0.75rem;
 }
 
 .faq-accordion :deep(.p-accordionheader) {
   font-weight: 600;
-  color: #18181b; /* zinc-900 */
   padding: 1.25rem 1.5rem;
 }
 
 .faq-accordion :deep(.p-accordioncontent-content) {
   padding: 0 1.5rem 1.25rem;
-  color: #52525b; /* neutral-600 */
-}
-
-.faq-accordion :deep(.p-accordionheader:hover) {
-  color: #7c3aed; /* violet-600 */
 }
 </style>
