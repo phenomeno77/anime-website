@@ -36,123 +36,205 @@ const commercialUse = [
 </script>
 
 <template>
-  <section class="py-20 lg:py-28">
-    <div class="container-custom max-w-3xl leading-relaxed text-zinc-600">
-      <h1 class="mb-3 text-3xl font-bold text-zinc-900 sm:text-4xl">
+  <!-- Hero — base tone -->
+  <section class="relative">
+    <div
+      class="container-custom flex min-h-[42vh] flex-col justify-center text-center py-20 lg:min-h-[48vh] lg:py-28"
+    >
+      <p class="text-sm font-bold uppercase tracking-[0.22em] text-accent-2">
+        Commission Guidelines
+      </p>
+
+      <h1
+        class="mt-5 font-display text-4xl font-bold tracking-tight text-text sm:text-5xl md:text-6xl"
+      >
         Terms of Service
       </h1>
-      <p class="mb-10 text-sm text-zinc-400">
+      <p class="mx-auto mt-8 max-w-2xl text-lg text-muted">
         Please read these terms carefully before requesting a commission. By
         commissioning artwork, you agree to the terms outlined below.
       </p>
-
-      <!-- General -->
-      <div class="rounded-2xl border border-zinc-200 bg-zinc-50/50 p-6 sm:p-8">
-        <h2 class="mb-4 text-lg font-semibold text-zinc-900">General</h2>
-        <ul class="space-y-3">
-          <li
-            v-for="item in generalTerms"
-            :key="item"
-            class="flex items-start gap-3"
-          >
-            <span
-              class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-violet-400"
-            />
-            <span>{{ item }}</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Payment -->
-      <div
-        class="mt-6 rounded-2xl border border-zinc-200 bg-zinc-50/50 p-6 sm:p-8"
-      >
-        <h2 class="mb-4 text-lg font-semibold text-zinc-900">Payment</h2>
-        <ul class="space-y-3">
-          <li
-            v-for="item in paymentTerms"
-            :key="item"
-            class="flex items-start gap-3"
-          >
-            <span
-              class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-violet-400"
-            />
-            <span>{{ item }}</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Process -->
-      <div
-        class="mt-6 rounded-2xl border border-zinc-200 bg-zinc-50/50 p-6 sm:p-8"
-      >
-        <h2 class="mb-4 text-lg font-semibold text-zinc-900">Process</h2>
-        <ul class="space-y-3">
-          <li
-            v-for="item in processTerms"
-            :key="item"
-            class="flex items-start gap-3"
-          >
-            <span
-              class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-violet-400"
-            />
-            <span>{{ item }}</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Usage Rights -->
-      <h2 class="mb-4 mt-10 text-xl font-semibold text-zinc-900">
-        Usage Rights
-      </h2>
-
-      <div class="grid gap-4 sm:grid-cols-2">
-        <div class="rounded-2xl border border-violet-100 bg-violet-50/50 p-6">
-          <span class="text-sm font-semibold text-violet-600"
-            >Personal Use</span
-          >
-          <ul class="mt-4 space-y-2.5">
-            <li
-              v-for="item in personalUse"
-              :key="item"
-              class="flex items-start gap-2 text-sm text-zinc-700"
-            >
-              <span
-                class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-violet-400"
-              />
-              {{ item }}
-            </li>
-          </ul>
-        </div>
-
-        <div class="rounded-2xl border border-pink-100 bg-pink-50/50 p-6">
-          <span class="text-sm font-semibold text-pink-600"
-            >Commercial Use</span
-          >
-          <ul class="mt-4 space-y-2.5">
-            <li
-              v-for="item in commercialUse"
-              :key="item"
-              class="flex items-start gap-2 text-sm text-zinc-700"
-            >
-              <span
-                class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-pink-400"
-              />
-              {{ item }}
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="mt-10 text-sm text-zinc-400">
-        Questions about these terms? Contact
-        <a
-          href="mailto:email@example.com"
-          class="font-medium text-violet-600 hover:underline"
-        >
-          email@example.com </a
-        >.
-      </p>
     </div>
   </section>
+
+  <!-- Terms — raised tone -->
+  <UiSectionBackground tone="raised" divider>
+    <section class="relative">
+      <div class="container-custom py-16 lg:py-32">
+        <div class="mx-auto max-w-4xl">
+          <!-- General -->
+          <div
+            class="rounded-2xl border border-border bg-surface p-6 shadow-[0_24px_60px_-40px_rgba(157,92,255,0.35)] sm:p-8 lg:p-10"
+          >
+            <div>
+              <h2 class="font-display text-xl font-bold text-text">General</h2>
+
+              <ul class="mt-5 space-y-4">
+                <li
+                  v-for="item in generalTerms"
+                  :key="item"
+                  class="flex items-start gap-3 leading-7 text-muted"
+                >
+                  <span
+                    class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-2"
+                  />
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Payment -->
+            <div class="mt-10 border-t border-border pt-10">
+              <h2 class="font-display text-xl font-bold text-text">Payment</h2>
+
+              <ul class="mt-5 space-y-4">
+                <li
+                  v-for="item in paymentTerms"
+                  :key="item"
+                  class="flex items-start gap-3 leading-7 text-muted"
+                >
+                  <span
+                    class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-2"
+                  />
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Process -->
+            <div class="mt-10 border-t border-border pt-10">
+              <h2 class="font-display text-xl font-bold text-text">Process</h2>
+
+              <ul class="mt-5 space-y-4">
+                <li
+                  v-for="item in processTerms"
+                  :key="item"
+                  class="flex items-start gap-3 leading-7 text-muted"
+                >
+                  <span
+                    class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-2"
+                  />
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Usage Rights -->
+          <div class="mt-16">
+            <div>
+              <p
+                class="text-sm font-bold uppercase tracking-[0.22em] text-accent-2"
+              >
+                Licensing
+              </p>
+
+              <h2
+                class="mt-3 font-display text-2xl font-bold tracking-tight text-text sm:text-3xl"
+              >
+                Usage Rights
+              </h2>
+
+              <p class="mt-3 max-w-2xl leading-7 text-muted">
+                Personal and commercial commissions come with different usage
+                permissions. Please make sure you choose the appropriate option
+                for your intended use.
+              </p>
+            </div>
+
+            <div class="mt-8 grid gap-5 sm:grid-cols-2">
+              <!-- Personal -->
+              <div
+                class="rounded-2xl border border-accent-2/20 bg-accent-2/[0.06] p-6 sm:p-7"
+              >
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-8 w-8 items-center justify-center rounded-full bg-accent-2/10 text-accent-2"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="h-4 w-4 fill-current"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"
+                      />
+                    </svg>
+                  </span>
+
+                  <span class="font-display text-lg font-bold text-accent-2">
+                    Personal Use
+                  </span>
+                </div>
+
+                <ul class="mt-5 space-y-3">
+                  <li
+                    v-for="item in personalUse"
+                    :key="item"
+                    class="flex items-start gap-3 text-sm leading-6 text-muted"
+                  >
+                    <span
+                      class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-2"
+                    />
+                    <span>{{ item }}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Commercial -->
+              <div
+                class="rounded-2xl border border-border bg-surface p-6 sm:p-7"
+              >
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-8 w-8 items-center justify-center rounded-full bg-accent-2/10 text-accent-2"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="h-4 w-4 fill-current"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4 4h16v16H4V4Zm3 3v10h10V7H7Zm2 2h6v2H9V9Zm0 4h6v2H9v-2Z"
+                      />
+                    </svg>
+                  </span>
+
+                  <span class="font-display text-lg font-bold text-text">
+                    Commercial Use
+                  </span>
+                </div>
+
+                <ul class="mt-5 space-y-3">
+                  <li
+                    v-for="item in commercialUse"
+                    :key="item"
+                    class="flex items-start gap-3 text-sm leading-6 text-muted"
+                  >
+                    <span
+                      class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-2"
+                    />
+                    <span>{{ item }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="mt-16 border-t border-border pt-8 text-center">
+            <p class="text-sm leading-6 text-muted">
+              Questions about these terms? Contact
+              <a
+                href="mailto:email@example.com"
+                class="font-medium text-accent-2 transition-colors hover:text-text hover:underline"
+              >
+                email@example.com </a
+              >.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </UiSectionBackground>
 </template>

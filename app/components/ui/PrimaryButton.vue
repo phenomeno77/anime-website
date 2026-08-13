@@ -19,27 +19,34 @@ const props = withDefaults(
 );
 
 const buttonClasses = `
+  group
+  relative
   inline-flex
   cursor-pointer
   items-center
   justify-center
   gap-2
-  rounded-xl
-  bg-violet-500
+  overflow-hidden
+  rounded-full
+  bg-gradient-to-br
+  from-accent-2
+  to-accent
   px-7
   py-3.5
   text-sm
   font-semibold
   text-white
-  shadow-lg
-  shadow-violet-500/20
-  transition
-  hover:-translate-y-1
-  hover:bg-violet-600
+  shadow-[0_8px_30px_-8px_var(--color-glow)]
+  transition-all
+  duration-300
+  ease-smooth
+  hover:-translate-y-0.5
+  hover:shadow-[0_14px_40px_-8px_var(--color-glow)]
   active:translate-y-0
   disabled:cursor-not-allowed
   disabled:opacity-60
   disabled:hover:translate-y-0
+  disabled:hover:shadow-[0_8px_30px_-8px_var(--color-glow)]
 `;
 </script>
 
@@ -51,11 +58,11 @@ const buttonClasses = `
     rel="noopener noreferrer"
     :class="buttonClasses"
   >
-    {{ label }}
+    <span class="relative z-10">{{ label }}</span>
   </a>
 
   <NuxtLink v-else-if="href" :to="href" :class="buttonClasses">
-    {{ label }}
+    <span class="relative z-10">{{ label }}</span>
   </NuxtLink>
 
   <button
@@ -66,7 +73,7 @@ const buttonClasses = `
   >
     <svg
       v-if="loading"
-      class="h-4 w-4 animate-spin"
+      class="relative z-10 h-4 w-4 animate-spin"
       viewBox="0 0 24 24"
       fill="none"
     >
@@ -84,6 +91,6 @@ const buttonClasses = `
         d="M4 12a8 8 0 0 1 8-8V0C5.4 0 0 5.4 0 12h4Z"
       />
     </svg>
-    {{ loading ? loadingLabel : label }}
+    <span class="relative z-10">{{ loading ? loadingLabel : label }}</span>
   </button>
 </template>

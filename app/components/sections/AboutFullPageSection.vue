@@ -26,26 +26,27 @@ const processSteps = [
 </script>
 
 <template>
-  <section class="py-20 lg:py-28">
-    <div class="container-custom">
+  <!-- Intro — base tone -->
+  <section class="relative">
+    <div class="container-custom py-20 lg:py-32">
       <div class="grid items-center gap-12 md:grid-cols-2 lg:gap-20">
         <div><UiArtistPortrait /></div>
 
         <div>
           <p
-            class="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-violet-500"
+            class="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-accent-2"
           >
             About the Artist
           </p>
 
           <h1
-            class="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl"
+            class="font-display text-4xl font-bold tracking-tight text-text sm:text-5xl"
           >
-            Hi, I'm InQu
+            Hi, I'm In<span class="text-accent-2">Qu</span>
           </h1>
 
           <div
-            class="prose prose-zinc mt-6 max-w-lg text-base leading-7 text-zinc-500 sm:text-lg sm:leading-8"
+            class="mt-6 max-w-lg space-y-4 text-base leading-7 text-muted sm:text-lg sm:leading-8"
           >
             <p>
               I've been drawing for as long as I can remember, but anime and
@@ -73,10 +74,10 @@ const processSteps = [
     </div>
   </section>
 
-  <!-- Process / How I Work -->
-  <UiSectionBackground variant="lavender">
-    <section class="py-20 lg:py-28">
-      <div class="container-custom">
+  <!-- Process / How I Work — raised tone -->
+  <UiSectionBackground tone="raised" divider>
+    <section class="relative">
+      <div class="container-custom py-20 lg:py-28">
         <UiSectionTitle
           eyebrow="Behind the Art"
           title="How I Work"
@@ -87,15 +88,17 @@ const processSteps = [
           <div
             v-for="(step, index) in processSteps"
             :key="step.title"
-            class="rounded-2xl border border-zinc-200 bg-white/70 p-6 text-center"
+            class="group rounded-2xl border border-border bg-surface p-6 text-center transition-all duration-500 ease-smooth hover:-translate-y-1 hover:border-white/[0.12] hover:shadow-[0_24px_50px_-24px_rgba(157,92,255,0.5)]"
           >
-            <span class="text-sm font-semibold text-violet-500">
+            <span class="font-display text-sm font-bold text-accent-2">
               {{ String(index + 1).padStart(2, "0") }}
             </span>
-            <h3 class="mt-2 text-lg font-bold text-zinc-900">
+            <h3
+              class="mt-2 font-display text-lg font-bold tracking-tight text-text"
+            >
               {{ step.title }}
             </h3>
-            <p class="mt-2 text-sm leading-relaxed text-zinc-500">
+            <p class="mt-2 text-sm leading-relaxed text-muted">
               {{ step.description }}
             </p>
           </div>
@@ -104,19 +107,26 @@ const processSteps = [
     </section>
   </UiSectionBackground>
 
-  <!-- Closing CTA -->
-  <section class="py-20 lg:py-28">
-    <div class="container-custom text-center">
-      <h2 class="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-        Want something drawn just for you?
-      </h2>
-      <p class="mx-auto mt-4 max-w-md text-base text-zinc-500">
-        I'd love to hear your idea — check out how commissions work and let's
-        get started.
-      </p>
-      <div class="mt-8">
-        <UiPrimaryButton label="View Commission Process" href="/commissions" />
+  <!-- Closing CTA — base tone -->
+  <UiSectionBackground tone="base" divider>
+    <section class="relative">
+      <div class="container-custom py-20 text-center lg:py-28">
+        <h2
+          class="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl"
+        >
+          Want something drawn just for you?
+        </h2>
+        <p class="mx-auto mt-4 max-w-md text-base text-muted">
+          I'd love to hear your idea — check out how commissions work and let's
+          get started.
+        </p>
+        <div class="mt-8">
+          <UiPrimaryButton
+            label="View Commission Process"
+            href="/commissions"
+          />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </UiSectionBackground>
 </template>

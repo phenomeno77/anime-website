@@ -6,28 +6,18 @@ useSeoMeta({
   ogTitle: "Anime & Digital Art Commissions",
   ogDescription:
     "Custom hand-painted anime PC glass panels and digital artwork crafted to order.",
-  // ogImage: "https://yourdomain.com/background-pages/1.webp",
   ogImage:
     "https://manga-umber-rho.vercel.app/artwork-gallery/artworks-home/003.webp",
-
   ogImageWidth: 1200,
   ogImageHeight: 630,
   twitterCard: "summary_large_image",
   twitterImage:
     "https://manga-umber-rho.vercel.app/artwork-gallery/artworks-home/003.webp",
 });
-
-// useHead({
-//   htmlAttrs: {
-//     class: "light",
-//   },
-// });
 </script>
 
 <template>
-  <div
-    class="relative min-h-screen overflow-x-hidden bg-[#FCFCFD] text-zinc-900"
-  >
+  <div class="relative min-h-screen overflow-x-hidden bg-bg text-text">
     <div class="relative z-10">
       <LayersAppNavBar />
 
@@ -35,9 +25,7 @@ useSeoMeta({
         <NuxtPage />
       </main>
 
-      <UiAmbientBackground>
-        <LayersAppFooter />
-      </UiAmbientBackground>
+      <LayersAppFooter />
     </div>
   </div>
 </template>

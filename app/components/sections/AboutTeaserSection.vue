@@ -2,37 +2,37 @@
 // EXAMPLE VALUES — replace with real content once your sister provides it
 const quickFacts = [
   { label: "Drawing since", value: "2016" },
-  { label: "Based in", value: "Vienna, Austria" },
+  { label: "Based in", value: "Austria" },
   { label: "Favorite medium", value: "Digital" },
 ];
 const reveal = useReveal();
 </script>
 
 <template>
-  <section class="py-20 lg:py-32">
+  <section class="relative">
     <div
-      class="container-custom"
+      class="container-custom py-20 lg:py-32"
       :ref="reveal.target"
       :class="[reveal.isVisible.value ? 'show-element' : 'hide-element']"
     >
       <div class="grid items-center gap-12 md:grid-cols-2 lg:gap-20">
-        <div class="order-2 md:order-1 animate-up">
+        <div class="order-2 animate-up md:order-1">
           <UiArtistPortrait />
         </div>
 
-        <div class="order-1 text-center md:order-2 md:text-left animate-drop">
+        <div class="order-1 animate-drop text-center md:order-2 md:text-left">
           <p
-            class="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-violet-500"
+            class="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-accent-2"
           >
             About the Artist
           </p>
           <h2
-            class="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl"
+            class="font-display text-4xl font-bold tracking-tight text-text sm:text-5xl"
           >
-            Hi, I'm InQu
+            Hi, I'm In<span class="text-accent-2">Qu</span>
           </h2>
           <p
-            class="mx-auto mt-6 max-w-lg text-base leading-7 text-zinc-500 sm:text-lg sm:leading-8 md:mx-0"
+            class="mx-auto mt-6 max-w-lg text-base leading-7 text-muted sm:text-lg sm:leading-8 md:mx-0"
           >
             I'm a digital illustrator with a soft spot for chaotic character
             design and anything a little too dramatic. When I'm not
@@ -45,7 +45,7 @@ const reveal = useReveal();
           </div>
 
           <div class="mt-10">
-            <UiPrimaryButton label="Learn more" href="/about"/>
+            <UiPrimaryButton label="Learn more" href="/about" />
           </div>
         </div>
       </div>

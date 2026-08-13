@@ -51,9 +51,9 @@ const reveal = useReveal();
 </script>
 
 <template>
-  <section class="relative py-20 lg:py-32">
+  <section class="relative">
     <div
-      class="container-custom"
+      class="container-custom py-20 lg:py-32"
       :ref="reveal.target"
       :class="[reveal.isVisible.value ? 'show-element' : 'hide-element']"
     >
@@ -68,7 +68,7 @@ const reveal = useReveal();
         <ProcessTimeline :steps="processSteps" />
       </div>
 
-      <div class="mt-20 grid gap-6 md:grid-cols-3 animate-scale">
+      <div class="mt-20 grid animate-scale gap-6 md:grid-cols-3">
         <ProcessInfoCard
           v-for="card in infoCards"
           :key="card.title"

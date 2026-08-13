@@ -7,7 +7,7 @@ defineProps<{
 
 <template>
   <div
-    class="flex flex-wrap gap-x-8 gap-y-6"
+    class="flex flex-wrap gap-x-10 gap-y-6"
     :class="
       align === 'left' ? 'justify-center md:justify-start' : 'justify-center'
     "
@@ -17,10 +17,12 @@ defineProps<{
       :key="fact.label"
       :class="align === 'left' ? 'text-center md:text-left' : 'text-center'"
     >
-      <strong class="block text-base font-bold text-zinc-900">{{
-        fact.value
-      }}</strong>
-      <span class="text-sm text-zinc-500">{{ fact.label }}</span>
+      <strong
+        class="block font-display text-2xl font-bold tracking-tight text-text"
+      >
+        {{ fact.value }}
+      </strong>
+      <span class="text-sm text-muted">{{ fact.label }}</span>
     </div>
   </div>
 </template>

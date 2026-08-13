@@ -15,15 +15,23 @@ const reveal = useReveal();
 </script>
 
 <template>
-  <section id="webtoon" class="py-20 lg:py-32">
+  <section id="webtoon" class="relative overflow-hidden">
+    <!-- Glow anchor — the one accent moment for this feature section -->
     <div
-      class="container-custom"
+      class="pointer-events-none absolute left-1/2 top-0 -z-10 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-glow/10 blur-3xl"
+      aria-hidden="true"
+    />
+
+    <div
+      class="container-custom py-20 lg:py-32"
       :ref="reveal.target"
       :class="[reveal.isVisible.value ? 'show-element' : 'hide-element']"
     >
       <!-- Banner -->
       <div class="mx-auto max-w-4xl animate-scale">
-        <div class="overflow-hidden rounded-[2rem] shadow-xl">
+        <div
+          class="overflow-hidden rounded-[2rem] border border-border shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8),0_0_60px_-20px_var(--color-glow)]"
+        >
           <NuxtImg
             src="/webtoon/webtoon.webp"
             alt="Nutcases webtoon banner — five characters and the series logo"
@@ -41,13 +49,13 @@ const reveal = useReveal();
       <!-- Content -->
       <div class="mx-auto mt-12 max-w-2xl text-center">
         <UiSectionTitle
-          eyebrow=" Currently Creating"
+          eyebrow="Currently Creating"
           title="Nutcases"
           description="by ORIMES KARIOKES"
           class="animate-drop"
         />
         <p
-          class="animate-up mx-auto mt-6 max-w-xl text-base leading-7 text-zinc-500 sm:text-lg sm:leading-8"
+          class="animate-up mx-auto mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg sm:leading-8"
         >
           Hi hi~ We're two besties who love writing and drawing, currently
           cooking up a webtoon about five chaotic dudes who solve weird cases,
@@ -64,14 +72,12 @@ const reveal = useReveal();
             :key="credit.role"
             class="flex items-center gap-2"
           >
-            <svg viewBox="0 0 24 24" class="h-4 w-4 fill-violet-500">
+            <svg viewBox="0 0 24 24" class="h-4 w-4 fill-accent-2">
               <path :d="credit.icon" />
             </svg>
-            <span class="text-sm text-zinc-600">
+            <span class="text-sm text-muted">
               {{ credit.role }}:
-              <strong class="font-semibold text-zinc-900">{{
-                credit.name
-              }}</strong>
+              <strong class="font-semibold text-text">{{ credit.name }}</strong>
             </span>
           </div>
         </div>

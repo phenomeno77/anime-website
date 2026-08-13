@@ -1,388 +1,140 @@
 @import "tailwindcss";
 
+@theme {
+  /* palette */
+  --color-bg:        #0B0A0F;
+  --color-surface:   #16131F;
+  --color-surface-2: #1E1A2B;
+  --color-border:    rgba(255, 255, 255, 0.07);
+  --color-text:      #F4F2F8;
+  --color-muted:     #A09CB0;
+  --color-accent:    #8B5CF6;
+  --color-accent-2:  #A855F7;
+  --color-glow:      #9D5CFF;
+
+  /* type */
+  --font-display: "Clash Display", sans-serif;
+  --font-sans:    "Satoshi", system-ui, sans-serif;
+
+  /* motion */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 /* =====================================================
-   Page Transitions
+   Page Transitions  (matches nuxt.config name: "page")
 ===================================================== */
-
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.35s ease;
+  transition: opacity 0.35s var(--ease-smooth), transform 0.35s var(--ease-smooth);
 }
-
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-}
-
+.page-enter-from { opacity: 0; transform: translateY(8px); }
+.page-leave-to   { opacity: 0; transform: translateY(-8px); }
 
 /* =====================================================
    Layout Utilities
 ===================================================== */
-
 @layer utilities {
-
   .container-custom {
     @apply mx-auto max-w-7xl px-6 lg:px-8;
   }
-
 }
-
 
 /* =====================================================
    Global
 ===================================================== */
-
-html {
-  scroll-behavior: smooth;
-}
-
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: "Outfit", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);   /* was "Outfit" */
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* grain overlay — kills banding on the dark background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
 /* =====================================================
-   Reveal System
-   Controls ONLY visibility/state
+   Reveal System — visibility state only
 ===================================================== */
-
-.hide-element {
-  opacity: 0;
-  visibility: hidden;
-}
-
-
-.show-element {
-  opacity: 1;
-  visibility: visible;
-}
-
+.hide-element { opacity: 0; visibility: hidden; }
+.show-element { opacity: 1; visibility: visible; }
 
 /* =====================================================
    Animation Library
-   Animations trigger only when parent is visible
 ===================================================== */
-
-
-/*
-  Initial animation state
-
-  Important:
-  Do NOT put animation here.
-  Otherwise it starts on page load.
-*/
-
 .animate-drop,
 .animate-up,
 .animate-scale,
-.animate-fade {
-  opacity: 0;
-}
+.animate-fade { opacity: 0; }
 
-
-
-/*
-  Drop from top
-
-  Usage:
-  <div class="animate-drop">
-*/
-
-.show-element .animate-drop {
-  animation: drop 0.7s ease-out both;
-}
-
-
-
-/*
-  Move upward
-
-  Usage:
-  <div class="animate-up">
-*/
-
-.show-element .animate-up {
-  animation: up 0.8s ease-out both;
-}
-
-
-
-/*
-  Scale entrance
-
-  Usage:
-  <div class="animate-scale">
-*/
-
-.show-element .animate-scale {
-  animation: scale 0.8s ease-out both;
-}
-
-
-
-/*
-  Soft fade
-
-  Usage:
-  <div class="animate-fade">
-*/
-
-.show-element .animate-fade {
-  animation: fade 0.8s ease-out both;
-}
-
-
+/* retuned to the demo's easing + a calmer distance/duration */
+.show-element .animate-drop  { animation: drop  0.6s var(--ease-smooth) both; }
+.show-element .animate-up    { animation: up    0.7s var(--ease-smooth) both; }
+.show-element .animate-scale { animation: scale 0.7s var(--ease-smooth) both; }
+.show-element .animate-fade  { animation: fade  0.7s var(--ease-smooth) both; }
 
 /* =====================================================
-   Animation Delay Helpers
+   Animation Delay Helpers  (stagger)
 ===================================================== */
-
-
-.delay-100 {
-  animation-delay: 0.1s !important;
-}
-
-
-.delay-200 {
-  animation-delay: 0.2s !important;
-}
-
-
-.delay-300 {
-  animation-delay: 0.3s !important;
-}
-
-
-.delay-400 {
-  animation-delay: 0.4s !important;
-}
-
-
+.delay-100 { animation-delay: 0.07s !important; }
+.delay-200 { animation-delay: 0.14s !important; }
+.delay-300 { animation-delay: 0.21s !important; }
+.delay-400 { animation-delay: 0.28s !important; }
 
 /* =====================================================
-   Reset animations when leaving viewport
+   Reset when leaving viewport
 ===================================================== */
-
-
 .hide-element .animate-drop,
 .hide-element .animate-up,
 .hide-element .animate-scale,
-.hide-element .animate-fade {
-
-  animation: none;
-
-  opacity: 0;
-
-}
-
-
+.hide-element .animate-fade { animation: none; opacity: 0; }
 
 /* =====================================================
-   Keyframes
+   Keyframes  (up-distance reduced 40→28 to match the demo)
 ===================================================== */
-
-
-@keyframes drop {
-
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-}
-
-
-
-@keyframes up {
-
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-}
-
-
-
-@keyframes scale {
-
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-}
-
-
-
-@keyframes fade {
-
-  from {
-    opacity: 0;
-  }
-
-
-  to {
-    opacity: 1;
-  }
-
-}
-
-
+@keyframes drop  { from { opacity: 0; transform: translateY(-28px); } to { opacity: 1; transform: none; } }
+@keyframes up    { from { opacity: 0; transform: translateY(28px);  } to { opacity: 1; transform: none; } }
+@keyframes scale { from { opacity: 0; transform: scale(0.94);       } to { opacity: 1; transform: scale(1); } }
+@keyframes fade  { from { opacity: 0; } to { opacity: 1; } }
 
 /* =====================================================
    Accessibility
 ===================================================== */
-
-
 @media (prefers-reduced-motion: reduce) {
-
-  *,
-  *::before,
-  *::after {
-
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
-
     animation-iteration-count: 1 !important;
-
     scroll-behavior: auto !important;
-
     transition-duration: 0.01ms !important;
-
   }
-
-
 }
 
-
-
 /* =====================================================
-   Mobile
+   Parallax  (unchanged, + a subtle dark overlay filled in)
 ===================================================== */
-
-
-@media (max-width: 767px) {
-
-
-  /*
-  Optional:
-  Disable animations on mobile
-
-  Uncomment if needed
-
-  .show-element .animate-drop,
-  .show-element .animate-up,
-  .show-element .animate-scale,
-  .show-element .animate-fade {
-
-    animation: none;
-
-    opacity: 1;
-
-  }
-
-  */
-
-
-}
-
-
-
-/* =====================================================
-   Parallax
-===================================================== */
-
-
 .parallax {
+  position: relative; width: 100%; min-height: 100svh;
+  background-position: center; background-size: cover; background-repeat: no-repeat;
+  display: flex; justify-content: center; align-items: center; scroll-snap-align: start;
+}
+.parallax > *:not(button) { position: relative; z-index: 1; }
 
-  position: relative;
-
-  width:100%;
-
-  min-height:100svh;
-
-  background-position:center;
-
-  background-size:cover;
-
-  background-repeat:no-repeat;
-
-  display:flex;
-
-  justify-content:center;
-
-  align-items:center;
-
-  scroll-snap-align:start;
-
+@media (min-width: 768px) {
+  .parallax { background-attachment: fixed; background-size: cover; background-position: center; }
 }
 
-
-.parallax > *:not(button) {
-
-  position:relative;
-
-  z-index:1;
-
-}
-
-
-/*
- Desktop only
-
- Important:
- background-attachment fixed
- has bad mobile support
-*/
-
-@media (min-width:768px) {
-
-  .parallax {
-
-    background-attachment:fixed;
-
-    background-size:cover;
-
-    background-position:center;
-
-  }
-
-}
-
-
-
-/*
- Overlay
-*/
-
+/* was empty — give it a readability overlay tuned to the dark palette */
 .parallax::before {
-
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  pointer-events:none;
-
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(11,10,15,.55), rgba(11,10,15,.8));
 }

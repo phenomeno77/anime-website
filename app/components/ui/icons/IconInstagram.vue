@@ -13,6 +13,6 @@ import { siInstagram } from "simple-icons";
         <stop offset="100%" stop-color="#405DE6" />
       </linearGradient>
     </defs>
-    <path :d="siInstagram.path" fill="url(#ig-gradient)" />
+    <path :d="siInstagram.path" fill="currentColor" />
   </svg>
 </template>

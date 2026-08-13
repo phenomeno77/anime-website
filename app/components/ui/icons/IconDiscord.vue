@@ -4,6 +4,6 @@ import { siDiscord } from "simple-icons";
 
 <template>
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path :d="siDiscord.path" :fill="`#${siDiscord.hex}`" />
+    <path :d="siDiscord.path" fill="currentColor" />
   </svg>
 </template>

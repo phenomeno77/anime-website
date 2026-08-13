@@ -53,21 +53,12 @@ const stats = [
       aria-hidden="true"
     >
       <div
-        class="absolute left-[-200px] top-[-150px] h-[500px] w-[500px] rounded-full bg-violet-300/30 blur-3xl"
+        class="absolute -top-[150px] right-[-150px] h-[600px] w-[600px] rounded-full bg-glow/25 blur-3xl"
       />
       <div
-        class="absolute right-[-200px] top-[100px] h-[500px] w-[500px] rounded-full bg-pink-300/30 blur-3xl"
-      />
-      <div
-        class="absolute bottom-[-150px] left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-300/20 blur-3xl"
+        class="absolute bottom-[-200px] left-[-100px] h-[500px] w-[500px] rounded-full bg-accent/15 blur-3xl"
       />
     </div>
-
-    <!-- Fade-to-page mask so the bottom blob dissolves instead of getting clipped -->
-    <div
-      class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-b from-transparent to-[#FCFCFD] lg:h-56"
-      aria-hidden="true"
-    />
 
     <div class="container-custom max-w-7xl">
       <div
@@ -79,11 +70,11 @@ const stats = [
         <div class="animate-up text-center lg:text-left">
           <!-- Heading -->
           <h1
-            class="mx-auto max-w-md text-4xl font-bold leading-tight tracking-tight text-zinc-700 sm:text-5xl lg:mx-0 lg:max-w-xl lg:text-7xl"
+            class="mx-auto max-w-md font-display text-4xl font-bold leading-[1.05] tracking-tight text-text sm:text-5xl lg:mx-0 lg:max-w-xl lg:text-7xl"
           >
             Your Characters
             <span
-              class="bg-gradient-to-r from-violet-500 to-pink-500 bg-clip-text text-transparent"
+              class="bg-gradient-to-r from-accent-2 to-glow bg-clip-text text-transparent"
             >
               Beautifully
             </span>
@@ -92,7 +83,7 @@ const stats = [
 
           <!-- Description -->
           <p
-            class="mx-auto mt-8 max-w-md text-base leading-7 text-zinc-500 sm:text-lg sm:leading-8 lg:mx-0"
+            class="mx-auto mt-8 max-w-md text-base leading-7 text-muted sm:text-lg sm:leading-8 lg:mx-0"
           >
             Bringing your ideas to life through custom anime portraits, original
             characters and webtoon illustrations made with passion and attention
@@ -110,7 +101,7 @@ const stats = [
 
             <NuxtLink
               to="/portfolio"
-              class="rounded-xl border border-zinc-200 bg-white px-7 py-3.5 text-sm font-semibold text-zinc-700 transition duration-300 hover:-translate-y-1 hover:bg-zinc-50 active:translate-y-0"
+              class="rounded-full border border-border bg-transparent px-7 py-3.5 text-sm font-semibold text-text transition-all duration-300 ease-smooth hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.03] active:translate-y-0"
             >
               View Portfolio
             </NuxtLink>
@@ -123,7 +114,7 @@ const stats = [
             <template v-for="(stat, index) in stats" :key="stat.value">
               <div class="flex items-center gap-3">
                 <div
-                  class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-pink-500 shadow-md shadow-violet-500/25"
+                  class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent-2 to-accent shadow-[0_8px_24px_-8px_var(--color-glow)]"
                 >
                   <svg viewBox="0 0 24 24" class="h-5 w-5 fill-white">
                     <path :d="stat.icon" />
@@ -131,11 +122,11 @@ const stats = [
                 </div>
                 <div class="text-left">
                   <strong
-                    class="block bg-gradient-to-r from-violet-600 to-pink-600 bg-clip-text text-lg font-bold text-transparent"
+                    class="block font-display text-lg font-bold tracking-tight text-text"
                   >
                     {{ stat.value }}
                   </strong>
-                  <span class="text-sm text-zinc-500">{{ stat.label }}</span>
+                  <span class="text-sm text-muted">{{ stat.label }}</span>
                 </div>
               </div>
             </template>
@@ -147,17 +138,17 @@ const stats = [
           >
             <!-- Eyebrow -->
             <div
-              class="inline-flex items-center rounded-full bg-gradient-to-r from-violet-500 to-pink-500 p-[1px]"
+              class="inline-flex items-center rounded-full bg-gradient-to-r from-accent-2 to-accent p-[1px]"
             >
               <div
-                class="inline-flex h-8 items-center gap-2 rounded-full bg-violet-50 px-4 text-sm font-medium text-violet-600"
+                class="inline-flex h-8 items-center gap-2 rounded-full bg-surface px-4 text-sm font-medium text-text"
               >
                 <span class="relative flex h-2 w-2">
                   <span
-                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-500 opacity-75"
+                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-2 opacity-75"
                   />
                   <span
-                    class="relative inline-flex h-2 w-2 rounded-full bg-violet-500"
+                    class="relative inline-flex h-2 w-2 rounded-full bg-accent-2"
                   />
                 </span>
                 Anime Illustrator & Webtoon Creator
@@ -165,7 +156,7 @@ const stats = [
             </div>
 
             <div
-              class="hidden h-6 w-px bg-zinc-200 min-[470px]:block"
+              class="hidden h-6 w-px bg-border min-[470px]:block"
               aria-hidden="true"
             />
 
@@ -209,12 +200,12 @@ const stats = [
             >
               <!-- Desktop -->
               <div
-                class="hidden h-full w-full transition duration-700 md:block md:group-hover:[transform:perspective(1000px)_rotateY(8deg)_rotateX(4deg)]"
+                class="hidden h-full w-full transition duration-700 ease-smooth md:block md:group-hover:[transform:perspective(1000px)_rotateY(8deg)_rotateX(4deg)]"
               >
                 <NuxtImg
                   src="/hero/hero-section.webp"
                   alt="Featured artwork"
-                  class="absolute inset-0 h-full w-full rounded-[2rem] object-cover shadow-xl transition duration-700 md:group-hover:scale-105 md:group-hover:rotate-2"
+                  class="absolute inset-0 h-full w-full rounded-[2rem] border border-border object-cover shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8),0_0_60px_-20px_var(--color-glow)] transition duration-700 ease-smooth md:group-hover:scale-105 md:group-hover:rotate-2"
                   width="800"
                   height="1000"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 576px"
@@ -227,7 +218,7 @@ const stats = [
                 <NuxtImg
                   src="/hero/hero-section-hover.webp"
                   alt="Featured artwork hover"
-                  class="absolute inset-0 h-full w-full rounded-[2rem] object-cover opacity-0 shadow-xl transition duration-700 md:group-hover:opacity-100 md:group-hover:scale-105 md:group-hover:-rotate-2"
+                  class="absolute inset-0 h-full w-full rounded-[2rem] border border-border object-cover opacity-0 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8),0_0_60px_-20px_var(--color-glow)] transition duration-700 ease-smooth md:group-hover:opacity-100 md:group-hover:scale-105 md:group-hover:-rotate-2"
                   width="800"
                   height="1000"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 576px"
@@ -239,11 +230,11 @@ const stats = [
 
               <!-- Mobile (tap to flip) -->
               <div
-                class="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-xl md:hidden"
+                class="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-border shadow-[0_30px_60px_-25px_rgba(0,0,0,0.8)] md:hidden"
                 style="perspective: 1000px"
               >
                 <div
-                  class="relative h-full w-full transition-transform duration-700"
+                  class="relative h-full w-full transition-transform duration-700 ease-smooth"
                   :class="flipped ? '[transform:rotateY(180deg)]' : ''"
                   style="transform-style: preserve-3d"
                 >
@@ -286,18 +277,18 @@ const stats = [
 .dot-grid {
   background-image: radial-gradient(
     circle,
-    var(--color-violet-300, #c4b5fd) 1.5px,
+    rgba(157, 92, 255, 0.14) 1.5px,
     transparent 1.5px
   );
   background-size: 24px 24px;
   mask-image: radial-gradient(
     ellipse 100% 100% at 50% 50%,
-    black 60%,
+    black 55%,
     transparent 100%
   );
   -webkit-mask-image: radial-gradient(
     ellipse 100% 100% at 50% 50%,
-    black 60%,
+    black 55%,
     transparent 100%
   );
 }

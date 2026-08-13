@@ -12,24 +12,24 @@ defineProps<{
     <!-- Timeline -->
     <div class="flex flex-col items-center">
       <div
-        class="flex h-12 w-12 items-center justify-center rounded-full border border-zinc-200 bg-white text-sm font-semibold text-zinc-900 shadow-sm"
+        class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-border bg-surface font-display text-sm font-bold text-accent-2 shadow-[0_0_0_4px_rgba(157,92,255,0.06)]"
       >
         {{ number }}
       </div>
 
       <div
         v-if="!isLast"
-        class="mt-3 h-full w-px bg-gradient-to-b from-pink-400 via-zinc-400 to-transparent"
+        class="mt-3 h-full w-px bg-gradient-to-b from-accent-2 via-border to-transparent"
       />
     </div>
 
     <!-- Content -->
     <div class="pb-14">
-      <h3 class="text-xl font-semibold text-zinc-900">
+      <h3 class="font-display text-xl font-bold tracking-tight text-text">
         {{ title }}
       </h3>
 
-      <p class="mt-3 max-w-xl leading-7 text-zinc-600">
+      <p class="mt-3 max-w-xl leading-7 text-muted">
         {{ description }}
       </p>
     </div>

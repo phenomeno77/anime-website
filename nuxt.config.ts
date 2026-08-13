@@ -20,7 +20,17 @@ export default defineNuxtConfig({
     "@primevue/nuxt-module",
     "@nuxt/image",
     "nuxt-api-shield",
+    "@vueuse/motion/nuxt",
+    "@nuxt/fonts",
   ],
+
+  fonts: {
+    families: [
+      { name: "Clash Display", provider: "fontshare", weights: [600, 700] },
+      { name: "Satoshi", provider: "fontshare", weights: [400, 500, 700] },
+    ],
+  },
+
   // Limits IPs to max 3 submissions every 10 minutes
   nuxtApiShield: {
     // 1. Set global defaults loose (or skip globally)
@@ -48,8 +58,8 @@ export default defineNuxtConfig({
       theme: {
         preset: Aura,
         options: {
-        darkModeSelector: false || "none",
-      },
+          darkModeSelector: false || "none",
+        },
       },
     },
   },
@@ -81,4 +91,4 @@ export default defineNuxtConfig({
       ],
     },
   },
-});
+} as any);

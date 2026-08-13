@@ -1,8 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { Artwork } from "~/types/artwork";
-import "photoswipe/style.css";
 
-const artworks = usePortfolioArtworks();
+const artworks = useHomepageArtworks();
 
 const sizeClasses: Record<Artwork["size"], string> = {
   large: "col-span-2 row-span-2",
@@ -10,27 +9,6 @@ const sizeClasses: Record<Artwork["size"], string> = {
   wide: "col-span-2",
   normal: "",
 };
-
-const enableLoadMore = ref(true);
-const initialCount = ref(7);
-const loadMoreStep = ref(7);
-
-const visibleCount = ref(
-  enableLoadMore.value ? initialCount.value : artworks.length,
-);
-
-const visibleArtworks = computed(() => artworks.slice(0, visibleCount.value));
-const hasMore = computed(() => visibleCount.value < artworks.length);
-
-const isLoadingMore = ref(false);
-
-async function loadMore() {
-  if (isLoadingMore.value) return;
-  isLoadingMore.value = true;
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  visibleCount.value += loadMoreStep.value;
-  isLoadingMore.value = false;
-}
 
 /* ---------------- PhotoSwipe lightbox ---------------- */
 let lightbox: any = null;
@@ -69,10 +47,12 @@ async function toSlide(a: Artwork) {
 
 async function openLightbox(artwork: Artwork) {
   if (!lightbox) return;
-  const items = await Promise.all(visibleArtworks.value.map(toSlide));
+  const items = await Promise.all(
+    (artworks.value ?? []).map((a) => toSlide(a)),
+  );
   const index = Math.max(
     0,
-    visibleArtworks.value.findIndex((a) => a.id === artwork.id),
+    artworks.value.findIndex((a) => a.id === artwork.id),
   );
   lightbox.loadAndOpen(index, items);
 }
@@ -117,34 +97,31 @@ onUnmounted(() => {
   lightbox?.destroy?.();
   lightbox = null;
 });
+
+const reveal = useReveal();
 </script>
 
 <template>
-  <section class="relative">
-    <div class="container-custom py-20 text-center lg:py-32">
-      <!-- Hero -->
-      <p class="text-sm font-bold uppercase tracking-[0.22em] text-accent-2">
-        Portfolio
-      </p>
+  <section class="relative py-20 lg:py-32">
+    <div
+      class="container-custom"
+      :ref="reveal.target"
+      :class="[reveal.isVisible.value ? 'show-element' : 'hide-element']"
+    >
+      <UiSectionTitle
+        eyebrow="Selected Work"
+        title="Featured Artwork"
+        description="A small selection of recent pieces — original characters, webtoon panels and client commissions. Click any piece to open it full-screen and zoom in."
+        class="animate-drop"
+      />
 
-      <h1
-        class="mt-6 font-display text-5xl font-bold tracking-tight text-text md:text-7xl"
-      >
-        Full Archive
-      </h1>
-
-      <p class="mx-auto mt-8 max-w-2xl text-lg text-muted">
-        Every commissioned piece, original character and webtoon panel and more
-        in one place.
-      </p>
-
-      <!-- Gallery -->
       <div
-        class="mt-16 grid grid-flow-dense grid-cols-2 auto-rows-[160px] gap-1 text-left sm:auto-rows-[200px] sm:grid-cols-3 sm:gap-3 lg:auto-rows-[240px] lg:grid-cols-4 lg:gap-4"
+        class="mt-16 grid grid-flow-dense grid-cols-2 auto-rows-[160px] gap-1 sm:auto-rows-[200px] sm:grid-cols-3 sm:gap-3 lg:auto-rows-[240px] lg:grid-cols-4 lg:gap-4"
       >
         <UiArtworkCard
-          v-for="(artwork, index) in visibleArtworks"
+          v-for="(artwork, index) in artworks"
           :key="artwork.id"
+          class="animate-scale"
           :style="{ animationDelay: (index % 8) * 70 + 'ms' }"
           :artwork="artwork"
           :span-class="sizeClasses[artwork.size]"
@@ -152,15 +129,8 @@ onUnmounted(() => {
         />
       </div>
 
-      <!-- Load more -->
-      <div v-if="hasMore" class="mt-10 flex justify-center">
-        <UiPrimaryButton
-          label="Load More"
-          :loading="isLoadingMore"
-          loading-label="Loading..."
-          :disabled="isLoadingMore"
-          @click="loadMore"
-        />
+      <div class="mt-10 flex justify-center">
+        <UiPrimaryButton label="View Full Portfolio" href="/portfolio" />
       </div>
     </div>
   </section>

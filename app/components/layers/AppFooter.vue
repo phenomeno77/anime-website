@@ -18,30 +18,28 @@ const legalLinks = [
 </script>
 
 <template>
-  <footer class="relative border-t border-zinc-200">
+  <footer class="relative border-t border-border">
     <!-- Gradient hairline accent -->
     <div
-      class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-400 to-transparent"
+      class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-2 to-transparent"
     />
 
     <div class="container-custom py-12">
       <div
-        class="flex flex-col items-start gap-10 text-left lg:flex-row items-start lg:justify-between"
+        class="flex flex-col items-start gap-10 text-left lg:flex-row lg:justify-between"
       >
         <!-- Brand + copyright -->
         <div class="flex max-w-xs flex-col lg:max-w-sm">
-          <span
-            class="bg-gradient-to-r from-violet-500 to-pink-500 bg-clip-text text-lg font-bold text-transparent"
-          >
-            InQu
+          <span class="font-display text-lg font-bold tracking-tight text-text">
+            In<span class="text-accent-2">Qu</span>
           </span>
-          <p class="mt-3 text-sm leading-relaxed text-zinc-500">
+          <p class="mt-3 text-sm leading-relaxed text-muted">
             All artwork, illustrations, and images displayed on this website are
             protected by copyright and may not be copied, reproduced,
             distributed, modified, published, stored, or used in any form
             without prior written permission.
           </p>
-          <p class="mt-4 text-sm text-zinc-400">
+          <p class="mt-4 text-sm text-muted/70">
             © {{ year }} AnimeArt Marianelo. All rights reserved.
           </p>
         </div>
@@ -49,15 +47,15 @@ const legalLinks = [
         <!-- Site navigation -->
         <div>
           <span
-            class="text-xs font-semibold uppercase tracking-wide text-zinc-400"
+            class="text-xs font-bold uppercase tracking-[0.18em] text-accent-2"
             >Explore</span
           >
-          <div class="mt-4 flex flex-col gap-3 items-start">
+          <div class="mt-4 flex flex-col items-start gap-3">
             <NuxtLink
               v-for="link in siteLinks"
               :key="link.to"
               :to="link.to"
-              class="text-sm text-zinc-600 transition hover:text-violet-600"
+              class="text-sm text-muted transition-colors duration-300 ease-smooth hover:text-text"
             >
               {{ link.label }}
             </NuxtLink>
@@ -67,15 +65,15 @@ const legalLinks = [
         <!-- Legal -->
         <div>
           <span
-            class="text-xs font-semibold uppercase tracking-wide text-zinc-400"
+            class="text-xs font-bold uppercase tracking-[0.18em] text-accent-2"
             >Legal</span
           >
-          <div class="mt-4 flex flex-col gap-3 items-start">
+          <div class="mt-4 flex flex-col items-start gap-3">
             <NuxtLink
               v-for="link in legalLinks"
               :key="link.to"
               :to="link.to"
-              class="text-sm text-zinc-600 transition hover:text-violet-600"
+              class="text-sm text-muted transition-colors duration-300 ease-smooth hover:text-text"
             >
               {{ link.label }}
             </NuxtLink>
@@ -85,7 +83,7 @@ const legalLinks = [
         <!-- Social -->
         <div>
           <span
-            class="text-xs font-semibold uppercase tracking-wide text-zinc-400"
+            class="text-xs font-bold uppercase tracking-[0.18em] text-accent-2"
             >Social Media</span
           >
           <div
@@ -97,14 +95,14 @@ const legalLinks = [
       </div>
     </div>
 
-    <div class="border-t border-zinc-100 py-6">
-      <p class="text-center text-xs text-zinc-400">
+    <div class="border-t border-border py-6">
+      <p class="text-center text-xs text-muted/70">
         Website Designed &amp; developed by
         <a
           href="https://yourwebsite.com"
           target="_blank"
           rel="noopener noreferrer"
-          class="font-medium text-zinc-500 underline underline-offset-2 transition hover:text-violet-600"
+          class="font-medium text-muted underline underline-offset-2 transition-colors duration-300 ease-smooth hover:text-text"
         >
           Deligiannidis Enterprise
         </a>

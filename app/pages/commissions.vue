@@ -1,35 +1,31 @@
 <template>
   <UiAmbientBackground>
-    <section class="relative py-20 lg:py-32">
-      <div class="container-custom">
-        <CommissionsCommissionHero />
+    <CommissionsCommissionHero />
 
-        <UiSectionBackground variant="lavender">
-          <CommissionsCommissionTypes />
-        </UiSectionBackground>
+    <UiSectionBackground tone="raised" divider>
+      <CommissionsCommissionTypes />
+    </UiSectionBackground>
 
-        <UiSectionBackground variant="lavender">
-          <CommissionsCommissionAddons />
-        </UiSectionBackground>
+    <UiSectionBackground tone="base" divider>
+      <CommissionsCommissionAddons />
+    </UiSectionBackground>
 
-        <UiSectionBackground variant="lavender">
-          <CommissionsCommissionProcess />
-        </UiSectionBackground>
+    <UiSectionBackground tone="raised" divider>
+      <CommissionsCommissionProcess />
+    </UiSectionBackground>
 
-        <UiSectionBackground variant="lavender">
-          <CommissionsCommissionDelivery />
-        </UiSectionBackground>
+    <UiSectionBackground tone="base" divider>
+      <CommissionsCommissionDelivery />
+    </UiSectionBackground>
 
-        <UiSectionBackground variant="lavender">
-          <CommissionsCommissionRights />
-        </UiSectionBackground>
+    <UiSectionBackground tone="raised" divider>
+      <CommissionsCommissionRights />
+    </UiSectionBackground>
 
-        <UiSectionBackground variant="lavender">
-          <CommissionsCommissionFAQ />
-        </UiSectionBackground>
+    <UiSectionBackground tone="base" divider>
+      <CommissionsCommissionFAQ />
+    </UiSectionBackground>
 
-        <CommissionsCommissionCTA />
-      </div>
-    </section>
+    <CommissionsCommissionCTA />
   </UiAmbientBackground>
 </template>

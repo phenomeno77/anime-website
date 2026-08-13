@@ -23,14 +23,16 @@ const faq = [
 </script>
 
 <template>
-  <section class="py-12">
-    <div class="container-custom">
-      <h2 class="text-3xl font-semibold">Frequently Asked Questions</h2>
-      <p class="mt-3 text-neutral-500">
+  <section class="relative">
+    <div class="container-custom py-12">
+      <h2 class="font-display text-3xl font-bold tracking-tight text-text">
+        Frequently Asked Questions
+      </h2>
+      <p class="mt-3 text-muted">
         Answers to the most common questions before you commission.
       </p>
 
-      <Accordion class="faq-accordion mt-4">
+      <Accordion class="faq-accordion mt-8">
         <AccordionPanel
           v-for="(item, index) in faq"
           :key="item.question"
@@ -48,17 +50,27 @@ const faq = [
 
 <style scoped>
 .faq-accordion :deep(.p-accordionpanel) {
+  border: 1px solid var(--color-border);
   border-radius: 1rem;
   overflow: hidden;
   margin-bottom: 0.75rem;
+  background: var(--color-surface);
 }
-
 .faq-accordion :deep(.p-accordionheader) {
   font-weight: 600;
   padding: 1.25rem 1.5rem;
+  color: var(--color-text);
+  background: transparent;
 }
-
+.faq-accordion :deep(.p-accordionheader:hover) {
+  background: rgba(255, 255, 255, 0.03);
+}
+.faq-accordion :deep(.p-accordionheader-toggle-icon) {
+  color: var(--color-accent-2);
+}
 .faq-accordion :deep(.p-accordioncontent-content) {
   padding: 0 1.5rem 1.25rem;
+  color: var(--color-muted);
+  background: transparent;
 }
 </style>

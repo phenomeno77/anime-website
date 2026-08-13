@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import "photoswipe/style.css";
+
 const commissionTypes = [
   {
     title: "Portrait Illustration",
@@ -46,107 +48,140 @@ const commissionTypes = [
   },
 ];
 
-const exampleDialogOpen = ref(false);
-const activeExample = ref<{ name: string; exampleImage: string } | null>(null);
+/* ---------------- PhotoSwipe single-image viewer ---------------- */
+let lightbox: any = null;
 
-function openExample(option: { name: string; exampleImage?: string }) {
-  if (!option.exampleImage) return;
-  activeExample.value = {
-    name: option.name,
-    exampleImage: option.exampleImage,
-  };
-  exampleDialogOpen.value = true;
+const dimCache = new Map<string, { w: number; h: number }>();
+function loadDims(src: string): Promise<{ w: number; h: number }> {
+  if (dimCache.has(src)) return Promise.resolve(dimCache.get(src)!);
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      const d = { w: img.naturalWidth || 1600, h: img.naturalHeight || 2000 };
+      dimCache.set(src, d);
+      resolve(d);
+    };
+    img.onerror = () => resolve({ w: 1600, h: 2000 });
+    img.src = src;
+  });
 }
 
-const dialogPt = {
-  root: {
-    class:
-      "rounded-[2rem] overflow-hidden shadow-2xl bg-white w-[92vw] max-w-2xl",
-  },
-  mask: { class: "bg-zinc-900/70 backdrop-blur-sm" },
-  header: { class: "hidden" },
-  content: { class: "p-0" },
-};
+async function openExample(option: { name: string; exampleImage?: string }) {
+  if (!option.exampleImage || !lightbox) return;
+  const dims = await loadDims(option.exampleImage);
+  lightbox.loadAndOpen(0, [
+    {
+      src: option.exampleImage,
+      width: dims.w,
+      height: dims.h,
+      alt: `Example of ${option.name}`,
+      title: `${option.name} — Example`,
+    },
+  ]);
+}
+
+onMounted(async () => {
+  const { default: PhotoSwipeLightbox } = await import("photoswipe/lightbox");
+  lightbox = new PhotoSwipeLightbox({
+    pswpModule: () => import("photoswipe"),
+    bgOpacity: 0.96,
+    showHideAnimationType: "zoom",
+    wheelToZoom: true,
+  });
+
+  lightbox.on("uiRegister", () => {
+    lightbox.pswp.ui.registerElement({
+      name: "inqu-caption",
+      order: 9,
+      isButton: false,
+      appendTo: "root",
+      onInit: (el: HTMLElement) => {
+        const update = () => {
+          const d = lightbox.pswp.currSlide?.data ?? {};
+          el.className = "pswp__inqu-caption";
+          el.innerHTML = d.title
+            ? `<span class="c-name">${d.title}</span>`
+            : "";
+        };
+        lightbox.pswp.on("change", update);
+        update();
+      },
+    });
+  });
+
+  lightbox.init();
+});
+
+onUnmounted(() => {
+  lightbox?.destroy?.();
+  lightbox = null;
+});
 </script>
 
 <template>
-  <section class="py-12">
-    <div class="container-custom">
-      <h2 class="text-3xl font-semibold">Available Commissions</h2>
+  <section class="relative">
+    <div class="container-custom py-12">
+      <h2 class="font-display text-3xl font-bold tracking-tight text-text">
+        Available Commissions
+      </h2>
 
       <div class="mt-8 grid gap-8 lg:grid-cols-2">
-        <article v-for="type in commissionTypes" :key="type.title">
-          <h3 class="text-2xl font-semibold px-8">
+        <article
+          v-for="type in commissionTypes"
+          :key="type.title"
+          class="rounded-3xl border border-border bg-surface p-8"
+        >
+          <h3 class="font-display text-2xl font-bold tracking-tight text-text">
             {{ type.title }}
           </h3>
 
-          <p class="mt-4 px-8 text-neutral-600">
-            {{ type.description }}
-          </p>
+          <p class="mt-4 text-muted">{{ type.description }}</p>
 
-          <div class="mt-8 space-y-4 px-8">
+          <div class="mt-8 space-y-4">
             <div
               v-for="option in type.options"
               :key="option.name"
-              class="flex justify-between rounded-2xl bg-white/50 p-5"
+              class="flex justify-between rounded-2xl border border-border bg-bg/40 p-5"
             >
               <div>
-                <p class="font-medium">
+                <p class="font-medium text-text">
                   {{ option.name }}
                   <button
                     v-if="option.exampleImage"
                     type="button"
-                    class="ml-1 text-sm font-normal text-violet-600 underline underline-offset-2 transition hover:text-violet-700 cursor-pointer"
+                    class="ml-1 cursor-pointer text-sm font-normal text-accent-2 underline underline-offset-2 transition-colors hover:text-glow"
                     @click="openExample(option)"
                   >
                     (see example)
                   </button>
                 </p>
-
-                <p class="text-sm text-neutral-500">
-                  {{ option.time }}
-                </p>
+                <p class="text-sm text-muted">{{ option.time }}</p>
               </div>
-
-              <p class="font-medium">
-                {{ option.price }}
-              </p>
+              <p class="font-medium text-text">{{ option.price }}</p>
             </div>
           </div>
         </article>
       </div>
     </div>
-
-    <!-- Example image dialog -->
-    <Dialog
-      v-model:visible="exampleDialogOpen"
-      modal
-      dismissable-mask
-      unstyled
-      :pt="dialogPt"
-    >
-      <div v-if="activeExample" class="relative">
-        <button
-          type="button"
-          aria-label="Close"
-          class="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-zinc-700 shadow-md transition hover:bg-white"
-          @click="exampleDialogOpen = false"
-        >
-          ✕
-        </button>
-
-        <img
-          :src="activeExample.exampleImage"
-          :alt="`Example of ${activeExample.name}`"
-          class="max-h-[75vh] w-full bg-zinc-50 object-contain"
-        />
-
-        <div class="p-5">
-          <h3 class="text-lg font-bold text-zinc-900">
-            {{ activeExample.name }} — Example
-          </h3>
-        </div>
-      </div>
-    </Dialog>
   </section>
 </template>
+
+<style>
+.pswp {
+  --pswp-bg: #0b0a0f;
+}
+.pswp__inqu-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  text-align: center;
+  padding: 0 16px;
+  pointer-events: none;
+}
+.pswp__inqu-caption .c-name {
+  font-family: "Clash Display", sans-serif;
+  color: var(--color-text);
+  font-size: 1.05rem;
+}
+</style>

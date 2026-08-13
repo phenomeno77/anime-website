@@ -1,27 +1,25 @@
-<script setup lang="ts">
-const artworks = useHomepageArtworks();
-</script>
-
 <template>
   <div>
-    <!-- <SectionsHeroSection /> -->
+    <!-- Hero — base tone, carries its own dot-grid + glows -->
     <SectionsHeroSection id="hero-section" />
 
-    <!-- Section Artwork  -->
-    <SectionsArtworkGallerySection id="artwork-gallery" :artworks="artworks" />
+    <!-- Artwork gallery — raised -->
+    <UiSectionBackground tone="raised" divider>
+      <SectionsArtworkGalleryHomepageSection id="artwork-gallery" />
+    </UiSectionBackground>
 
-    <!-- Section Commission steps -->
-    <UiSectionBackground variant="aurora">
+    <!-- Commission steps — base -->
+    <UiSectionBackground tone="base" divider>
       <SectionsCommissionSection />
     </UiSectionBackground>
 
-    <!-- Section Webtoon -->
-    <UiSectionBackground variant="lavender">
+    <!-- Webtoon — raised (glow anchor suits the feature) -->
+    <UiSectionBackground tone="raised" divider>
       <SectionsWebtoonSection />
     </UiSectionBackground>
 
-    <!-- Section About me -->
-    <UiSectionBackground variant="rose">
+    <!-- About me — base -->
+    <UiSectionBackground tone="base" divider>
       <SectionsAboutTeaserSection />
     </UiSectionBackground>
   </div>

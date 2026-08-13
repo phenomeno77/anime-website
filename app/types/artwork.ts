@@ -8,4 +8,6 @@ export interface Artwork {
   size: ArtworkSize;
   title?: string;
   medium?: string;
+  width?: number;
+  height?: number;
 }

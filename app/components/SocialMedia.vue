@@ -1,10 +1,26 @@
+<script setup lang="ts">
+const linkClass = `
+  inline-block
+  h-8
+  w-8
+  text-muted
+  opacity-70
+  transition-all
+  duration-300
+  ease-smooth
+  hover:-translate-y-0.5
+  hover:text-text
+  hover:opacity-100
+`;
+</script>
+
 <template>
   <a
     href="https://www.instagram.com/inqu_buss/"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Instagram"
-    class="h-8 w-8 transition duration-300 hover:-translate-y-1"
+    :class="linkClass"
   >
     <UiIconsIconInstagram class="h-full w-full" />
   </a>
@@ -14,7 +30,7 @@
     target="_blank"
     rel="noopener noreferrer"
     aria-label="TikTok"
-    class="h-8 w-8 transition duration-300 hover:-translate-y-1"
+    :class="linkClass"
   >
     <UiIconsIconTiktok class="h-full w-full" />
   </a>
@@ -24,7 +40,7 @@
     target="_blank"
     rel="noopener noreferrer"
     aria-label="WEBTOON"
-    class="h-8 w-8 transition duration-300 hover:-translate-y-1"
+    :class="linkClass"
   >
     <UiIconsIconWebtoon class="h-full w-full" />
   </a>
@@ -34,7 +50,7 @@
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Discord"
-    class="h-8 w-8 transition duration-300 hover:-translate-y-1"
+    :class="linkClass"
   >
     <UiIconsIconDiscord class="h-full w-full" />
   </a>
