@@ -416,7 +416,10 @@ const startCommission = async () => {
         </p>
 
         <div class="mt-8">
-          <UiPrimaryButton label="Get in Touch" href="/contact" />
+          <UiPrimaryButton
+            label="Get in Touch"
+            href="mailto:email@example.com"
+          />
         </div>
       </div>
     </section>

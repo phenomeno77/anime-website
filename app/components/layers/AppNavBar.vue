@@ -112,6 +112,7 @@ onUnmounted(() => {
             <UiPrimaryButton
               label="Start Commission"
               href="/start-commission"
+              @click="mobileMenuOpen = false"
             />
           </div>
         </div>

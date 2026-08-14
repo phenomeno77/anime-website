@@ -141,7 +141,7 @@ onUnmounted(() => {
             <div
               v-for="option in type.options"
               :key="option.name"
-              class="flex justify-between rounded-2xl border border-border bg-bg/40 p-5"
+              class="flex items-start justify-between gap-4 rounded-2xl border border-border bg-bg/40 p-5"
             >
               <div>
                 <p class="font-medium text-text">
@@ -149,7 +149,7 @@ onUnmounted(() => {
                   <button
                     v-if="option.exampleImage"
                     type="button"
-                    class="ml-1 cursor-pointer text-sm font-normal text-accent-2 underline underline-offset-2 transition-colors hover:text-glow"
+                    class="md:ml-1 cursor-pointer text-sm font-normal text-accent-2 underline underline-offset-2 transition-colors hover:text-glow"
                     @click="openExample(option)"
                   >
                     (see example)
@@ -157,7 +157,9 @@ onUnmounted(() => {
                 </p>
                 <p class="text-sm text-muted">{{ option.time }}</p>
               </div>
-              <p class="font-medium text-text">{{ option.price }}</p>
+              <p class="flex-shrink-0 font-medium text-text">
+                {{ option.price }}
+              </p>
             </div>
           </div>
         </article>
