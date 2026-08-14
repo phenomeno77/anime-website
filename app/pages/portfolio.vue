@@ -1,3 +1,11 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: "Portfolio",
+  description:
+    "A gallery of anime character illustrations, original characters, commissions, and webtoon panels by InQu.",
+});
+</script>
+
 <template>
   <UiAmbientBackground>
     <ClientOnly>

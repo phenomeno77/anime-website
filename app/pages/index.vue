@@ -1,3 +1,11 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: "InQu — Anime Illustrator & Webtoon Artist",
+  description:
+    "Custom anime character illustrations, portraits, and reference sheets by InQu. See the portfolio, commission info, and the webtoon Nutcases.",
+});
+</script>
+
 <template>
   <div>
     <!-- Hero — base tone, carries its own dot-grid + glows -->

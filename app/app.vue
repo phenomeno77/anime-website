@@ -1,18 +1,20 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: "InQu | Digital Art",
+  titleTemplate: (title) =>
+    title ? `${title} — InQu` : "InQu — Anime Illustrator & Webtoon Artist",
+
   description:
-    "Custom hand-painted anime PC glass panels and digital artwork crafted to order.",
-  ogTitle: "Anime & Digital Art Commissions",
-  ogDescription:
-    "Custom hand-painted anime PC glass panels and digital artwork crafted to order.",
-  ogImage:
-    "https://manga-umber-rho.vercel.app/artwork-gallery/artworks-home/003.webp",
+    "Custom anime illustrations, character portraits, and reference sheets by InQu. Original character art, commissions, and the webtoon Nutcases.",
+  ogImage: "/commissions/examples/bust-up.webp", // relative is fine now — module resolves to absolute
   ogImageWidth: 1200,
   ogImageHeight: 630,
+  ogImageAlt: "InQu — anime character illustration",
   twitterCard: "summary_large_image",
-  twitterImage:
-    "https://manga-umber-rho.vercel.app/artwork-gallery/artworks-home/003.webp",
+});
+
+useHead({
+  htmlAttrs: { lang: "en" },
+  meta: [{ name: "color-scheme", content: "dark" }],
 });
 </script>
 

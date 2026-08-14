@@ -20,9 +20,44 @@ export default defineNuxtConfig({
     "@primevue/nuxt-module",
     "@nuxt/image",
     "nuxt-api-shield",
-    "@vueuse/motion/nuxt",
     "@nuxt/fonts",
+    "@nuxtjs/seo",
   ],
+
+  // ---------- SEO ----------
+  site: {
+    url: "https://YOUR-DOMAIN",
+    name: "InQu",
+    description:
+      "Custom anime character illustrations, portraits, and reference sheets by InQu — commissions and the webtoon Nutcases.",
+    defaultLocale: "en",
+  },
+
+  sitemap: {
+    exclude: ["/legal-notice", "/privacy-policy", "/terms-of-service"],
+  },
+
+  // no dynamic OG images — we ship a static /og/og-default.jpg
+  ogImage: { enabled: false },
+
+  // honor InQu's ToS: block AI training crawlers, keep search engines
+  robots: {
+    blockAiBots: true,
+  },
+
+  schemaOrg: {
+    identity: {
+      type: "Person",
+      name: "InQu",
+      url: "https://YOUR-DOMAIN",
+      sameAs: [
+        "https://www.instagram.com/inqu_buss/",
+        "https://www.tiktok.com/@orimeskariokes",
+        "https://www.webtoons.com/en/canvas/nutcases/list?title_no=1084062",
+      ],
+    },
+  },
+  // ---------- /SEO ----------
 
   fonts: {
     families: [
@@ -33,25 +68,23 @@ export default defineNuxtConfig({
 
   // Limits IPs to max 3 submissions every 10 minutes
   nuxtApiShield: {
-    // 1. Set global defaults loose (or skip globally)
     limit: {
       max: 100,
       duration: 60,
       ban: 60,
     },
-    // 2. Specify precise rules ONLY for the commission route
     routes: [
       {
         path: "/api/commission",
-        max: 1, // Allow 1 request...
-        duration: 300, // ...per 5 minutes (300 seconds)
-        ban: 300, // Ban duration: 5 minutes
+        max: 1,
+        duration: 300,
+        ban: 300,
       },
     ],
-
     errorMessage:
       "You've already submitted a commission request. Please wait 5 minutes before trying again.",
   },
+
   primevue: {
     autoImport: true,
     options: {
@@ -63,6 +96,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   runtimeConfig: {
     mailHost: process.env.NUXT_MAIL_HOST,
     mailPort: process.env.NUXT_MAIL_PORT,
@@ -91,4 +125,4 @@ export default defineNuxtConfig({
       ],
     },
   },
-} as any);
+});
