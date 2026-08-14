@@ -26,7 +26,7 @@ export default defineNuxtConfig({
 
   // ---------- SEO ----------
   site: {
-    url: "https://YOUR-DOMAIN",
+    url: "https://manga-umber-rho.vercel.app",
     name: "InQu",
     description:
       "Custom anime character illustrations, portraits, and reference sheets by InQu — commissions and the webtoon Nutcases.",
@@ -49,7 +49,7 @@ export default defineNuxtConfig({
     identity: {
       type: "Person",
       name: "InQu",
-      url: "https://YOUR-DOMAIN",
+      url: "https://manga-umber-rho.vercel.app",
       sameAs: [
         "https://www.instagram.com/inqu_buss/",
         "https://www.tiktok.com/@orimeskariokes",

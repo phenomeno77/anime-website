@@ -1,8 +1,20 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: "InQu — Anime Illustrator & Webtoon Artist",
+  titleTemplate: (title) =>
+    title ? `${title} — InQu` : "InQu — Anime Illustrator & Webtoon Artist",
+
   description:
-    "Custom anime character illustrations, portraits, and reference sheets by InQu. See the portfolio, commission info, and the webtoon Nutcases.",
+    "Custom anime illustrations, character portraits, and reference sheets by InQu. Original character art, commissions, and the webtoon Nutcases.",
+  ogImage: "/commissions/examples/bust-up.webp", // relative is fine now — module resolves to absolute
+  // ogImageWidth: 1200,
+  // ogImageHeight: 630,
+  ogImageAlt: "InQu — anime character illustration",
+  twitterCard: "summary_large_image",
+});
+
+useHead({
+  htmlAttrs: { lang: "en" },
+  meta: [{ name: "color-scheme", content: "dark" }],
 });
 </script>
 
