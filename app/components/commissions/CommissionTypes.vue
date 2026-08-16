@@ -9,19 +9,19 @@ const commissionTypes = [
     options: [
       {
         name: "Bust Up",
-        price: "$75 - $110",
+        price: "€75 - €110",
         time: "2-3 weeks",
         exampleImage: "/commissions/examples/bust-up.webp",
       },
       {
         name: "Half Body",
-        price: "$110 - $150",
+        price: "€110 - €150",
         time: "2-3 weeks",
         exampleImage: "/commissions/examples/half-body.webp",
       },
       {
         name: "Full Body",
-        price: "$150 - $200",
+        price: "€150 - €200",
         time: "3-4 weeks",
         exampleImage: "/commissions/examples/full-body.webp",
       },
@@ -34,13 +34,13 @@ const commissionTypes = [
     options: [
       {
         name: "2 Bust Up Illustrations",
-        price: "$200 - $300",
+        price: "€200 - €300",
         time: "5-6 weeks",
         exampleImage: "/commissions/examples/ref-sheet-bust-up.webp",
       },
       {
         name: "1 Bust Up + 1 Half Body",
-        price: "$270 - $400",
+        price: "€270 - €400",
         time: "5-6 weeks",
         exampleImage: "/commissions/examples/ref-sheet-mixed.webp",
       },

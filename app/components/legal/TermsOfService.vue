@@ -18,7 +18,7 @@ const paymentTerms = [
 
 const processTerms = [
   "Turnaround time begins after sketch approval. (Delivery time may vary depending on complexity or personal health reasons.)",
-  "Maximum of 3 major revisions are allowed without extra payment, unless they're my own mistakes. Afterwards, extra fees may follow (+$5–$20).",
+  "Maximum of 3 major revisions are allowed without extra payment, unless they're my own mistakes. Afterwards, extra fees may follow (+€5–€20).",
   "You will receive the finished work in both .png and .jpeg formats in 2k & 4k quality (350 dpi), plus a web-friendly version via Google Drive folder (unless another method is agreed upon).",
 ];
 

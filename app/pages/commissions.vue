@@ -2,7 +2,7 @@
 useSeoMeta({
   title: "Commissions",
   description:
-    "Commission custom anime art from InQu — portraits and character reference sheets from $75. Pricing, process, usage rights, and FAQ.",
+    "Commission custom anime art from InQu — portraits and character reference sheets from €75. Pricing, process, usage rights, and FAQ.",
 });
 </script>
 

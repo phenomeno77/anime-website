@@ -29,7 +29,7 @@ const processSteps = [
 const infoCards = [
   {
     title: "Pricing",
-    value: "From $75",
+    value: "From €75",
     description:
       "Portraits, character sheets, and custom commissions are available.",
   },

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 const addons = [
-  { label: "Additional props / complexity", price: "+$15 - $200" },
-  { label: "Additional props, chibis, expressions", price: "+$5 - $60" },
+  { label: "Additional props / complexity", price: "+€15 - €200" },
+  { label: "Additional props, chibis, expressions", price: "+€5 - €60" },
   { label: "Couple illustrations", price: "+80% of initial price" },
   { label: "Custom shots and backgrounds", price: "Discussed per request" },
-  { label: "Rush delivery", price: "+$50 - $100" },
+  { label: "Rush delivery", price: "+€50 - €100" },
   { label: "NSFW requests", price: "Depends on complexity" },
   { label: "Custom orders", price: "Available upon request" },
 ];
